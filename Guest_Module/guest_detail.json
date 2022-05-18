@@ -1,0 +1,70 @@
+{
+    "Guests": [
+        {
+            "Guest_name": "hezron",
+            "Guest_Phone": "0714415034",
+            "Guest_Email": "hezron.w12@gmail.com",
+            "Guest_room": "premium room"
+        },
+        {
+            "Guest_name": "Maureen",
+            "Guest_Phone": "0714415034",
+            "Guest_Email": "maureen.w12@gmail.com",
+            "Guest_room": "twin room"
+        },
+        {
+            "Guest_name": "Ann Wamboi",
+            "Guest_Phone": "9013241414",
+            "Guest_Email": "ann.gladys@gmail.com",
+            "Guest_room": "single room"
+        },
+        {
+            "Guest_name": "Ann Wamboi",
+            "Guest_Phone": "9013241414",
+            "Guest_Email": "ann.gladys@gmail.com",
+            "Guest_room": "single room"
+        },
+        {
+            "Guest_name": "tommy konel",
+            "Guest_Phone": "901341424",
+            "Guest_Email": "tommy@gmail.com",
+            "Guest_room": "twin room"
+        },
+        {
+            "Guest_name": "hezron",
+            "Guest_Phone": "0714415034",
+            "Guest_Email": "hezron.w12@gmail.com",
+            "Guest_room": "twin room"
+        },
+        {
+            "Guest_name": "hezron",
+            "Guest_Phone": "0714415034",
+            "Guest_Email": "hezron.w12@gmail.com",
+            "Guest_room": "single room"
+        },
+        {
+            "Guest_name": "hezron",
+            "Guest_Phone": "0714415034",
+            "Guest_Email": "hezron.w12@gmail.com",
+            "Guest_room": "single room"
+        },
+        {
+            "Guest_name": "hezron",
+            "Guest_Phone": "0714415034",
+            "Guest_Email": "hezron.w12@gmail.com",
+            "Guest_room": "single room"
+        },
+        {
+            "Guest_name": "hezron",
+            "Guest_Phone": "0714415034",
+            "Guest_Email": "hezron.w12@gmail.com",
+            "Guest_room": "single room"
+        },
+        {
+            "Guest_name": "hezron",
+            "Guest_Phone": "0714415034",
+            "Guest_Email": "hezron.w12@gmail.com",
+            "Guest_room": "single room"
+        }
+    ]
+}
