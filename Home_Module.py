@@ -150,7 +150,6 @@ def Login_function(username, password):
                             mydb.commit()
                             mycursor.execute("SELECT * FROM hostel.log_rept;")
                             log_id_f = mycursor.fetchall()
-                            print(len(log_id_f))
                             i = len(log_id_f) - 1
                             curent_log_id = log_id_f[i][0]
 
@@ -161,7 +160,7 @@ def Login_function(username, password):
                                 outfile.write(json_object)
 
                             import subprocess
-                            cmd = 'python Student_module.py'
+                            cmd = 'python StudentPage.py'
                             p = subprocess.Popen(cmd, shell=True)
                             out, err = p.communicate()
                             print(err)
@@ -173,9 +172,20 @@ def Login_function(username, password):
                             mycursor.execute("INSERT INTO hostel.log_rept (user_id, user_Name, user_role, Login_date, Login_time) VALUES (%s, %s, %s, CURDATE(), CURTIME());",(myresult[0][2], fetg[0][1], myresult[0][3]))
                             mydb.commit()
 
+                            mycursor.execute("SELECT * FROM hostel.log_rept;")
+                            log_id_f = mycursor.fetchall()
+                            i = len(log_id_f) - 1
+                            curent_log_id = log_id_f[i][0]
+
+                            dic = {'session_id': user_id, 'log_id': curent_log_id}
+                            json_object = json.dumps(dic, indent=4)
+                            print(json_object)
+                            with open("SessionInfo.json", "w") as outfile:
+                                outfile.write(json_object)
+
 
                             import subprocess
-                            cmd = 'python Admin_Module.py'
+                            cmd = 'python AdminPage.py'
                             p = subprocess.Popen(cmd, shell=True)
                             out, err = p.communicate()
                             print(err)
