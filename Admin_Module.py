@@ -5,6 +5,7 @@ from PIL import Image, ImageTk
 import base64
 import io
 import json
+import smtplib
 # Create an instance of tkinter frame
 root = tk.Tk()
 root.state('zoomed')
@@ -78,7 +79,7 @@ side_bar_frame = tk.Frame(root, bg=side_bar_frame_bg_color)
 side_bar_frame.place(relwidth=0.17, relheight=1)
 
 info_frame_lable = tk.Label(side_bar_frame, text='ADMIN', bg=side_bar_frame_bg_color, fg=side_bar_frame_fg_color,
-                            font='-family {Bauhaus 93} -size 16 -weight bold')
+                            font='-size 16 -weight bold')
 info_frame_lable.place(rely=0.04, relx=0, relwidth=1, relheight=0.05)
 
 info_frame = tk.Frame(side_bar_frame, bg='gray')
@@ -801,23 +802,19 @@ import re
 import random
 
 
-def reserve_room(f_name, s_name, l_name, d_birth, s_gender, s_phone, s_email, year_study, s_institution, s_national_is,
-                 p_first_name, p_second_name, p_phone_no, p_email, room_ty):
+def reserve_room(f_name, s_name, l_name, d_birth, s_gender, s_phone, s_email, year_study, s_institution, s_national_is, p_first_name, p_second_name, p_phone_no, p_email, room_ty):
     if f_name == '':
-        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Student First Name Field is Empty', bg='#BA0021',
-                         fg='white', font='-family {Georgia}  -size 10 -slant italic')
+        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Student First Name Field is Empty', bg='#BA0021', fg='white', font='-family {Georgia}  -size 10 -slant italic')
         stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
         stut1.after(3100, lambda: stut1.place_forget())
         return
     if s_name == '':
-        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Student Second Name Field is Empty', bg='#BA0021',
-                         fg='white', font='-family {Georgia}  -size 10 -slant italic')
+        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Student Second Name Field is Empty', bg='#BA0021', fg='white', font='-family {Georgia}  -size 10 -slant italic')
         stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
         stut1.after(3100, lambda: stut1.place_forget())
         return
     if l_name == '':
-        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Last First Name Field is Empty', bg='#BA0021',
-                         fg='white', font='-family {Georgia}  -size 10 -slant italic')
+        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Last First Name Field is Empty', bg='#BA0021', fg='white', font='-family {Georgia}  -size 10 -slant italic')
         stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
         stut1.after(3100, lambda: stut1.place_forget())
         return
@@ -831,126 +828,94 @@ def reserve_room(f_name, s_name, l_name, d_birth, s_gender, s_phone, s_email, ye
 
         elif (s_gender != 'female') or (s_gender != 'Female') or (s_gender != 'male') or (s_gender != 'Male'):
             messagebox.showwarning("ERROR", "Gender Specification either male or female")
-            stut1 = tk.Label(Reserve_Room_frame, text='✗ ERROR:\n\n Student Gender !', bg='#BA0021', fg='white',
-                             font='-family {Georgia}  -size 10 -slant italic')
+            stut1 = tk.Label(Reserve_Room_frame, text='✗ ERROR:\n\n Student Gender !', bg='#BA0021', fg='white',  font='-family {Georgia}  -size 10 -slant italic')
             stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
             stut1.after(3100, lambda: stut1.place_forget())
 
     if s_phone == 0:
-        stut1 = tk.Label(Reserve_Room_frame, text='✗ ERROR:\n\n Student Phone Number', bg='#BA0021', fg='white',
-                         font='-family {Georgia}  -size 10 -slant italic')
+        stut1 = tk.Label(Reserve_Room_frame, text='✗ ERROR:\n\n Student Phone Number', bg='#BA0021', fg='white',  font='-family {Georgia}  -size 10 -slant italic')
         stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
         stut1.after(3100, lambda: stut1.place_forget())
         return
 
     if s_email != '':
-        regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
-        if (re.search(regex, s_email)):
             print('valid s email')
-        else:
-            stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Student Invalid Emali', bg='#BA0021', fg='white',
-                             font='-family {Georgia}  -size 10 -slant italic')
-            stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
-            stut1.after(3100, lambda: stut1.place_forget())
     else:
         messagebox.showwarning("ERROR", "No Email Provided")
-        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n No Student Email Provided', bg='#BA0021', fg='white',
-                         font='-family {Georgia}  -size 10 -slant italic')
+        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n No Student Email Provided', bg='#BA0021', fg='white', font='-family {Georgia}  -size 10 -slant italic')
         stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
         stut1.after(3100, lambda: stut1.place_forget())
+        return
 
     sssdtoday = ty.today()
     db = abs((d_birth - sssdtoday).days)
     age = db / 365
     if d_birth != sssdtoday:
         if d_birth > sssdtoday:
-            stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Date of Birth Erro', bg='#BA0021', fg='white',
-                             font='-family {Georgia}  -size 10 -slant italic')
+            stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Date of Birth Erro', bg='#BA0021', fg='white',  font='-family {Georgia}  -size 10 -slant italic')
             stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
             stut1.after(3100, lambda: stut1.place_forget())
             return
         if age < 17:
             print(age)
-            stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Age is Less Than 17', bg='#BA0021', fg='white',
-                             font='-family {Georgia}  -size 10 -slant italic')
+            stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Age is Less Than 17', bg='#BA0021', fg='white', font='-family {Georgia}  -size 10 -slant italic')
             stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
             stut1.after(3100, lambda: stut1.place_forget())
             return
     else:
-        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Select Age', bg='#BA0021', fg='white',
-                         font='-family {Georgia}  -size 10 -slant italic')
+        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Select Age', bg='#BA0021', fg='white', font='-family {Georgia}  -size 10 -slant italic')
         stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
         stut1.after(3100, lambda: stut1.place_forget())
         return
 
     if year_study <= 0 or year_study >= 7:
-        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Invalid Year Of Study', bg='#BA0021', fg='white',
-                         font='-family {Georgia}  -size 10 -slant italic')
+        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Invalid Year Of Study', bg='#BA0021', fg='white',  font='-family {Georgia}  -size 10 -slant italic')
         stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
         stut1.after(3100, lambda: stut1.place_forget())
         return
 
     if s_institution == '':
-        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Please Fill Student Institution Name', bg='#BA0021',
-                         fg='white', font='-family {Georgia}  -size 10 -slant italic')
+        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Please Fill Student Institution Name', bg='#BA0021',   fg='white', font='-family {Georgia}  -size 10 -slant italic')
         stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
         stut1.after(3100, lambda: stut1.place_forget())
         return
 
     if s_national_is == 0:
-        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n National ID field is empty', bg='#BA0021', fg='white',
-                         font='-family {Georgia}  -size 10 -slant italic')
+        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n National ID field is empty', bg='#BA0021', fg='white', font='-family {Georgia}  -size 10 -slant italic')
         stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
         stut1.after(3100, lambda: stut1.place_forget())
         return
 
     if p_first_name == '':
-        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Parent First Name Field is Empty', bg='#BA0021',
-                         fg='white', font='-family {Georgia}  -size 10 -slant italic')
+        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Parent First Name Field is Empty', bg='#BA0021', fg='white', font='-family {Georgia}  -size 10 -slant italic')
         stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
         stut1.after(3100, lambda: stut1.place_forget())
         return
     if p_second_name == '':
-        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Parent Second Name Field is Empty', bg='#BA0021',
-                         fg='white', font='-family {Georgia}  -size 10 -slant italic')
+        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Parent Second Name Field is Empty', bg='#BA0021', fg='white', font='-family {Georgia}  -size 10 -slant italic')
         stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
         stut1.after(3100, lambda: stut1.place_forget())
         return
 
     if p_email != '':
-        regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
-        if (re.search(regex, p_email)):
             print('Valid Parent Email')
-        else:
-            messagebox.showwarning("ERROR", "Invalid Parent Email")
-            stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Invalid Parent Email', bg='#BA0021', fg='white',
-                             font='-family {Georgia}  -size 10 -slant italic')
-            stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
-            stut1.after(3100, lambda: stut1.place_forget())
-            return
     else:
-        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n No Parent Email Provided', bg='#BA0021', fg='white',
-                         font='-family {Georgia}  -size 10 -slant italic')
+        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n No Parent Email Provided', bg='#BA0021', fg='white', font='-family {Georgia}  -size 10 -slant italic')
         stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
         stut1.after(3100, lambda: stut1.place_forget())
         return
 
     if p_phone_no == 0:
-        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Parent Phone Number', bg='#BA0021', fg='white',
-                         font='-family {Georgia}  -size 10 -slant italic')
+        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Parent Phone Number', bg='#BA0021', fg='white', font='-family {Georgia}  -size 10 -slant italic')
         stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
         stut1.after(3100, lambda: stut1.place_forget())
         return
 
-    mycursor.execute(
-        "SELECT * FROM hostel.student where  first_name = %s and second_name =  %s and last_name = %s and gender = %s and phone_no = %s and email_id = %s;",
-        (f_name, s_name, l_name, s_gender, s_phone, s_email))
+    mycursor.execute( "SELECT * FROM hostel.student where  first_name = %s and second_name =  %s and last_name = %s and gender = %s and phone_no = %s and email_id = %s;", (f_name, s_name, l_name, s_gender, s_phone, s_email))
     check_inf = mycursor.fetchall()
     print(check_inf)
     if check_inf == []:
-        mycursor.execute(
-            "SELECT * FROM hostel.room where room_type = %s and room_status='not occupied' and room_condition = 'good'",
-            [room_ty])
+        mycursor.execute("SELECT * FROM hostel.room where room_type = %s and room_status='not occupied' and room_condition = 'good'", [room_ty])
         r_output = mycursor.fetchall()
         if r_output != []:
             room_number = r_output[0][2]
@@ -960,23 +925,17 @@ def reserve_room(f_name, s_name, l_name, d_birth, s_gender, s_phone, s_email, ye
 
             user_name = f_name + str(random.randrange(50, 1000))
             pass_word = s_name + str(random.randrange(50, 1000))
-            mycursor.execute("INSERT INTO hostel.users (user_name, user_passwd, user_role) VALUES (%s, %s, %s);",
-                             (user_name, pass_word, 'student'))
+            mycursor.execute("INSERT INTO hostel.users (user_name, user_passwd, user_role) VALUES (%s, %s, %s);",(user_name, pass_word, 'student'))
             mydb.commit()
-            mycursor.execute("SELECT * FROM hostel.users where user_name = %s and user_passwd = %s and user_role= %s;",
-                             (user_name, pass_word, 'student'))
+            mycursor.execute("SELECT * FROM hostel.users where user_name = %s and user_passwd = %s and user_role= %s;", (user_name, pass_word, 'student'))
             user_det = mycursor.fetchall()
             newUser_id = user_det[0][2]
             spr = "INSERT INTO hostel.student(first_name, second_name, last_name, date_of_birth, gender, phone_no, email_id, year_of_study, institution, national_id, user_id,  room_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);"
-            var = (
-            f_name, s_name, l_name, d_birth, s_gender, s_phone, s_email, year_study, s_institution, s_national_is,
-            newUser_id, room_id)
+            var = (f_name, s_name, l_name, d_birth, s_gender, s_phone, s_email, year_study, s_institution, s_national_is, newUser_id, room_id)
             mycursor.execute(spr, var)
             mydb.commit()
 
-            mycursor.execute(
-                'SELECT * FROM hostel.student where first_name = %s and second_name = %s and last_name = %s and date_of_birth = %s and gender = %s;',
-                (f_name, s_name, l_name, d_birth, s_gender))
+            mycursor.execute('SELECT * FROM hostel.student where first_name = %s and second_name = %s and last_name = %s and date_of_birth = %s and gender = %s;',(f_name, s_name, l_name, d_birth, s_gender))
             student_id = mycursor.fetchall()
 
             spr1 = "INSERT INTO hostel.parent_info (First_name, Second_name, Phone_number, Email_Address, student_id) VALUES (%s, %s, %s, %s, %s);"
@@ -984,41 +943,46 @@ def reserve_room(f_name, s_name, l_name, d_birth, s_gender, s_phone, s_email, ye
             mycursor.execute(spr1, var1)
             mydb.commit()
 
-            import smtplib
-            sender_add = 'hezron.w12@gmail.com'
-            receiver_add = 'mdenish057@gmail.com'
-            password = '2608Ann12'
+            stut34 = tk.Label(Reserve_Room_frame, text='✔ Successfuly Reserved', bg='green', fg='#6B4423', font='-family {Georgia}  -size 14 -slant italic')
+            stut34.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.07)
+            stut34.after(4100, lambda: stut34.place_forget())
 
-            smtp_server = smtplib.SMTP("smtp.gmail.com", 587)
-            smtp_server.ehlo()
-            smtp_server.starttls()
-            smtp_server.ehlo()
-            smtp_server.login(sender_add, password)
-            msg_to_be_sent = f'''
-                            Hello {s_name} {l_name},
+            try:
+                    sender_add = 'hostelmanagmentq@gmail.com'
+                    receiver_add = s_email
+                    password = 'hostel123'
 
-                                     Hope you are doing well.
-                                     Welcome to Students Apartments (Hostels)!
-                                     your login Cridential are :
-                                               USERNAME : {user_name}
-                                               PASSWORD : {pass_word}
-                                      you can login and change your password and upload your profile
-a
-                            My name is Nangulu Hezron, and welcome to the Qwetu community.
-                            regards
-                            '''
-            # sending the mail by specifying the from and to address and the message
-            smtp_server.sendmail(sender_add, receiver_add, msg_to_be_sent)
-            print('Successfully the mail is sent')
-            smtp_server.quit()
+                    smtp_server = smtplib.SMTP("smtp.gmail.com", 587)
+                    smtp_server.ehlo()
+                    smtp_server.starttls()
+                    smtp_server.ehlo()
+                    smtp_server.login(sender_add, password)
+                    msg_to_be_sent = f'''
+                                    Hello {s_name} {l_name},
+                                    
+                                             Hope you are doing well.
+                                             Welcome to Students Apartments (Hostels)!
+                                             your login Cridential are :
+                                                       USERNAME : {user_name}
+                                                       PASSWORD : {pass_word}
+                                              you can login and change your password and upload your profile
+                                    My name is Nangulu Hezron, and welcome to the Qwetu community.
+                                    regards
+                                    '''
+                    # sending the mail by specifying the from and to address and the message
+                    smtp_server.sendmail(sender_add, receiver_add, msg_to_be_sent)
+                    print('Successfully the mail is sent')
+                    smtp_server.quit()
 
-            stut1 = tk.Label(Reserve_Room_frame, text='✔ Successfuly Reserved', bg='green', fg='#6B4423',
-                             font='-family {Georgia}  -size 14 -slant italic')
-            stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.07)
-            stut1.after(2100, lambda: stut1.place_forget())
+                    stut34 = tk.Label(Reserve_Room_frame, text='✔ ChecK Your Email For Password', bg='green', fg='#6B4423', font='-family {Georgia}  -size 14 -slant italic')
+                    stut34.place(relx=0.7, rely=0.08, relwidth=0.25, relheight=0.07)
+                    stut34.after(4100, lambda: stut34.place_forget())
+            except:
+                    stut34 = tk.Label(Reserve_Room_frame, text=' Email Not sent', bg='green', fg='#6B4423', font='-family {Georgia}  -size 14 -slant italic')
+                    stut34.place(relx=0.7, rely=0.08, relwidth=0.25, relheight=0.07)
+                    stut34.after(4100, lambda: stut34.place_forget())
         else:
-            stut1 = tk.Label(Reserve_Room_frame, text=' ERROR \n no available room-type ', bg='red', fg='#6B4423',
-                             font='-family {Georgia}  -size 14 -slant italic')
+            stut1 = tk.Label(Reserve_Room_frame, text=' ERROR \n Student already in the database', bg='red', fg='#6B4423', font='-family {Georgia}  -size 8 -slant italic')
             stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.07)
             stut1.after(3000, lambda: stut1.place_forget())
 
@@ -1353,7 +1317,7 @@ def log_report_gen():
             pdf.set_font('courier', 'B', 10)
             pdf.cell(35, 8, 'LogOut_time', ln=True, border=True)
             pdf.ln(5)
-            mycursor.execute("SELECT * FROM hostel.log_rept;")
+            mycursor.execute("SELECT * FROM hostel.log_rept where user_id = 12;")
             log_u_out = mycursor.fetchall()
             print(len(log_u_out))
             i = len(log_u_out)-1
@@ -1456,10 +1420,10 @@ def fetch_web_data():
     import json
 
     try:
-        url = "http://localhost/Hostel%20project/guest_detail.json"
+        url = "http://localhost/Guest_Module/guest_detail.json"
         r = requests.get(url)
         data = json.loads(r.text)
-
+        print(data)
         for i in data["Guests"]:
             g_name = i['Guest_name']
             g_number = i['Guest_Phone']
@@ -1482,7 +1446,10 @@ def fetch_web_data():
         for row in rows:
             Guest_tree.insert("", 'end', values=row)
     except:
-        print('server error')
+
+        trmi = tk.Label(Guest_frame, borderwidth=3, bg='brown',text='Server Error', fg='white', font='-family {Georgia} -size 14 -weight bold')
+        trmi.place(relwidth=0.22, relheight=0.1, rely=0.3, relx=0.5)
+        trmi.after(5000, lambda: trmi.place_forget())
 
 
 section1_Guest_frame = tk.LabelFrame(Guest_frame, text="Guest Reservation Request", font='-family {Georgia} -size 12')
@@ -1511,10 +1478,9 @@ def del_guest_id(id_num):
     mycursor.execute('SELECT * FROM hostel.guest WHERE guest_id = %s', [id_num])
     del_guest = mycursor.fetchall()
     if del_guest == []:
-        tmi = tk.Label(section1_Guest_frame, borderwidth=3, text='Guest does not exist', fg='red',
-                       font='-family {Consolas} -size 10')
+        tmi = tk.Label(section1_Guest_frame, borderwidth=3, text='Guest does not exist', fg='red', font='-family {Consolas} -size 10')
         tmi.place(relwidth=0.22, relheight=0.09, rely=0.9, relx=0.1)
-        tmi.after(1000, tmi.place_forget)
+        tmi.after(1000, lambda :tmi.place_forget())
         return
     else:
         g_name = del_guest[0][1]
@@ -1522,41 +1488,37 @@ def del_guest_id(id_num):
         g_email = del_guest[0][3]
 
         try:
-            print('processing')
             import requests
             import json
-            url = "http://localhost/Hostel_project/guest_detail.json"
+            url = "http://localhost/Guest_Module/guest_detail.json"
             r = requests.get(url)
             data = json.loads(r.text)
             index = 0
             while index < len(data["Guests"]):
-                if data["Guests"][index]['Guest_name'] == g_name and data["Guests"][index]['Guest_Phone'] == g_phone and \
-                        data["Guests"][index]['Guest_Email'] == g_email:
-                    print(data["Guests"][index])
-                    data["Guests"].pop(index)
+                if data["Guests"][index]['Guest_name'] == g_name and data["Guests"][index]['Guest_Phone'] == g_phone:
+                    if data["Guests"][index]['Guest_Email'] == g_email:
+                        print(data["Guests"][index])
+                        data["Guests"].pop(index)
                 index = index + 1
 
-            with open('C:/xampp/htdocs/Hostel_project/guest_detail.json', 'w') as json_file_write:
+            with open('C:/xampp/htdocs/Guest_Module/guest_detail.json', 'w') as json_file_write:
                 json.dump(data, json_file_write, indent=4)
 
             mycursor.execute('DELETE FROM hostel.guest WHERE guest_id = %s', [id_num])
             mydb.commit()
 
         except:
-            print('server Error')
+            trmi = tk.Label(Guest_frame, borderwidth=3, bg='brown', text='Server Error', fg='white', font='-family {Georgia} -size 14 -weight bold')
+            trmi.place(relwidth=0.22, relheight=0.1, rely=0.3, relx=0.5)
+            trmi.after(5000, lambda: trmi.place_forget())
 
 
 guest_id_del = tk.IntVar()
-tk.Label(section1_Guest_frame, text='Guest ID:', borderwidth=3).place(relwidth=0.082, relheight=0.09, rely=0.9,
-                                                                      relx=0.02)
-tk.Entry(section1_Guest_frame, borderwidth=3, textvariable=guest_id_del).place(relwidth=0.14, relheight=0.09, rely=0.9,
-                                                                               relx=0.109)
+tk.Label(section1_Guest_frame, text='Guest ID:', borderwidth=3).place(relwidth=0.082, relheight=0.09, rely=0.9,relx=0.02)
+tk.Entry(section1_Guest_frame, borderwidth=3, textvariable=guest_id_del).place(relwidth=0.14, relheight=0.09, rely=0.9,relx=0.109)
 
-tk.Button(section1_Guest_frame, text='delete', borderwidth=1, command=lambda: del_guest_id(guest_id_del.get())).place(
-    relwidth=0.07, relheight=0.09, rely=0.9, relx=0.25)
-tk.Button(section1_Guest_frame, text='RELOAD', borderwidth=3, command=fetch_web_data).place(relwidth=0.08,
-                                                                                            relheight=0.09, rely=0.9,
-                                                                                            relx=0.82)
+tk.Button(section1_Guest_frame, text='delete', borderwidth=1, command=lambda: del_guest_id(guest_id_del.get())).place( relwidth=0.07, relheight=0.09, rely=0.9, relx=0.25)
+tk.Button(section1_Guest_frame, text='RELOAD', borderwidth=3, command=fetch_web_data).place(relwidth=0.08,  relheight=0.09, rely=0.9,  relx=0.82)
 
 section2_Guest_frame = tk.LabelFrame(Guest_frame, font='-family {Georgia} -size 12')
 section2_Guest_frame.place(relx=0.03, rely=0.46, relwidth=0.94, relheight=0.5)
@@ -1908,11 +1870,11 @@ def Trs_log():
 
 Trs_log()
 
-section_T2 = tk.Frame(Transaction_frame, bg='white')
-section_T2.place(relx=0.025, rely=0.325, relheight=0.3, relwidth=0.95)
+section_T2 = tk.Frame(Transaction_frame)
+section_T2.place(relx=0.025, rely=0.325, relheight=0.65, relwidth=0.95)
 
 
-def student_trans():
+def student_trans(num):
     def t_pending(pay_id):
                 def confirm_tans():
                     mycursor.execute("UPDATE  hostel.payment set Payment_status ='complete' WHERE Payment_id = %s ;", [pay_id])
@@ -1973,59 +1935,41 @@ def student_trans():
                 conf_bt1.place(relx=0.71, rely=0.87, relheight=0.1, relwidth=0.16)
                 changeOnHover(conf_bt1, 'RED', '#708238')
 
-    show_v = tk.Frame(section_T2_frame, bg='#212122')
-    show_v.place(relheight=0.6, relwidth=0.98, relx=0.01, rely=0.12)
 
-    canvas = tk.Canvas(show_v, bg='#212122')
-    canvas.place(relx=0, rely=0, relwidth=1, relheight=1)
 
-    vbar = tk.Scrollbar(show_v, orient=tk.VERTICAL, command=canvas.yview)
-    vbar.place(relheight=1, relwidth=0.08, relx=0.98)
 
-    canvas.configure(yscrollcommand=vbar.set)
-    canvas.bind('<Configure>', lambda e: canvas.configure(scrollregion=canvas.bbox('all')))
-
-    canvas.configure(yscrollcommand=vbar.set)
-    canvas.bind('<Configure>', lambda e: canvas.configure(scrollregion=canvas.bbox('all')))
-
-    sec_frame = tk.Frame(canvas, bg='#212122')
-
-    canvas.create_window((0, 0),window=sec_frame)
-
-    mycursor.execute("SELECT * FROM hostel.payment;")
+    mycursor.execute("SELECT * FROM hostel.payment where Student_id = %s;", [num])
     payment_out = mycursor.fetchall()
     j = len(payment_out)
     i = j - 1
-    h = 0
+    h = 0.2
 
     while j != 0:
-        tk.Label(sec_frame, bg='#212122', text=f"{payment_out[i][0]}", anchor='w', borderwidth=0, fg='white',font='-family {Consolas} -size 10').grid(row=h, column=1, pady=10, padx=70)  # place(relx=0.01, rely=h, relheight=0.11, relwidth=0.1)
-        tk.Label(sec_frame, bg='#212122', text=f"{payment_out[i][2]}", borderwidth=0, fg='white', font='-family {Consolas} -size 10').grid(row=h, column=2, pady=10,padx=70)  # .place(relx=0.113, rely=h, relheight=0.11, relwidth=0.11)
-        tk.Label(sec_frame, bg='#212122', text=f"{payment_out[i][3]}", borderwidth=0, fg='white', font='-family {Consolas} -size 10').grid(row=h, column=3, pady=10, padx=70)  # .place(relx=0.225, rely=h, relheight=0.11, relwidth=0.152)
-        tk.Label(sec_frame, bg='#212122', text=f"{payment_out[i][6]}", borderwidth=0, fg='white',font='-family {Consolas} -size 10').grid(row=h, column=4, pady=10, padx=70)  # .place(relx=0.38, rely=h, relheight=0.11, relwidth=0.152)
-        tk.Label(sec_frame, bg='#212122', text=f"{payment_out[i][4]}", borderwidth=0, fg='white', font='-family {Consolas} -size 10').grid(row=h, column=5, pady=10, padx=70)  # .place(relx=0.535, rely=h, relheight=0.11, relwidth=0.152)
+        tk.Label(section_T2, bg='#212122', text=f"{payment_out[i][0]}", anchor='w', borderwidth=0, fg='white',font='-family {Consolas} -size 10').place(relx=0.01, rely=h, relheight=0.05, relwidth=0.1)
+        tk.Label(section_T2, bg='#212122', text=f"{payment_out[i][2]}", borderwidth=0, fg='white', font='-family {Consolas} -size 10').place(relx=0.113, rely=h, relheight=0.05, relwidth=0.11)
+        tk.Label(section_T2, bg='#212122', text=f"{payment_out[i][3]}", borderwidth=0, fg='white', font='-family {Consolas} -size 10').place(relx=0.225, rely=h, relheight=0.05, relwidth=0.152)
+        tk.Label(section_T2, bg='#212122', text=f"{payment_out[i][6]}", borderwidth=0, fg='white',font='-family {Consolas} -size 10').place(relx=0.38, rely=h, relheight=0.05, relwidth=0.152)
+        tk.Label(section_T2, bg='#212122', text=f"{payment_out[i][4]}", borderwidth=0, fg='white', font='-family {Consolas} -size 10').place(relx=0.535, rely=h, relheight=0.05, relwidth=0.152)
         if payment_out[i][5] == 'pending':
-               p_b = tk.Button(sec_frame, bg='#212122', activebackground='#212122',text=f"{payment_out[i][5]}", borderwidth=0, fg='red',font='-family {Georgia} -size 11', command=lambda k= i: t_pending(payment_out[k][0]))
-               p_b.grid(row=h, column=6, pady=10, padx=70)
+               p_b = tk.Button(section_T2, bg='#212122', activebackground='#212122',text=f"{payment_out[i][5]}", borderwidth=0, fg='red',font='-family {Georgia} -size 11', command=lambda k= i: t_pending(payment_out[k][0]))
+               p_b.place(relx=0.7034, rely=h, relheight=0.05, relwidth=0.17)
                changeOnHover(p_b, 'yellow', '#212122')
         elif payment_out[i][5] == 'complete':
-               tk.Label(sec_frame, bg='#212122', text=f"{payment_out[i][5]}", borderwidth=0, fg='green', font='-family {Georgia} -size 11').grid(row=h, column=6, pady=10, padx=80)  # .place(relx=0.7034, rely=h, relheight=0.11, relwidth=0.17)
+               tk.Label(section_T2, bg='#212122', text=f"{payment_out[i][5]}", borderwidth=0, fg='green', font='-family {Georgia} -size 11').place(relx=0.7034, rely=h, relheight=0.05, relwidth=0.17)
         elif payment_out[i][5] == 'rejected':
-               tk.Label(sec_frame, bg='#212122', text=f"{payment_out[i][5]}", borderwidth=0, fg='pink',font='-family {Georgia} -size 11').grid(row=h, column=6, pady=10, padx=80)  # .place(relx=0.7034, rely=h, relheight=0.11, relwidth=0.17)
-
-        h = h + 1
-        j = j - 1
+               tk.Label(section_T2, bg='#212122', text=f"{payment_out[i][5]}", borderwidth=0, fg='pink',font='-family {Georgia} -size 11').place(relx=0.7034, rely=h, relheight=0.05, relwidth=0.17)
+        h = h + 0.06
+        j = j-1
         i = i - 1
 
-
-tk.Label(section_T2, text='STUDENT ID', anchor='w', font='-family {Consolas} -size 10 -weight bold').place(relx=0.01, rely=0.02, relheight=0.1,relwidth=0.1)
-tk.Entry(section_T2, bg='gray').place(relx=0.115, rely=0.02, relheight=0.1, relwidth=0.12)
-tk.Button(section_T2, text='search', borderwidth=0, command=student_trans).place(relx=0.24, rely=0.02, relheight=0.1, relwidth=0.06)
-section_T2_frame = tk.Frame(section_T2, bg='gray')
-section_T2_frame.place(relx=0.01, rely=0.18, relheight=0.8, relwidth=0.98)
+serch_var = tk.IntVar()
+tk.Label(section_T2, text='STUDENT ID', anchor='w', font='-family {Consolas} -size 10 -weight bold').place(relx=0.01, rely=0.02, relheight=0.05,relwidth=0.1)
+tk.Entry(section_T2, bg='gray', textvariable=serch_var).place(relx=0.115, rely=0.02, relheight=0.05, relwidth=0.12)
+tk.Button(section_T2, text='search', borderwidth=0, command=lambda :student_trans(serch_var.get())).place(relx=0.24, rely=0.02, relheight=0.05, relwidth=0.06)
 
 
-student_trans()
+
+
 
 
 
