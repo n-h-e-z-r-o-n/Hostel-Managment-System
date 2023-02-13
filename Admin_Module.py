@@ -13,6 +13,7 @@ root.minsize(1050, 800)
 # root.maxsize(1350, 950)
 root.config(bg='black')
 
+
 # root.overrideredirect(True)#Make the window borderless
 root.rowconfigure(0, weight=1)  # make our frame expand along with the window
 root.columnconfigure(0, weight=1)  # make our frame expand along with the window
