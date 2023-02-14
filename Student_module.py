@@ -131,6 +131,7 @@ else:
     stay_days = mycursor.fetchall()
     check_in_date = stay_days[0][1]
     check_out_date = stay_days[0][2]
+    
 # ===================================== Dashboard_frame ================================================================
 Dashboard_frame = tk.Frame(root, bg='#26282A')
 Dashboard_frame.place(relx=0.155, relheight=1, relwidth=0.845)
@@ -216,7 +217,6 @@ tk.Label(frame_5,text='Days Remaining in current booking', bg='#212122',fg='whit
 
 
 # ======================================= Profile & Documentation frame ================================================
-
 Profile_Documentation_frame = tk.Frame(root, bg='#26282A')
 Profile_Documentation_frame.place(relx=0.155, relheight=1, relwidth=0.845)
 
@@ -228,8 +228,6 @@ changeOnHover(ppt, '#C2B280', 'gold')
 pdt = tk.Button(top_bar, text='Documentation', borderwidth=0,relief='sunken', activeforeground='Blue',activebackground='gold', bg='gold', font='-family {Cascadia Code} -size 11 -weight bold', command=lambda :frame_changer(Docu))
 pdt.place(rely=0, relx=0.25, relheight=1, relwidth=0.14)
 changeOnHover(pdt, '#C2B280', 'gold')
-
-
 
 Docu = tk.Frame(Profile_Documentation_frame, bg='#26282A')
 Docu.place(rely=0.15,relx=0, relheight=0.84, relwidth=1)
