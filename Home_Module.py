@@ -116,8 +116,11 @@ screen_height = root.winfo_screenheight()
 Home_Page = tk.Frame(root, bg='yellow')
 Home_Page.grid(row=0, column=0, sticky='nsew')
 
+image5 = resize("./Assets/images/home_page_background5.jpg")
+label_image = tk.Label(Home_Page, image=image5, border=0, justify='center')
+label_image.place(x=0, y=0, relheight=1, relwidth=1)
 
-Homepage_Background(Home_Page)
+
 
 
 # ======================================== Home page frame  code =============================================
