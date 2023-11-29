@@ -117,7 +117,8 @@ def Homepage_Background(widget):
 
 
 
-# -------------------------- Main Window ________________________________________________________________________________
+# - Main Window ===============================================================================================
+
 root = tk.Tk()  # create an instance of the tk.Tk class
 root.title('school project')  # setting window title
 root.geometry('1000x600+50+50')  # setting window size and location
