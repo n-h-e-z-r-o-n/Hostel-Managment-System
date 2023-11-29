@@ -58,7 +58,7 @@ root = tk.Tk()  # create an instance of the tk.Tk class
 
 def resize(file_location):
     img = (Image.open(file_location))
-    Resized_image = img.resize((screen_width, screen_height), Image.ANTIALIAS)
+    Resized_image = img.resize((screen_width, screen_height), Image.LANCZOS)
     new_image = ImageTk.PhotoImage(Resized_image)
     return new_image
 
@@ -92,7 +92,7 @@ def Homepage_Background(frame):
     image3 = resize("./Assets/images/home_page_background3.jpg")
     image4 = resize("./Assets/images/home_page_background4.jpg")
     image5 = resize("./Assets/images/home_page_background5.jpg")
-    label_image = tk.Label(frame, imageborder=0, justify='center')
+    label_image = tk.Label(frame, image=image5, border=0, justify='center')
     label_image.place(x=0, y=0)
 
 
