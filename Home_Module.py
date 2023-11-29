@@ -79,15 +79,17 @@ def changeOnHover(button, colorOnHover, colorOnLeave):  # function to change pro
 
 
 def Homepage_Background(frame):
-    def Home_page_Background_changer(widget):
-            widget.config(image=image5)
-
-
     image1 = resize("./Assets/images/home_page_background1.jpg")
     image2 = resize("./Assets/images/home_page_background2.jpg")
     image3 = resize("./Assets/images/home_page_background3.jpg")
     image4 = resize("./Assets/images/home_page_background4.jpg")
     image5 = resize("./Assets/images/home_page_background5.jpg")
+    
+    def Home_page_Background_changer(widget):
+            widget.config(image=image5)
+
+
+
     label_image = tk.Label(frame, image=image5, border=0, justify='center')
     label_image.place(x=0, y=0, relheight=1, relwidth=1)
 
@@ -116,13 +118,8 @@ Home_Page = tk.Frame(root, bg='yellow')
 Home_Page.place(relheight=1,relwidth=1, rely=0, relx=0)
 
 image5 = resize("./Assets/images/home_page_background5.jpg")
-#label_image = tk.Label(Home_Page, image=image5, border=0, justify='center')
-#label_image.place(x=0, y=0, relheight=1, relwidth=1)
-
-
-
-
-# ======================================== Home page frame  code =============================================
+label_image = tk.Label(Home_Page, image=image5, border=0, justify='center')
+label_image.place(x=0, y=0, relheight=1, relwidth=1)
 
 
 
