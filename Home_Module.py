@@ -104,7 +104,7 @@ def Homepage_Background(widget):
             elif x == 5:
                 widget.config(image=image4)
                 x = 1
-            braek
+            break
 
     Home_page_Background_changer()
 
