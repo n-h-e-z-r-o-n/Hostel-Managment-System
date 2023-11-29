@@ -63,9 +63,6 @@ def resize(file_location):
     return new_image
 
 
-x = 1
-
-
 
 
 
@@ -93,7 +90,7 @@ def Homepage_Background(frame):
     image4 = resize("./Assets/images/home_page_background4.jpg")
     image5 = resize("./Assets/images/home_page_background5.jpg")
     label_image = tk.Label(frame, image=image5, border=0, justify='center')
-    label_image.place(x=0, y=0)
+    label_image.place(x=0, y=0, relheight=1, relwidth=1)
 
 
 
