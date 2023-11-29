@@ -105,13 +105,11 @@ except mysql.connector.Error as err:
 
             mycursor.execute("""
                                             CREATE TABLE parent_info (
-                                                Log_id INT AUTO_INCREMENT PRIMARY KEY,
-                                                user_id INT foreign key(user_id) references users(user_id),
-                                                user_Name VARCHAR(255),
-                                                user_role VARCHAR(255),
-                                                Login_date DATE,
-                                                Login_time TIME,
-                                                logout_time TIME
+                                                First_name VARCHAR(255),
+                                                Second_name VARCHAR(255),
+                                                Phone_number VARCHAR(255),
+                                                Email_address VARCHAR(255),
+                                                student_id INT foreign key(student_id) references student(student_id)
                                             )
                                         """)
             mydb.commit()
