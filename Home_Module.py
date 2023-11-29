@@ -159,12 +159,11 @@ def Login_function(username, password):
         except:
             mycursor.execute("""
                         CREATE TABLE users (
-                            
                             user_name VARCHAR(255),
                             user_passwd VARCHAR(255),
-                            
                             user_id INT AUTO_INCREMENT PRIMARY KEY,
                             user_role VARCHAR(255), 
+                            user_image LONGBLOB
                         )
                     """)
             mydb.commit()
@@ -180,7 +179,8 @@ def Login_function(username, password):
             user_id = myresult[0][2]
 
             if myresult[0][3] == 'student':
-                mycursor.execute("SELECT * FROM hostel.student WHERE user_id = %s;", [user_id])
+                try:
+                    mycursor.execute("SELECT * FROM hostel.student WHERE user_id = %s;", [user_id])
                 fetg = mycursor.fetchall()
                 mycursor.execute("INSERT INTO hostel.log_rept (user_id, user_Name, user_role, Login_date, Login_time) VALUES (%s, %s, %s, CURDATE(), CURTIME());", (myresult[0][2], f'{fetg[0][1]} {fetg[0][2]} {fetg[0][2]}', myresult[0][3]))
                 mydb.commit()
