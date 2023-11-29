@@ -220,6 +220,7 @@ def Login_function(username, password):
 
 username = tk.StringVar()
 password = tk.StringVar()
+
 #  logo
 login_image = ImageTk.PhotoImage(file='./imag/123.ico')
 tk.Label(login_Page_frame, image=login_image, border=0, justify='center').place(relx=0.5, rely=0.26, anchor='center')
