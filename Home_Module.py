@@ -91,6 +91,7 @@ def Homepage_Background(widget):
         while True:
             if x == 1:
                 widget.config(image=image1)
+                imag.
                 x = 2
             elif x == 2:
                 widget.config(image=image2)
