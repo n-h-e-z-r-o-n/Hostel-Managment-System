@@ -7,6 +7,13 @@ import json
 # ---------------------- creating a connection to the database.---------------------------------------------------------
 import mysql.connector
 
+# Connection parameters
+host = "your_host"
+user = "your_username"
+password = "your_password"
+database = "hostel"
+
+try:
 
 mydb = mysql.connector.connect(
     host="localhost",
