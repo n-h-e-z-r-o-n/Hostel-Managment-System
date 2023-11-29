@@ -81,7 +81,11 @@ except mysql.connector.Error as err:
                                                     room_type VARCHAR(255),
                                                     room_number INT,                                                    
                                                     room_price INT,
-                                                    room
+                                                    room_status VARCHAR(255),
+                                                    room_condition VARCHAR(255),
+                                                    total_beds VARCHAR(255),
+                                                    room_amenities VARCHAR(255),
+                                                    gender_room
                                                 )
                                             """)
             mydb.commit()
