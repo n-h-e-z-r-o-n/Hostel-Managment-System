@@ -153,8 +153,17 @@ def Login_function(username, password):
         stut1.after(4100, lambda: stut1.place_forget())
         return
     else:
-        t
-        mycursor.execute("select * from hostel.users where user_name=%s and user_passwd=%s", (username, password))
+        try:
+
+            mycursor.execute("select * from hostel.users where user_name=%s and user_passwd=%s", (username, password))
+        except:
+            mycursor.execute("""
+                        CREATE TABLE users (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            username VARCHAR(255),
+                            password VARCHAR(255)
+                        )
+                    """)
         myresult = mycursor.fetchall()
         if len(myresult) == 0:
             stut1 = tk.Label(Home_Page, text='✗ LOGIN ERROR:\n\n Invalid Username or Password', bg='#FF0000', fg='black', font='-family {Georgia}  -size 10 -weight bold')
