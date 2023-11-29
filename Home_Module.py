@@ -4,6 +4,7 @@ from tkinter import *
 from tkinter import messagebox
 from PIL import Image, ImageTk  # for image processing
 import json
+import threading
 # ---------------------- creating a connection to the database.---------------------------------------------------------
 import mysql.connector
 
@@ -107,6 +108,8 @@ def Homepage_Background(frame):
     image5 = resize("./Assets/images/home_page_background5.jpg")
     label_image = tk.Label(frame, border=0, justify='center')
     label_image.place(x=0, y=0)
+
+    threading.Thread(target=Home_page_Background_changer, args=(label_image,)).start()
     Homepage_Background(label_image)
 
 
