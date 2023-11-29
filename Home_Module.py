@@ -14,15 +14,16 @@ password = "your_password"
 database = "hostel"
 
 # Connection parameters
-host="localhost",
-    user="root",
-    password="12hezron12",
-    database="hostel"
+
+host_name="localhost"
+user_name="root"
+password_key="12hezron12"
+database_name="hostel"
 try:
     mydb = mysql.connector.connect(
-        host=host,
-        user=user,
-        password=password,
+        host=host_name,
+        user=user_name,
+        password=password_key,
         database=database
     )
     mycursor = mydb.cursor()
