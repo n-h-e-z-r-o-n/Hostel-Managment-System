@@ -22,7 +22,7 @@ try:
     )
     mycursor = mydb.cursor()
 except mysql.connector.Error as err:
-    print(f"Error connecting to the database: {e}")
+    print(f"Error connecting to the database: {err}")
     if err.errno == mysql.connector.errorcode.ER_BAD_DB_ERROR:
         print(f"Database '{database}' does not exist. Creating it...")
         try:
@@ -39,7 +39,7 @@ except mysql.connector.Error as err:
 
             print(f"Database '{database}' created successfully!")
         except:
-            print(f"Error creating database: {create_err}")
+            print(f"Error creating database")
             exit(1)
 
 
