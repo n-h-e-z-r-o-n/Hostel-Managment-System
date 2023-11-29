@@ -148,10 +148,6 @@ Home_page_Background_changer()
 
 # ======================== Login page frame code =======================================================================
 
-# Adding background image to window
-login_page_back_image = resize("./imag/login_background.jpg")
-tk.Label(Home_Page, image=login_page_back_image, border=0, justify='center').place(relx=0, rely=0)
-# -- frame in login page ---
 login_Page_frame = tk.Frame(Home_Page, bg='#4B3621', height=500, width=400)
 login_Page_frame.grid(columnspan=5, rowspan=4, column=1, row=2, padx=20, pady=20, sticky=tk.NS)
 # store username  and password variables
