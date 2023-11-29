@@ -51,7 +51,6 @@ except mysql.connector.Error as err:
 
 # -----------------------------------------------------------------------------------------------------------------------
 
-root = tk.Tk()  # create an instance of the tk.Tk class
 
 
 # --------------------functions--------------------
@@ -97,7 +96,7 @@ def Homepage_Background(frame):
 
 
 # -------------------------- Main Window ________________________________________________________________________________
-
+root = tk.Tk()  # create an instance of the tk.Tk class
 root.title('school project')  # setting window title
 root.geometry('1000x600+50+50')  # setting window size and location
 root.state('zoomed')  # open the window in its full size
@@ -114,7 +113,7 @@ screen_height = root.winfo_screenheight()
 
 
 Home_Page = tk.Frame(root, bg='yellow')
-Home_Page.grid(row=0, column=0, sticky='nsew')
+Home_Page.place(relheight=1,relwidth=1, rely=0, relx=0)
 
 image5 = resize("./Assets/images/home_page_background5.jpg")
 #label_image = tk.Label(Home_Page, image=image5, border=0, justify='center')
