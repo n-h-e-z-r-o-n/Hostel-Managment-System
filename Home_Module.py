@@ -43,6 +43,38 @@ except mysql.connector.Error as err:
             # Create the database
             mycursor = mydb.cursor()
             mycursor.execute(f"CREATE DATABASE {database_name}")
+            mydb.commit()
+
+            mycursor.execute("""
+                                    CREATE TABLE users (
+                                        user_name VARCHAR(255),
+                                        user_passwd VARCHAR(255),
+                                        user_id INT AUTO_INCREMENT PRIMARY KEY,
+                                        user_role VARCHAR(255), 
+                                        user_image LONGBLOB
+                                    )
+                                """)
+            mydb.commit()
+
+            mycursor.execute("""
+                                                        CREATE TABLE student (
+                                                            student_id INT AUTO_INCREMENT PRIMARY KEY,
+                                                            first_name VARCHAR(255),
+                                                            second_name VARCHAR(255),
+                                                            lasrt_name VARCHAR(255),
+                                                            date_of_birth DATE,
+                                                            gender VARCHAR(255),
+                                                            phone_no VARCHAR(255),
+                                                            email_id VARCHAR(255),
+                                                            year_of_study INT,
+                                                            institution VARCHAR(255),
+                                                            national_id VARCHAR(255),
+                                                            user_id  INT foreign key(user_id) references users(user_id),
+                                                            room_id INT,
+                                                        )
+                                                    """)
+            mydb.commit()
+
 
             print(f"Database '{database_name}' created successfully!")
         except:
@@ -153,21 +185,10 @@ def Login_function(username, password):
         stut1.after(4100, lambda: stut1.place_forget())
         return
     else:
-        try:
 
-            mycursor.execute("select * from hostel.users where user_name=%s and user_passwd=%s", (username, password))
-        except:
-            mycursor.execute("""
-                        CREATE TABLE users (
-                            user_name VARCHAR(255),
-                            user_passwd VARCHAR(255),
-                            user_id INT AUTO_INCREMENT PRIMARY KEY,
-                            user_role VARCHAR(255), 
-                            user_image LONGBLOB
-                        )
-                    """)
-            mydb.commit()
-            mycursor.execute("select * from hostel.users where user_name=%s and user_passwd=%s", (username, password))
+
+        mycursor.execute("select * from hostel.users where user_name=%s and user_passwd=%s", (username, password))
+
 
         myresult = mycursor.fetchall()
         if len(myresult) == 0:
@@ -182,24 +203,7 @@ def Login_function(username, password):
                 try:
                     mycursor.execute("SELECT * FROM hostel.student WHERE user_id = %s;", [user_id])
                 except:
-                    mycursor.execute("""
-                                            CREATE TABLE student (
-                                                student_id INT AUTO_INCREMENT PRIMARY KEY,
-                                                first_name VARCHAR(255),
-                                                second_name VARCHAR(255),
-                                                lasrt_name VARCHAR(255),
-                                                date_of_birth DATE,
-                                                gender VARCHAR(255),
-                                                phone_no VARCHAR(255),
-                                                email_id VARCHAR(255),
-                                                year_of_study INT,
-                                                institution VARCHAR(255),
-                                                national_id VARCHAR(255),
-                                                user_id  INT foreign key(user_id) references users(user_id),
-                                                room_id INT,
-                                            )
-                                        """)
-                    mydb.commit()
+
 
                 fetg = mycursor.fetchall()
                 mycursor.execute("INSERT INTO hostel.log_rept (user_id, user_Name, user_role, Login_date, Login_time) VALUES (%s, %s, %s, CURDATE(), CURTIME());", (myresult[0][2], f'{fetg[0][1]} {fetg[0][2]} {fetg[0][2]}', myresult[0][3]))
