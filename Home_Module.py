@@ -120,17 +120,11 @@ screen_height = root.winfo_screenheight()
 # -------------------- frames(System Pages) ----------------
 
 
-Login_Page = tk.Frame(root, bg='gray')
-Login_Page.grid(row=0, column=0, sticky='nsew')
 
 Home_Page = tk.Frame(root, bg='yellow')
 Home_Page.grid(row=0, column=0, sticky='nsew')
 
-# --------------------navigation bar------------------------
-menu_bar = Menu(root, bg='brown')
-menu_bar.add_cascade(label='Home', command=lambda: show_frame(Home_Page))
-menu_bar.add_cascade(label='Login', command=lambda: show_frame(Login_Page))
-root.config(menu=menu_bar)
+
 
 
 # ======================================== Home page frame  code =============================================
