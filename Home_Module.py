@@ -159,10 +159,10 @@ def Login_function(username, password):
         except:
             mycursor.execute("""
                         CREATE TABLE users (
-                            id INT 
+                            user_role VARCHAR(255), 
                             user_id INT AUTO_INCREMENT PRIMARY KEY,,
                             user_name VARCHAR(255),
-                            password VARCHAR(255)
+                            user_passwd VARCHAR(255)
                         )
                     """)
             mydb.commit()
