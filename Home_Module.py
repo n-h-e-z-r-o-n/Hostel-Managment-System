@@ -14,14 +14,17 @@ password = "your_password"
 database = "hostel"
 
 try:
+    mydb = mysql.connector.connect(
+        host=host,
+        user=user,
+        password=password,
+        database=database
+    )
+    mycursor = mydb.cursor()
+except mysql.connector.Error as e:
+    print(f"Error connecting to the database: {e}")
 
-mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="12hezron12",
-    database="hostel"
-)
-mycursor = mydb.cursor()
+
 # -----------------------------------------------------------------------------------------------------------------------
 root = tk.Tk()  # create an instance of the tk.Tk class
 
