@@ -103,8 +103,9 @@ def Homepage_Background(widget):
             elif x == 5:
                 widget.config(image=image4)
                 x = 1
-    thread = threading.Thread(target=Home_page_Background_changer)
-    thread.start()
+
+    Home_page_Background_changer()
+
 
 
 
