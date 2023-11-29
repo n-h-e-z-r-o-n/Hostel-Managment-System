@@ -38,8 +38,12 @@ except mysql.connector.Error as err:
             mycursor.execute(f"CREATE DATABASE {database}")
 
             print(f"Database '{database}' created successfully!")
+        except:
+            print(f"Error creating database: {create_err}")
+            exit(1)
 
-        
+
+
 
 # -----------------------------------------------------------------------------------------------------------------------
 root = tk.Tk()  # create an instance of the tk.Tk class
