@@ -213,10 +213,9 @@ def Login_function(username, password):
 
 username = tk.StringVar()
 password = tk.StringVar()
-#  logo
+
 login_image = ImageTk.PhotoImage(file='./imag/123.ico')
 tk.Label(login_Page_frame, image=login_image, border=0, justify='center').place(relx=0.5, rely=0.26, anchor='center')
-# username
 
 tk.Label(login_Page_frame, text='User Name', bg='#4B3621', fg='white', anchor='w', borderwidth=0, font='-family {Cascadia Code} -size 11').place(rely=0.6, relx=0.1, relheight=0.05, relwidth=0.8)
 fht = tk.Entry(login_Page_frame, textvariable=username, bg='#4B3621', fg='white', borderwidth=1, font='-family {Courier New} -size 11')
@@ -228,9 +227,8 @@ grt = tk.Entry(login_Page_frame, textvariable=password, bg='#4B3621', fg='white'
 grt.place(rely=0.8, relx=0.1, relheight=0.06, relwidth=0.8)
 changeOnHover(grt, '#1e4d2b', '#4B3621')
 
-# login button
 login_button = tk.Button(login_Page_frame, text="Login", borderwidth=0, bg='#00ffff', font='-family {Georgia} -size 10 -weight bold', command=lambda: Login_function(username.get(), password.get()))
 login_button.place(relx=0.5, rely=0.92, relwidth=0.3, anchor='center')
 changeOnHover(login_button, '#1e4d2b', '#00ffff')
 
-root.mainloop()  # Event loop  used keeps the window visible on the screen
+root.mainloop()
