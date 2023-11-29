@@ -194,7 +194,11 @@ def Login_function(username, password):
                                                 email_id VARCHAR(255),
                                                 year_of_study INT,
                                                 institution VARCHAR(255),
-                                                national_
+                                                national_id VARCHAR(255),
+                                                user_id I
+                                                room_id INT
+                                                
+                                                
                                                 
                                             )
                                         """)
