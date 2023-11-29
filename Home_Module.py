@@ -84,8 +84,12 @@ def Homepage_Background(frame):
     image3 = resize("./Assets/images/home_page_background3.jpg")
     image4 = resize("./Assets/images/home_page_background4.jpg")
     image5 = resize("./Assets/images/home_page_background5.jpg")
-    
+
     def Home_page_Background_changer(widget):
+            if x = 1:
+            elif x = 2:
+            elif x = 3:
+            el
             widget.config(image=image5)
 
 
