@@ -107,6 +107,7 @@ def Homepage_Background(frame):
     image5 = resize("./Assets/images/home_page_background5.jpg")
     label_image = tk.Label(frame, border=0, justify='center')
     label_image.place(x=0, y=0)
+    Homepage_Background(label_image)
 
 
 # -------------------------- Main Window ________________________________________________________________________________
@@ -130,7 +131,7 @@ Home_Page = tk.Frame(root, bg='yellow')
 Home_Page.grid(row=0, column=0, sticky='nsew')
 
 
-
+Homepage_Background(Home_Page)
 
 
 # ======================================== Home page frame  code =============================================
@@ -143,7 +144,7 @@ title_frame.place(relx=0.01, rely=0.01, relwidth=0.97, relheight=0.05)
 title_lable = tk.Label(title_frame, text='Hostel  Management System', font='-family {Georgia} -size 20 -weight bold', bg='#fbceb1')
 title_lable.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
-Home_page_Background_changer()
+\
 
 # ======================== Login page frame code =======================================================================
 
