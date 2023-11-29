@@ -161,7 +161,7 @@ def Login_function(username, password):
                         CREATE TABLE users (
                             id INT 
                             user_id INT AUTO_INCREMENT PRIMARY KEY,,
-                            username VARCHAR(255),
+                            user_name VARCHAR(255),
                             password VARCHAR(255)
                         )
                     """)
