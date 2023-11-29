@@ -131,7 +131,7 @@ image5 = resize("./Assets/images/home_page_background5.jpg")
 # ======================== Login page frame code =======================================================================
 
 login_Page_frame = tk.Frame(Home_Page, bg='#4B3621', height=500, width=400)
-login_Page_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+login_Page_frame.place(relx=0.01, rely=0.1)
 
 
 # store username  and password variables
