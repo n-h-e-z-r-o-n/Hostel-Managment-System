@@ -24,26 +24,26 @@ try:
         host=host_name,
         user=user_name,
         password=password_key,
-        database=database
+        database=database_name
     )
     mycursor = mydb.cursor()
 except mysql.connector.Error as err:
     print(f"Error connecting to the database: {err}")
     if err.errno == mysql.connector.errorcode.ER_BAD_DB_ERROR:
-        print(f"Database '{database}' does not exist. Creating it...")
+        print(f"Database '{database_name}' does not exist. Creating it...")
         try:
             # Connect to MySQL server without selecting any database
             mydb = mysql.connector.connect(
-                host=host,
-                user=user,
-                password=password
+                host=host_name,
+                user=user_name,
+                password=password_key
             )
 
             # Create the database
             mycursor = mydb.cursor()
-            mycursor.execute(f"CREATE DATABASE {database}")
+            mycursor.execute(f"CREATE DATABASE {database_name}")
 
-            print(f"Database '{database}' created successfully!")
+            print(f"Database '{database_name}' created successfully!")
         except:
             print(f"Error creating database")
             exit(1)
@@ -52,6 +52,7 @@ except mysql.connector.Error as err:
 
 
 # -----------------------------------------------------------------------------------------------------------------------
+
 root = tk.Tk()  # create an instance of the tk.Tk class
 
 # --------------------functions--------------------
@@ -64,8 +65,6 @@ def resize(file_location):
 
 
 x = 1
-
-
 def Home_page_Background_changer():
     global x
     if x == 5:
