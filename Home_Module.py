@@ -150,6 +150,14 @@ except mysql.connector.Error as err:
                            """)
             mydb.commit()
 
+            mycursor.execute("""
+                              CREATE TABLE admins (
+                                  
+                                  admin_id INT AUTO_INCREMENT PRIMARY KEY,)
+                          """)
+            mydb.commit()
+
+
             print(f"Database '{database_name}' created successfully!")
         except:
             print(f"Error creating database")
