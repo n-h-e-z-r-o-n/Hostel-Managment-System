@@ -109,7 +109,7 @@ def Homepage_Background(frame):
     label_image = tk.Label(frame, border=0, justify='center')
     label_image.place(x=0, y=0)
 
-    threading.Thread(target=Home_page_Background_changer, args=(label_image,)).start()
+    threading.Thread(target=Home_page_Background_changer, args=label_image).start()
 
 
 
