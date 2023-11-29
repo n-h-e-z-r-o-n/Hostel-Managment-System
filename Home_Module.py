@@ -65,24 +65,7 @@ def resize(file_location):
 x = 1
 
 
-def Home_page_Background_changer():
-    global x
-    if x == 5:
-        label_image.config(image=image5)
-        x = 1
-    elif x == 4:
-        label_image.config(image=image4)
-        x += 1
-    elif x == 3:
-        label_image.config(image=image3)
-        x += 1
-    elif x == 2:
-        label_image.config(image=image2)
-        x += 1
-    else:
-        label_image.config(image=image1)
-        x += 1
-    root.after(4000, Home_page_Background_changer)
+
 
 
 def show_frame(frame):
@@ -99,6 +82,24 @@ def changeOnHover(button, colorOnHover, colorOnLeave):  # function to change pro
 
 
 def Homepage_Background(frame):
+    def Home_page_Background_changer(widget):
+        global x
+        if x == 5:
+            widget.config(image=image5)
+            x = 1
+        elif x == 4:
+            widget.config(image=image4)
+            x += 1
+        elif x == 3:
+            widget.config(image=image3)
+            x += 1
+        elif x == 2:
+            widget.config(image=image2)
+            x += 1
+        else:
+            widget.config(image=image1)
+            x += 1
+        root.after(4000, Home_page_Background_changer)
     image1 = resize("./Assets/images/home_page_background1.jpg")
     image2 = resize("./Assets/images/home_page_background2.jpg")
     image3 = resize("./Assets/images/home_page_background3.jpg")
