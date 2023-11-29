@@ -57,22 +57,22 @@ except mysql.connector.Error as err:
             mydb.commit()
 
             mycursor.execute("""
-                                                        CREATE TABLE student (
-                                                            student_id INT AUTO_INCREMENT PRIMARY KEY,
-                                                            first_name VARCHAR(255),
-                                                            second_name VARCHAR(255),
-                                                            lasrt_name VARCHAR(255),
-                                                            date_of_birth DATE,
-                                                            gender VARCHAR(255),
-                                                            phone_no VARCHAR(255),
-                                                            email_id VARCHAR(255),
-                                                            year_of_study INT,
-                                                            institution VARCHAR(255),
-                                                            national_id VARCHAR(255),
-                                                            user_id  INT foreign key(user_id) references users(user_id),
-                                                            room_id INT,
-                                                        )
-                                                    """)
+                                CREATE TABLE student (
+                                    student_id INT AUTO_INCREMENT PRIMARY KEY,
+                                    first_name VARCHAR(255),
+                                    second_name VARCHAR(255),
+                                    lasrt_name VARCHAR(255),
+                                    date_of_birth DATE,
+                                    gender VARCHAR(255),
+                                    phone_no VARCHAR(255),
+                                    email_id VARCHAR(255),
+                                    year_of_study INT,
+                                    institution VARCHAR(255),
+                                    national_id VARCHAR(255),
+                                    user_id  INT foreign key(user_id) references users(user_id),
+                                    room_id INT,
+                                )
+                                            """)
             mydb.commit()
 
 
