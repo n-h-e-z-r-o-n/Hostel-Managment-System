@@ -117,10 +117,14 @@ except mysql.connector.Error as err:
             mycursor.execute("""
                                                         CREATE TABLE complaint (
                                                             complaint_id INT AUTO_INCREMENT PRIMARY KEY,
-                                                            studen
+                                                            student_id INT foreign key(student_id) references student(student_id),
+                                                            complaint_massage VARCHAR(500),
+                                                            status VARCHAR(45),
                                                             )
                                                     """)
             mydb.commit()
+
+            
 
             print(f"Database '{database_name}' created successfully!")
         except:
