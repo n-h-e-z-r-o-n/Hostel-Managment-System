@@ -102,7 +102,7 @@ def Homepage_Background(widget):
                 widget.config(image=image4)
                 x = 5
             elif x == 5:
-                widget.config(image=image4)
+                widget.config(image=image5)
                 x = 1
             break
 
