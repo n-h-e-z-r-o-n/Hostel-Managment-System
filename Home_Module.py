@@ -149,7 +149,7 @@ Home_page_Background_changer()
 # ======================== Login page frame code =======================================================================
 
 login_Page_frame = tk.Frame(Home_Page, bg='#4B3621', height=500, width=400)
-login_Page_frame.grid(columnspan=5, rowspan=4, column=1, row=2, padx=20, pady=20, sticky=tk.NS)
+login_Page_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 # store username  and password variables
 
 def Login_function(username, password):
