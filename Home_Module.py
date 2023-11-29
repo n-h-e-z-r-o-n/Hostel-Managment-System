@@ -32,7 +32,7 @@ except mysql.connector.Error as err:
     print(f"Error connecting to the database: {err}")
     if err.errno == mysql.connector.errorcode.ER_BAD_DB_ERROR:
         print(f"Database '{database_name}' does not exist. Creating it...")
-        try:
+
             # Connect to MySQL server without selecting any database
             mydb = mysql.connector.connect(
                 host=host_name,
