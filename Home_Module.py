@@ -143,7 +143,9 @@ except mysql.connector.Error as err:
                                    phone_number INT,
                                    visitor_national_id INT,
                                    Time_in TIME,
-                                   
+                                   time_out TIMEm
+                                   Date DATE,
+                                   student_id INT foreign key(student_id) references student(student_id)
                                    )
                            """)
             mydb.commit()
