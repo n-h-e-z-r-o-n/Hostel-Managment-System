@@ -49,8 +49,8 @@ except mysql.connector.Error as err:
             print(f"Error creating database")
             exit(1)
 
-# -----------------------------------------------------------------------------------------------------------------------
 
+# -----------------------------------------------------------------------------------------------------------------------
 
 
 # --------------------functions--------------------
@@ -60,9 +60,6 @@ def resize(file_location):
     Resized_image = img.resize((screen_width, screen_height), Image.LANCZOS)
     new_image = ImageTk.PhotoImage(Resized_image)
     return new_image
-
-
-
 
 
 def show_frame(frame):
@@ -86,6 +83,7 @@ def Homepage_Background(widget):
     image4 = resize("./Assets/images/home_page_background4.jpg")
     image5 = resize("./Assets/images/home_page_background5.jpg")
     x = 1
+
     def Home_page_Background_changer(widget=widget):
         global x
         while True:
@@ -111,13 +109,11 @@ def Homepage_Background(widget):
                 x = 1
             break
         root.after(5000, Home_page_Background_changer)
+
     Home_page_Background_changer()
 
 
-
-
-
-# - Main Window ===============================================================================================
+# ============================================  Main Window ===============================================================================================
 
 root = tk.Tk()  # create an instance of the tk.Tk class
 root.title('school project')  # setting window title
@@ -132,20 +128,15 @@ root.iconbitmap('./imag/Profile.ico')  # setting windows icon
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
 
-# -------------------- frames(System Pages) ----------------
+
 
 
 Home_Page = tk.Frame(root, bg='yellow')
-Home_Page.place(relheight=1,relwidth=1, rely=0, relx=0)
+Home_Page.place(relheight=1, relwidth=1, rely=0, relx=0)
 
-image5 = resize("./Assets/images/home_page_background5.jpg")
-label_image = tk.Label(Home_Page, image=image5, border=0, justify='center')
-label_image.place(x=0, y=0, relheight=1, relwidth=1)
-Homepage_Background(label_image)
-
-
-
-
+background_img_frame = tk.Label(Home_Page,  border=0, justify='center')
+background_img_frame.place(x=0, y=0, relheight=1, relwidth=1)
+Homepage_Background(background_img_frame)
 
 # ======================== Login page frame code =======================================================================
 
