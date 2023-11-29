@@ -93,13 +93,13 @@ def show_frame(frame):
 
 
 
-# Define a function to close the window
-def close_win():
+
+def close_win(): # Define a function to close the window
     root.destroy()
 
 
-# function to change properties of button on hover
-def changeOnHover(button, colorOnHover, colorOnLeave):
+
+def changeOnHover(button, colorOnHover, colorOnLeave): # function to change properties of button on hover
     button.bind("<Enter>", func=lambda e: button.config( background=colorOnHover))
     button.bind("<Leave>", func=lambda e: button.config(background=colorOnLeave))
 
