@@ -79,6 +79,7 @@ def changeOnHover(button, colorOnHover, colorOnLeave):  # function to change pro
 
 
 def Homepage_Background(widget):
+    global x
     image1 = resize("./Assets/images/home_page_background1.jpg")
     image2 = resize("./Assets/images/home_page_background2.jpg")
     image3 = resize("./Assets/images/home_page_background3.jpg")
@@ -103,6 +104,7 @@ def Homepage_Background(widget):
             elif x == 5:
                 widget.config(image=image4)
                 x = 1
+            braek
 
     Home_page_Background_changer()
 
