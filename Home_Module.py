@@ -78,11 +78,10 @@ except mysql.connector.Error as err:
             mycursor.execute("""
                                                 CREATE TABLE room (
                                                     room_id INT AUTO_INCREMENT PRIMARY KEY,
-                                                    room_ty
-                                                    user_passwd VARCHAR(255),
-                                                    user_id INT AUTO_INCREMENT PRIMARY KEY,
-                                                    user_role VARCHAR(255), 
-                                                    user_image LONGBLOB
+                                                    room_type VARCHAR(255),
+                                                    room_number INT,                                                    
+                                                    room_price INT,
+                                                    room
                                                 )
                                             """)
             mydb.commit()
