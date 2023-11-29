@@ -95,18 +95,22 @@ def Homepage_Background(widget):
                 x = 2
             elif x == 2:
                 widget.config(image=image2)
+                widget.image = image2
                 x = 3
             elif x == 3:
                 widget.config(image=image3)
+                widget.image = image3
                 x = 4
             elif x == 4:
                 widget.config(image=image4)
+                widget.image = image4
                 x = 5
             elif x == 5:
                 widget.config(image=image5)
+                widget.image = image5
                 x = 1
             break
-
+        root.after(5000, Home_page_Background_changer)
     Home_page_Background_changer()
 
 
