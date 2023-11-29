@@ -85,7 +85,7 @@ def Homepage_Background(widget):
     image4 = resize("./Assets/images/home_page_background4.jpg")
     image5 = resize("./Assets/images/home_page_background5.jpg")
     x = 1
-    def Home_page_Background_changer(widget):
+    def Home_page_Background_changer(widget=widget):
         global x
         while True:
             if x == 1:
@@ -103,7 +103,8 @@ def Homepage_Background(widget):
             elif x == 5:
                 widget.config(image=image4)
                 x = 1
-    threading.Thread(target=Home_page_Background_changer, args=widget).start()
+    thread = threading.Thread(target=Home_page_Background_changer)
+    thread.start()
 
 
 
