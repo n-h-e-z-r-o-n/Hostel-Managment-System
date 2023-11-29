@@ -78,7 +78,7 @@ def changeOnHover(button, colorOnHover, colorOnLeave):  # function to change pro
     button.bind("<Leave>", func=lambda e: button.config(background=colorOnLeave))
 
 
-def Homepage_Background(frame):
+def Homepage_Background(widget):
     image1 = resize("./Assets/images/home_page_background1.jpg")
     image2 = resize("./Assets/images/home_page_background2.jpg")
     image3 = resize("./Assets/images/home_page_background3.jpg")
@@ -101,14 +101,8 @@ def Homepage_Background(frame):
                 x = 5
             elif x == 5:
                 widget.config(image=image4)
-            x=1
-
-
-
-
-    label_image = tk.Label(frame, image=image5, border=0, justify='center')
-    label_image.place(x=0, y=0, relheight=1, relwidth=1)
-
+                x = 1
+    threading.Thread(target=Home_page_Background_changer, args=widget).start()
 
 
 
