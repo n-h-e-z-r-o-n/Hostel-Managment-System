@@ -21,9 +21,25 @@ try:
         database=database
     )
     mycursor = mydb.cursor()
-except mysql.connector.Error as e:
+except mysql.connector.Error as err:
     print(f"Error connecting to the database: {e}")
+    if err.errno == mysql.connector.errorcode.ER_BAD_DB_ERROR:
+        print(f"Database '{database}' does not exist. Creating it...")
+        try:
+            # Connect to MySQL server without selecting any database
+            mydb = mysql.connector.connect(
+                host=host,
+                user=user,
+                password=password
+            )
 
+            # Create the database
+            mycursor = mydb.cursor()
+            mycursor.execute(f"CREATE DATABASE {database}")
+
+            print(f"Database '{database}' created successfully!")
+
+        
 
 # -----------------------------------------------------------------------------------------------------------------------
 root = tk.Tk()  # create an instance of the tk.Tk class
