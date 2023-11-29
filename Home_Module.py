@@ -92,10 +92,10 @@ def Homepage_Background(frame):
     image3 = resize("./Assets/images/home_page_background3.jpg")
     image4 = resize("./Assets/images/home_page_background4.jpg")
     image5 = resize("./Assets/images/home_page_background5.jpg")
-    label_image = tk.Label(frame, border=0, justify='center')
+    label_image = tk.Label(frame, imageborder=0, justify='center')
     label_image.place(x=0, y=0)
 
-    threading.Thread(target=Home_page_Background_changer, args=label_image).start()
+
 
 
 
