@@ -103,6 +103,9 @@ def changeOnHover(button, colorOnHover, colorOnLeave): # function to change prop
     button.bind("<Enter>", func=lambda e: button.config( background=colorOnHover))
     button.bind("<Leave>", func=lambda e: button.config(background=colorOnLeave))
 
+
+def Homepage_Background():
+    
 # -------------------------- Main Window ___________________________
 root.title('school project')  # setting window title
 root.geometry('1000x600+50+50')  # setting window size and location
