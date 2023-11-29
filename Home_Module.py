@@ -110,7 +110,7 @@ def Homepage_Background(frame):
     label_image.place(x=0, y=0)
 
     threading.Thread(target=Home_page_Background_changer, args=(label_image,)).start()
-    Homepage_Background(label_image)
+
 
 
 # -------------------------- Main Window ________________________________________________________________________________
@@ -147,7 +147,6 @@ title_frame.place(relx=0.01, rely=0.01, relwidth=0.97, relheight=0.05)
 title_lable = tk.Label(title_frame, text='Hostel  Management System', font='-family {Georgia} -size 20 -weight bold', bg='#fbceb1')
 title_lable.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
-\
 
 # ======================== Login page frame code =======================================================================
 
