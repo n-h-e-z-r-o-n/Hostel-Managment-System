@@ -190,11 +190,12 @@ def Login_function(username, password):
                                                 lasrt_name VARCHAR(255),
                                                 date_of_birth DATE,
                                                 gender VARCHAR(255),
-                                                phone_number VARCHAR(255),
-                                                user_passwd VARCHAR(255),
-                                                user_id INT AUTO_INCREMENT PRIMARY KEY,
-                                                user_role VARCHAR(255), 
-                                                user_image LONGBLOB
+                                                phone_no VARCHAR(255),
+                                                email_id VARCHAR(255),
+                                                year_of_study INT,
+                                                institution VARCHAR(255),
+                                                national_
+                                                
                                             )
                                         """)
                     mydb.commit()
