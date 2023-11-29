@@ -139,7 +139,11 @@ except mysql.connector.Error as err:
 
             mycursor.execute("""
                                CREATE TABLE visitors_log (
-                                   vi
+                                   visitor_name VARCHAR(255),
+                                   phone_number INT,
+                                   visitor_national_id INT,
+                                   Time_in TIME,
+                                   
                                    )
                            """)
             mydb.commit()
