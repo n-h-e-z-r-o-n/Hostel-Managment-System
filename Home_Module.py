@@ -195,11 +195,8 @@ def Login_function(username, password):
                                                 year_of_study INT,
                                                 institution VARCHAR(255),
                                                 national_id VARCHAR(255),
-                                                user_id I
-                                                room_id INT
-                                                
-                                                
-                                                
+                                                user_id  INT foreign key(user_id) references users(user_id),
+                                                room_id INT,
                                             )
                                         """)
                     mydb.commit()
