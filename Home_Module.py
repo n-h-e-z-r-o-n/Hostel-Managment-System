@@ -163,11 +163,10 @@ except mysql.connector.Error as err:
 
             mycursor.execute("""
                               CREATE TABLE notice_board (
-                                  admin_id INT AUTO_INCREMENT PRIMARY KEY,
-                                  full_name VARCHAR(255),
-                                  phone_no INT,
-                                  Email VARCHAR(255),
-                                  user_id INT foreign key(user_id) references users(user_id)
+                                  notice_id INT AUTO_INCREMENT PRIMARY KEY,
+                                  notice_message VARCHAR(2000),
+                                  date DATE,
+                                  admin_id INT foreign key(admin_id) references admins(admin_id)
                                   )
                           """)
             mydb.commit()
