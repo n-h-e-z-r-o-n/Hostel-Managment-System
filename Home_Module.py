@@ -75,6 +75,17 @@ except mysql.connector.Error as err:
                                             """)
             mydb.commit()
 
+            mycursor.execute("""
+                                                CREATE TABLE room (
+                                                    room_id INT AUTO_INCREMENT PRIMARY KEY,
+                                                    room_ty
+                                                    user_passwd VARCHAR(255),
+                                                    user_id INT AUTO_INCREMENT PRIMARY KEY,
+                                                    user_role VARCHAR(255), 
+                                                    user_image LONGBLOB
+                                                )
+                                            """)
+            mydb.commit()
 
             print(f"Database '{database_name}' created successfully!")
         except:
