@@ -150,15 +150,15 @@ Home_page_Background_changer()
 
 # Adding background image to window
 login_page_back_image = resize("./imag/login_background.jpg")
-tk.Label(Login_Page, image=login_page_back_image, border=0, justify='center').place(relx=0, rely=0)
+tk.Label(Home_Page, image=login_page_back_image, border=0, justify='center').place(relx=0, rely=0)
 # -- frame in login page ---
-login_Page_frame = tk.Frame(Login_Page, bg='#4B3621', height=500, width=400)
+login_Page_frame = tk.Frame(Home_Page, bg='#4B3621', height=500, width=400)
 login_Page_frame.grid(columnspan=5, rowspan=4, column=1, row=2, padx=20, pady=20, sticky=tk.NS)
 # store username  and password variables
 
 def Login_function(username, password):
     if password == '' and username == '':
-             stut1 = tk.Label(Login_Page, text='✗ Error:\n\n User name or Password is Empty/blank', bg='#BA0021',fg='black', font='-family {Georgia}  -size 10 -weight bold')
+             stut1 = tk.Label(Home_Page, text='✗ Error:\n\n User name or Password is Empty/blank', bg='#BA0021',fg='black', font='-family {Georgia}  -size 10 -weight bold')
              stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
              stut1.after(4100, lambda: stut1.place_forget())
              return
@@ -166,7 +166,7 @@ def Login_function(username, password):
             mycursor.execute("select * from hostel.users where user_name=%s and user_passwd=%s", (username, password))
             myresult = mycursor.fetchall()
             if len(myresult) == 0:
-                stut1 = tk.Label(Login_Page, text='✗ LOGIN ERROR:\n\n Invalid Username or Password', bg='#FF0000',fg='black', font='-family {Georgia}  -size 10 -weight bold')
+                stut1 = tk.Label(Home_Page, text='✗ LOGIN ERROR:\n\n Invalid Username or Password', bg='#FF0000',fg='black', font='-family {Georgia}  -size 10 -weight bold')
                 stut1.place(relx=0.6, rely=0.05, relwidth=0.25, relheight=0.09)
                 stut1.after(4100, lambda: stut1.place_forget())
                 return
