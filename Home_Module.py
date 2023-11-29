@@ -104,8 +104,15 @@ def changeOnHover(button, colorOnHover, colorOnLeave): # function to change prop
     button.bind("<Leave>", func=lambda e: button.config(background=colorOnLeave))
 
 
-def Homepage_Background():
-    
+def Homepage_Background(frame):
+    image1 = resize("./Assets/images/home_page_background1.jpg")
+    image2 = resize("./Assets/images/home_page_background2.jpg")
+    image3 = resize("./Assets/images/home_page_background3.jpg")
+    image4 = resize("./Assets/images/home_page_background4.jpg")
+    image5 = resize("./Assets/images/home_page_background5.jpg")
+    label_image = tk.Label(frame, border=0, justify='center')
+    label_image.place(x=0, y=0)
+
 # -------------------------- Main Window ___________________________
 root.title('school project')  # setting window title
 root.geometry('1000x600+50+50')  # setting window size and location
@@ -132,13 +139,7 @@ Home_Page.grid(row=0, column=0, sticky='nsew')
 
 # ======================================== Home page frame  code =============================================
 
-image1 = resize("./Assets/images/home_page_background1.jpg")
-image2 = resize("./Assets/images/home_page_background2.jpg")
-image3 = resize("./Assets/images/home_page_background3.jpg")
-image4 = resize("./Assets/images/home_page_background4.jpg")
-image5 = resize("./Assets/images/home_page_background5.jpg")
-label_image = tk.Label(Home_Page, border=0, justify='center')
-label_image.place(x=0, y=0)
+
 
 # ---------- top home page frame
 
