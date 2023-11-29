@@ -76,18 +76,33 @@ except mysql.connector.Error as err:
             mydb.commit()
 
             mycursor.execute("""
-                                                CREATE TABLE room (
-                                                    room_id INT AUTO_INCREMENT PRIMARY KEY,
-                                                    room_type VARCHAR(255),
-                                                    room_number INT,                                                    
-                                                    room_price INT,
-                                                    room_status VARCHAR(255),
-                                                    room_condition VARCHAR(255),
-                                                    total_beds VARCHAR(255),
-                                                    room_amenities VARCHAR(255),
-                                                    gender_room
-                                                )
-                                            """)
+                                CREATE TABLE room (
+                                    room_id INT AUTO_INCREMENT PRIMARY KEY,
+                                    room_type VARCHAR(255),
+                                    room_number INT,                                                    
+                                    room_price INT,
+                                    room_status VARCHAR(255),
+                                    room_condition VARCHAR(255),
+                                    total_beds VARCHAR(255),
+                                    room_amenities VARCHAR(255),
+                                    gender_room_type LONGTEXT
+                                )
+                            """)
+            mydb.commit()
+
+            mycursor.execute("""
+                                CREATE TABLE room (
+                                    room_id INT AUTO_INCREMENT PRIMARY KEY,
+                                    room_type VARCHAR(255),
+                                    room_number INT,                                                    
+                                    room_price INT,
+                                    room_status VARCHAR(255),
+                                    room_condition VARCHAR(255),
+                                    total_beds VARCHAR(255),
+                                    room_amenities VARCHAR(255),
+                                    gender_room_type LONGTEXT
+                                )
+                            """)
             mydb.commit()
 
             print(f"Database '{database_name}' created successfully!")
