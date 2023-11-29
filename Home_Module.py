@@ -104,27 +104,32 @@ except mysql.connector.Error as err:
             mydb.commit()
 
             mycursor.execute("""
-                                            CREATE TABLE parent_info (
-                                                First_name VARCHAR(255),
-                                                Second_name VARCHAR(255),
-                                                Phone_number VARCHAR(255),
-                                                Email_address VARCHAR(255),
-                                                student_id INT foreign key(student_id) references student(student_id)
-                                            )
-                                        """)
+                                CREATE TABLE parent_info (
+                                    First_name VARCHAR(255),
+                                    Second_name VARCHAR(255),
+                                    Phone_number VARCHAR(255),
+                                    Email_address VARCHAR(255),
+                                    student_id INT foreign key(student_id) references student(student_id)
+                                )
+                            """)
             mydb.commit()
 
             mycursor.execute("""
-                                                        CREATE TABLE complaint (
-                                                            complaint_id INT AUTO_INCREMENT PRIMARY KEY,
-                                                            student_id INT foreign key(student_id) references student(student_id),
-                                                            complaint_massage VARCHAR(500),
-                                                            status VARCHAR(45),
-                                                            )
-                                                    """)
+                                CREATE TABLE complaint (
+                                    complaint_id INT AUTO_INCREMENT PRIMARY KEY,
+                                    student_id INT foreign key(student_id) references student(student_id),
+                                    complaint_massage VARCHAR(500),
+                                    status VARCHAR(45),
+                                    )
+                            """)
             mydb.commit()
 
-            
+            mycursor.execute("""
+                               CREATE TABLE payment (
+                                   Payment_id INT AUTO_INCREMENT PRIMARY KEY,
+                                   )
+                           """)
+            mydb.commit()
 
             print(f"Database '{database_name}' created successfully!")
         except:
