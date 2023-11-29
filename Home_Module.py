@@ -159,7 +159,8 @@ def Login_function(username, password):
         except:
             mycursor.execute("""
                         CREATE TABLE users (
-                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            id INT 
+                            user_id INT AUTO_INCREMENT PRIMARY KEY,,
                             username VARCHAR(255),
                             password VARCHAR(255)
                         )
