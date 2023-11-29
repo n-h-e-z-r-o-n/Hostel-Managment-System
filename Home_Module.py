@@ -153,6 +153,7 @@ def Login_function(username, password):
         stut1.after(4100, lambda: stut1.place_forget())
         return
     else:
+        t
         mycursor.execute("select * from hostel.users where user_name=%s and user_passwd=%s", (username, password))
         myresult = mycursor.fetchall()
         if len(myresult) == 0:
