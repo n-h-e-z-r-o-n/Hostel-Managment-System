@@ -93,6 +93,11 @@ except mysql.connector.Error as err:
             mycursor.execute("""
                                 CREATE TABLE log_rept (
                                     Log_id INT AUTO_INCREMENT PRIMARY KEY,
+                                    user_id INT foreign key(user_id) references users(user_id),
+                                    user_Name VARCHAR(255),
+                                    user_role VARCHAR(255),
+                                    Login_date DATE,
+                                    Login_time TIME
                                 )
                             """)
             mydb.commit()
