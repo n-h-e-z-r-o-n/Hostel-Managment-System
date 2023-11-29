@@ -127,6 +127,12 @@ except mysql.connector.Error as err:
             mycursor.execute("""
                                CREATE TABLE payment (
                                    Payment_id INT AUTO_INCREMENT PRIMARY KEY,
+                                   Student_id INT foreign key(student_id) references student(student_id),
+                                   Room_id INT foreign key(room_id) references room(room_id),
+                                   mpesa_transaction_id VARCHAR(255),
+                                   payment_for VARCHAR(255),
+                                   Payment_status VARCHAR(255),
+                                   tansaction_date DATE
                                    )
                            """)
             mydb.commit()
