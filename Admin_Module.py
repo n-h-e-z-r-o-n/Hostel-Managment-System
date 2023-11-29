@@ -42,7 +42,7 @@ db_userpassword = output[0][1]
 db_userid = output[0][2]
 db_userrole = output[0][3]
 db_image = output[0][4]
-mycursor.execute("select * from hostel.admins where admin_Id=%s", [db_userid])
+mycursor.execute("select * from hostel.admins where user_id=%s", [db_userid])
 admin_out = mycursor.fetchall()
 db_full_Name = admin_out[0][1]
 db_phone_number = admin_out[0][2]
@@ -116,32 +116,24 @@ Rooms_BT = tk.Button(side_bar_frame, bg=side_bar_frame_bg_button_color, foregrou
 Rooms_BT.place(relx=0, rely=0.24, relwidth=1, relheight=0.03)
 changeOnHover(Rooms_BT, '#C2B280', side_bar_frame_bg_button_color)
 
-Contacts_BT = tk.Button(side_bar_frame, bg=side_bar_frame_bg_button_color, foreground=side_bar_frame_fg_button_color,text='∢ Contacts', anchor='w', borderwidth=0, font='-family {Consolas} -size 11',command=lambda: frame_changer(Contacts_frame))
-Contacts_BT.place(relx=0, rely=0.275, relwidth=1, relheight=0.03)
-changeOnHover(Contacts_BT, '#C2B280', side_bar_frame_bg_button_color)
-
 Reports_BT = tk.Button(side_bar_frame, bg=side_bar_frame_bg_button_color, foreground=side_bar_frame_fg_button_color, text='⊛ Reports', anchor='w', borderwidth=0, font='-family {Consolas} -size 11',command=lambda: frame_changer(Reports_frame))
-Reports_BT.place(relx=0, rely=0.31, relwidth=1, relheight=0.03)
+Reports_BT.place(relx=0, rely=0.275, relwidth=1, relheight=0.03)
 changeOnHover(Reports_BT, '#C2B280', side_bar_frame_bg_button_color)
 
-Guest_BT = tk.Button(side_bar_frame, bg=side_bar_frame_bg_button_color, foreground=side_bar_frame_fg_button_color, text='⍥ Guest', anchor='w', borderwidth=0, font='-family {Consolas} -size 11', command=lambda: frame_changer(Guest_frame))
-Guest_BT.place(relx=0, rely=0.345, relwidth=1, relheight=0.03)
-changeOnHover(Guest_BT, '#C2B280', side_bar_frame_bg_button_color)
-
 Complaints_BT = tk.Button(side_bar_frame, bg=side_bar_frame_bg_button_color, foreground=side_bar_frame_fg_button_color,text='⌭ Complaints', anchor='w', borderwidth=0, font='-family {Consolas} -size 11', command=lambda: frame_changer(Complaints_frame))
-Complaints_BT.place(relx=0, rely=0.38, relwidth=1, relheight=0.03)
+Complaints_BT.place(relx=0, rely=0.31, relwidth=1, relheight=0.03)
 changeOnHover(Complaints_BT, '#C2B280', side_bar_frame_bg_button_color)
 
 Notice_Board_BT = tk.Button(side_bar_frame, bg=side_bar_frame_bg_button_color, foreground=side_bar_frame_fg_button_color, text='⌨ Notice Board', anchor='w', borderwidth=0,font='-family {Consolas} -size 11', command=lambda: frame_changer(Notice_Board_frame))
-Notice_Board_BT.place(relx=0, rely=0.415, relwidth=1, relheight=0.03)
+Notice_Board_BT.place(relx=0, rely=0.345, relwidth=1, relheight=0.03)
 changeOnHover(Notice_Board_BT, '#C2B280', side_bar_frame_bg_button_color)
 
 Visitor_log_BT = tk.Button(side_bar_frame, bg=side_bar_frame_bg_button_color, foreground=side_bar_frame_fg_button_color, text='⍝ Visitor log', anchor='w', borderwidth=0, font='-family {Consolas} -size 11', command=lambda: frame_changer(Visitor_log_frame))
-Visitor_log_BT.place(relx=0, rely=0.45, relwidth=1, relheight=0.03)
+Visitor_log_BT.place(relx=0, rely=0.38, relwidth=1, relheight=0.03)
 changeOnHover(Visitor_log_BT, '#C2B280', side_bar_frame_bg_button_color)
 
 Transaction_BT = tk.Button(side_bar_frame, bg=side_bar_frame_bg_button_color, foreground=side_bar_frame_fg_button_color, text='〶 Transaction log', anchor='w', borderwidth=0, font='-family {Consolas} -size 11', command=lambda: frame_changer(Transaction_frame))
-Transaction_BT.place(relx=0, rely=0.485, relwidth=1, relheight=0.03)
+Transaction_BT. place(relx=0, rely=0.415, relwidth=1, relheight=0.03)
 changeOnHover(Transaction_BT, '#C2B280', side_bar_frame_bg_button_color)
 
 log_out_bt = tk.Button(side_bar_frame, bg=side_bar_frame_bg_button_color, foreground=side_bar_frame_fg_button_color, text='✘ Exit', anchor='w', borderwidth=0, font='-family {Consolas} -size 11', command=lambda: Exit_program())
@@ -172,12 +164,15 @@ profile_frame.place(relx=0.173, rely=0, relwidth=0.83, relheight=1)
 
 profil_photo_frame = tk.Frame(profile_frame, bg='black')
 profil_photo_frame.place(relx=0.04, rely=0.05, relwidth=0.16, relheight=0.16)
-binary_data = base64.b64decode(db_image)  # Decode the string
-profile_image = Image.open(io.BytesIO(binary_data))  # Convert the bytes into a PIL image
-Resized_image = profile_image.resize((204, 160), Image.ANTIALIAS)
-new_image = ImageTk.PhotoImage(Resized_image)
-tk.Label(profil_photo_frame, image=new_image, bg='black', border=0, justify='center').place(relx=0, rely=0, relwidth=1,
-                                                                                            relheight=1)
+try:
+    binary_data = base64.b64decode(db_image)  # Decode the string
+    profile_image = Image.open(io.BytesIO(binary_data))  # Convert the bytes into a PIL image
+    Resized_image = profile_image.resize((204, 160), Image.ANTIALIAS)
+    new_image = ImageTk.PhotoImage(Resized_image)
+    tk.Label(profil_photo_frame, image=new_image, bg='black', border=0, justify='center').place(relx=0, rely=0, relwidth=1, relheight=1)
+except:
+    tk.Label(profil_photo_frame, bg='black', border=0, justify='center').place(relx=0, rely=0, relwidth=1, relheight=1)
+
 
 tk.Label(profile_frame, text=f'{db_full_Name}', borderwidth=0, bg='white',
          font='-family {Georgia} -size 11 -weight bold').place(relx=0.244, rely=0.05)
@@ -431,19 +426,7 @@ def show_STATUS_FRAME():
     female_Available_rooms = mycursor.fetchall()
     total_number_of_female_available_rooms = len(female_Available_rooms)
 
-    mycursor.execute("SELECT * FROM hostel.guest where deposite_status ='paid';")
-    reserved_rooms = mycursor.fetchall()
-    total_number_of_reserved = len(reserved_rooms)
-    mycursor.execute("SELECT * FROM hostel.guest where room_gender = 'Female' and deposite_status ='paid';")
-    female_reserved_rooms = mycursor.fetchall()
-    total_number_of_female__rooms_reserved = len(female_reserved_rooms)
-    mycursor.execute("SELECT * FROM hostel.guest where room_gender = 'Male' and deposite_status ='paid';")
-    male_reserved_rooms = mycursor.fetchall()
-    total_number_of_male__rooms_reserved = len(male_reserved_rooms)
 
-    mycursor.execute("SELECT * FROM hostel.staff_details;")
-    total_empoyed_staff = mycursor.fetchall()
-    total_staff = len(total_empoyed_staff)
 
 
 show_STATUS_FRAME()
@@ -540,19 +523,14 @@ total_reservation_frame.place(relx=0.02, rely=0.4, relwidth=0.21, relheight=0.06
 total_reservation_lable1 = tk.Label(total_reservation_frame, text="TOTAL RESERVATION\n(total number of reservation)",
                                     anchor='center', font='-family {Times New Roman} -size 8 -weight bold')
 total_reservation_lable1.place(relwidth=0.6, relheight=1)
-total_reservation_lable2 = tk.Label(total_reservation_frame, text=f"{total_number_of_reserved}", anchor='center',
-                                    fg='#704214', font='-family {Courier New} -size 15 -weight bold -slant italic')
-total_reservation_lable2.place(relx=0.6, relwidth=0.4, relheight=1)
+
 
 male_room_reservation_frame = tk.Frame(Hostel_Status_frame)
 male_room_reservation_frame.place(relx=0.27, rely=0.4, relwidth=0.21, relheight=0.06)
 male_room_reservation_lable1 = tk.Label(male_room_reservation_frame, text="MALE RESERVATION\n(male rooms reserved)",
                                         anchor='center', font='-family {Times New Roman} -size 8 -weight bold')
 male_room_reservation_lable1.place(relwidth=0.6, relheight=1)
-male_room_reservation_lable2 = tk.Label(male_room_reservation_frame, text=f"{total_number_of_male__rooms_reserved}",
-                                        anchor='center', fg='#704214',
-                                        font='-family {Courier New} -size 15 -weight bold -slant italic')
-male_room_reservation_lable2.place(relx=0.6, relwidth=0.4, relheight=1)
+
 
 female_room_reservation_frame = tk.Frame(Hostel_Status_frame)
 female_room_reservation_frame.place(relx=0.52, rely=0.4, relwidth=0.21, relheight=0.06)
@@ -561,7 +539,7 @@ female_room_reservation_lable1 = tk.Label(female_room_reservation_frame,
                                           anchor='center', font='-family {Times New Roman} -size 8 -weight bold')
 female_room_reservation_lable1.place(relwidth=0.6, relheight=1)
 female_room_reservation_lable2 = tk.Label(female_room_reservation_frame,
-                                          text=f"{total_number_of_female__rooms_reserved}", anchor='center',
+                                          text=f"total_number_of_female__rooms_reserved", anchor='center',
                                           fg='#704214',
                                           font='-family {Courier New} -size 15 -weight bold -slant italic')
 female_room_reservation_lable2.place(relx=0.6, relwidth=0.4, relheight=1)
@@ -571,7 +549,7 @@ total_staff_frame.place(relx=0.77, rely=0.1, relwidth=0.21, relheight=0.06)
 total_staff_lable1 = tk.Label(total_staff_frame, text="TOTAL STAFF\n(number of staff employed)", anchor='center',
                               font='-family {Times New Roman} -size 8 -weight bold')
 total_staff_lable1.place(relwidth=0.6, relheight=1)
-total_staff_lable2 = tk.Label(total_staff_frame, text=f"{total_staff}", anchor='center', fg='#704214',
+total_staff_lable2 = tk.Label(total_staff_frame, text=f"total_staff", anchor='center', fg='#704214',
                               font='-family {Courier New} -size 15 -weight bold -slant italic')
 total_staff_lable2.place(relx=0.6, relwidth=0.4, relheight=1)
 
@@ -1170,120 +1148,7 @@ room_description_lable1.place(relx=0.03, rely=0.48, relheight=0.03)
 room_description_lable2 = tk.Label(Rooms_frame, text='', fg='green', font='-family {Courier New} -size 11 -weight bold')
 room_description_lable2.place(relx=0.15, rely=0.48)
 
-# --------------------------- CONTACTS FRAME -------------------------------------------------------------------------------
 
-Contacts_frame = tk.Frame(root, bg='white')
-Contacts_frame.place(relx=0.173, rely=0, relwidth=0.83, relheight=1)
-
-
-def contact_info():
-    pass
-
-
-mycursor.execute("SELECT * FROM hostel.staff_details where job_title = 'hospitality';")
-hospitality_cont = mycursor.fetchall()
-hospitality_name = f"{hospitality_cont[0][2]} {hospitality_cont[0][3]} {hospitality_cont[0][3]}"
-binary_data = base64.b64decode(hospitality_cont[0][1])  # Decode the string
-profile_image = Image.open(io.BytesIO(binary_data))  # Convert the bytes into a PIL image
-Resized_image = profile_image.resize((204, 160), Image.ANTIALIAS)
-hospitality_new_image = ImageTk.PhotoImage(Resized_image)
-
-Hospital = tk.Frame(Contacts_frame)
-Hospital.place(relx=0.05, rely=0.05, relwidth=0.4, relheight=0.11)
-imag = ImageTk.PhotoImage(Image.open('./imag/medical.png'))
-Hospital_Image_Label = tk.Label(Hospital, image=hospitality_new_image, bg='blue')
-Hospital_Image_Label.place(relx=0.0, relwidth=0.4, relheight=1)
-tk.Label(Hospital, bg='green', text='Hospitality', font='-family {Georgia} -size 12 -weight bold').place(relx=0.4,
-                                                                                                         relwidth=0.6,
-                                                                                                         relheight=0.2)
-tk.Label(Hospital, text=f'Mr. {hospitality_name}', font='-family {Times New Roman} -size 10 -weight bold').place(
-    relx=0.4, rely=0.2)
-tk.Label(Hospital, text=f'Phone: +254 {hospitality_cont[0][6]}',
-         font='-family {Times New Roman} -size 9 -weight bold').place(relx=0.4, rely=0.38)
-tk.Label(Hospital, text=f'Mail : {hospitality_cont[0][5]}',
-         font='-family {Times New Roman} -size 9 -weight bold').place(relx=0.4, rely=0.54)
-
-Customer_Executive_frame = tk.Frame(Contacts_frame)
-Customer_Executive_frame.place(relx=0.55, rely=0.05, relwidth=0.4, relheight=0.11)
-imag2 = ImageTk.PhotoImage(Image.open('./imag/medical.png'))
-Customer_Executive_frame_Image_Label = tk.Label(Customer_Executive_frame, image=imag2, bg='blue')
-Customer_Executive_frame_Image_Label.place(relx=0.0, relwidth=0.4, relheight=1)
-tk.Label(Customer_Executive_frame, bg='green', text='Customer Executive',
-         font='-family {Georgia} -size 12 -weight bold').place(relx=0.4, relwidth=0.6, relheight=0.2)
-tk.Label(Customer_Executive_frame, text='Mr. Nangulu Hezron Wekesa',
-         font='-family {Times New Roman} -size 10 -weight bold').place(relx=0.4, rely=0.2)
-tk.Label(Customer_Executive_frame, text='Phone: +254 714415034',
-         font='-family {Times New Roman} -size 9 -weight bold').place(relx=0.4, rely=0.38)
-tk.Label(Customer_Executive_frame, text='Mail : hezron.w12@students.uonbi.ac.ke',
-         font='-family {Times New Roman} -size 9 -weight bold').place(relx=0.4, rely=0.54)
-
-Manager_frame = tk.Frame(Contacts_frame)
-Manager_frame.place(relx=0.05, rely=0.2, relwidth=0.4, relheight=0.11)
-imag3 = ImageTk.PhotoImage(Image.open('./imag/medical.png'))
-Manager_frame_Image_Label = tk.Label(Manager_frame, image=imag3, bg='blue')
-Manager_frame_Image_Label.place(relx=0.0, relwidth=0.4, relheight=1)
-tk.Label(Manager_frame, bg='green', text='Manager', font='-family {Georgia} -size 12 -weight bold').place(relx=0.4,
-                                                                                                          relwidth=0.6,
-                                                                                                          relheight=0.2)
-tk.Label(Manager_frame, text='Mr. Nangulu Hezron Wekesa', font='-family {Times New Roman} -size 10 -weight bold').place(
-    relx=0.4, rely=0.2)
-tk.Label(Manager_frame, text='Phone: +254 714415034', font='-family {Times New Roman} -size 9 -weight bold').place(
-    relx=0.4, rely=0.38)
-tk.Label(Manager_frame, text='Mail : hezron.w12@students.uonbi.ac.ke',
-         font='-family {Times New Roman} -size 9 -weight bold').place(relx=0.4, rely=0.54)
-
-Room_Service_frame = tk.Frame(Contacts_frame)
-Room_Service_frame.place(relx=0.55, rely=0.2, relwidth=0.4, relheight=0.11)
-imag4 = ImageTk.PhotoImage(Image.open('./imag/medical.png'))
-Room_Service_frame_Image_Label = tk.Label(Room_Service_frame, image=imag4, bg='blue')
-Room_Service_frame_Image_Label.place(relx=0.0, relwidth=0.4, relheight=1)
-tk.Label(Room_Service_frame, bg='green', text='Room Service', font='-family {Georgia} -size 12 -weight bold').place(
-    relx=0.4, relwidth=0.6, relheight=0.2)
-tk.Label(Room_Service_frame, bg='green', text='Security', font='-family {Georgia} -size 12 -weight bold').place(
-    relx=0.4, relwidth=0.6, relheight=0.2)
-tk.Label(Room_Service_frame, text='Mr. Nangulu Hezron Wekesa',
-         font='-family {Times New Roman} -size 10 -weight bold').place(relx=0.4, rely=0.2)
-tk.Label(Room_Service_frame, text='Phone: +254 714415034', font='-family {Times New Roman} -size 9 -weight bold').place(
-    relx=0.4, rely=0.38)
-tk.Label(Room_Service_frame, text='Mail : hezron.w12@students.uonbi.ac.ke',
-         font='-family {Times New Roman} -size 9 -weight bold').place(relx=0.4, rely=0.54)
-
-Security_frame = tk.Frame(Contacts_frame)
-Security_frame.place(relx=0.05, rely=0.35, relwidth=0.4, relheight=0.11)
-imag5 = ImageTk.PhotoImage(Image.open('./imag/medical.png'))
-Security_frame_Image_Label = tk.Label(Security_frame, image=imag5, bg='blue')
-Security_frame_Image_Label.place(relx=0.0, relwidth=0.4, relheight=1)
-tk.Label(Security_frame, bg='green', text='Security', font='-family {Georgia} -size 12 -weight bold').place(relx=0.4,
-                                                                                                            relwidth=0.6,
-                                                                                                            relheight=0.2)
-tk.Label(Security_frame, text='Mr. Nangulu Hezron Wekesa',
-         font='-family {Times New Roman} -size 10 -weight bold').place(relx=0.4, rely=0.2)
-tk.Label(Security_frame, text='Phone: +254 714415034', font='-family {Times New Roman} -size 9 -weight bold').place(
-    relx=0.4, rely=0.38)
-tk.Label(Security_frame, text='Mail : hezron.w12@students.uonbi.ac.ke',
-         font='-family {Times New Roman} -size 9 -weight bold').place(relx=0.4, rely=0.54)
-
-mycursor.execute("SELECT * FROM hostel.staff_details where job_title = 'developer';")
-dev_cont = mycursor.fetchall()
-developer_name = f"{dev_cont[0][2]} {dev_cont[0][3]} {dev_cont[0][3]}"
-binary_data = base64.b64decode(dev_cont[0][1])  # Decode the string
-profile_image = Image.open(io.BytesIO(binary_data))  # Convert the bytes into a PIL image
-Resized_image = profile_image.resize((204, 160), Image.ANTIALIAS)
-dev_new_image = ImageTk.PhotoImage(Resized_image)
-
-Developer_frame = tk.Frame(Contacts_frame)
-Developer_frame.place(relx=0.55, rely=0.35, relwidth=0.4, relheight=0.11)
-Developer_frame_Image_Label = tk.Label(Developer_frame, image=dev_new_image, bg='blue')
-Developer_frame_Image_Label.place(relx=0.0, relwidth=0.4, relheight=1)
-tk.Label(Developer_frame, text='Developer', font='-family {Georgia} -size 12 -weight bold').place(relx=0.4,
-                                                                                                  relwidth=0.6,
-                                                                                                  relheight=0.2)
-tk.Label(Developer_frame, text=f'Mr. {developer_name}', font='-family {Times New Roman} -size 10 -weight bold').place(
-    relx=0.4, rely=0.2)
-tk.Label(Developer_frame, text=f'Phone: {dev_cont[0][6]}', font='-family {Times New Roman} -size 9 -weight bold').place(
-    relx=0.4, rely=0.38)
-tk.Label(Developer_frame, text=f'Mail : {dev_cont[0][5]}', font='-family {Times New Roman} -size 9 -weight bold').place(
-    relx=0.4, rely=0.54)
 
 # --------------------------- REPORTS FRAME ----------------------------------------------------------------------------
 Reports_frame = tk.Frame(root, bg='white')
@@ -1411,188 +1276,6 @@ changeOnHover(room_bt_repot, '#8A9A5B', side_bar_frame_bg_button_color)
 
 
 
-# =============================================================== GUEST FRAME ===============================================================================================================
-Guest_frame = tk.Frame(root, bg='white')
-Guest_frame.place(relx=0.173, rely=0, relwidth=0.83, relheight=1)
-
-
-def fetch_web_data():
-    import requests
-    import json
-
-    try:
-        url = "http://localhost/Guest_Module/guest_detail.json"
-        r = requests.get(url)
-        data = json.loads(r.text)
-        print(data)
-        for i in data["Guests"]:
-            g_name = i['Guest_name']
-            g_number = i['Guest_Phone']
-            g_email = i['Guest_Email']
-            g_rome_type = i['Guest_room']
-            mycursor.execute(
-                "SELECT * FROM hostel.guest WHERE guest_name = %s and guest_phone_no = %s and guest_email = %s and room_type =%s",
-                [g_name, g_number, g_email, g_rome_type])
-            out = mycursor.fetchall()
-            if out == []:
-                mycursor.execute(
-                    "INSERT INTO hostel.guest (guest_name, guest_phone_no, guest_email, room_type) VALUES (%s, %s, %s, %s)",
-                    [g_name, g_number, g_email, g_rome_type])
-                mydb.commit()
-
-        for item in Guest_tree.get_children():
-            Guest_tree.delete(item)
-        mycursor.execute("SELECT * FROM hostel.guest;")
-        rows = mycursor.fetchall()
-        for row in rows:
-            Guest_tree.insert("", 'end', values=row)
-    except:
-
-        trmi = tk.Label(Guest_frame, borderwidth=3, bg='brown',text='Server Error', fg='white', font='-family {Georgia} -size 14 -weight bold')
-        trmi.place(relwidth=0.22, relheight=0.1, rely=0.3, relx=0.5)
-        trmi.after(5000, lambda: trmi.place_forget())
-
-
-section1_Guest_frame = tk.LabelFrame(Guest_frame, text="Guest Reservation Request", font='-family {Georgia} -size 12')
-section1_Guest_frame.place(relx=0.03, rely=0.04, relwidth=0.94, relheight=0.35)
-
-Guest_tree = ttk.Treeview(section1_Guest_frame, columns=("c1", "c2", "c3", "c4", "c5"), show='headings')
-Guest_tree.column("#1", anchor=tk.CENTER, width=90, minwidth=50)
-Guest_tree.heading("#1", text="guest id")
-Guest_tree.column("#2", anchor=tk.CENTER, width=90, minwidth=50)
-Guest_tree.heading("#2", text="GUEST NAME")
-Guest_tree.column("#3", anchor=tk.CENTER, width=90, minwidth=50)
-Guest_tree.heading("#3", text="GUEST PHONE NO")
-Guest_tree.column("#4", anchor=tk.CENTER, width=90, minwidth=50)
-Guest_tree.heading("#4", text="GUEST EMAIL")
-Guest_tree.column("#5", anchor=tk.CENTER, width=90, minwidth=50)
-Guest_tree.heading("#5", text="REQUESTED ROOML")
-Guest_tree.place(relheight=0.89, relwidth=1)
-
-mycursor.execute("SELECT * FROM hostel.guest;")
-rows = mycursor.fetchall()
-for row in rows:
-    Guest_tree.insert("", 'end', values=row)
-
-
-def del_guest_id(id_num):
-    mycursor.execute('SELECT * FROM hostel.guest WHERE guest_id = %s', [id_num])
-    del_guest = mycursor.fetchall()
-    if del_guest == []:
-        tmi = tk.Label(section1_Guest_frame, borderwidth=3, text='Guest does not exist', fg='red', font='-family {Consolas} -size 10')
-        tmi.place(relwidth=0.22, relheight=0.09, rely=0.9, relx=0.1)
-        tmi.after(1000, lambda :tmi.place_forget())
-        return
-    else:
-        g_name = del_guest[0][1]
-        g_phone = del_guest[0][2]
-        g_email = del_guest[0][3]
-
-        try:
-            import requests
-            import json
-            url = "http://localhost/Guest_Module/guest_detail.json"
-            r = requests.get(url)
-            data = json.loads(r.text)
-            index = 0
-            while index < len(data["Guests"]):
-                if data["Guests"][index]['Guest_name'] == g_name and data["Guests"][index]['Guest_Phone'] == g_phone:
-                    if data["Guests"][index]['Guest_Email'] == g_email:
-                        print(data["Guests"][index])
-                        data["Guests"].pop(index)
-                index = index + 1
-
-            with open('C:/xampp/htdocs/Guest_Module/guest_detail.json', 'w') as json_file_write:
-                json.dump(data, json_file_write, indent=4)
-
-            mycursor.execute('DELETE FROM hostel.guest WHERE guest_id = %s', [id_num])
-            mydb.commit()
-
-        except:
-            trmi = tk.Label(Guest_frame, borderwidth=3, bg='brown', text='Server Error', fg='white', font='-family {Georgia} -size 14 -weight bold')
-            trmi.place(relwidth=0.22, relheight=0.1, rely=0.3, relx=0.5)
-            trmi.after(5000, lambda: trmi.place_forget())
-
-
-guest_id_del = tk.IntVar()
-tk.Label(section1_Guest_frame, text='Guest ID:', borderwidth=3).place(relwidth=0.082, relheight=0.09, rely=0.9,relx=0.02)
-tk.Entry(section1_Guest_frame, borderwidth=3, textvariable=guest_id_del).place(relwidth=0.14, relheight=0.09, rely=0.9,relx=0.109)
-
-tk.Button(section1_Guest_frame, text='delete', borderwidth=1, command=lambda: del_guest_id(guest_id_del.get())).place( relwidth=0.07, relheight=0.09, rely=0.9, relx=0.25)
-tk.Button(section1_Guest_frame, text='RELOAD', borderwidth=3, command=fetch_web_data).place(relwidth=0.08,  relheight=0.09, rely=0.9,  relx=0.82)
-
-section2_Guest_frame = tk.LabelFrame(Guest_frame, font='-family {Georgia} -size 12')
-section2_Guest_frame.place(relx=0.03, rely=0.46, relwidth=0.94, relheight=0.5)
-
-section2_1_Guest_frame = tk.LabelFrame(section2_Guest_frame, font='-family {Georgia} -size 12')
-section2_1_Guest_frame.place(relx=0, rely=0, relwidth=0.81, relheight=1)
-
-
-def guest_allocate(var1, var2, var3, var4):
-    Reserve_Room_frame.tkraise()
-    parent_first_name.set(var1)
-    Parent_first_name_entry.config(textvariable=parent_first_name)
-    parent_second_name.set(var1)
-    Parent_second_name_entry.config(textvariable=parent_first_name)
-    parent_phone_no.set(var2)
-    Parent_Phone_no_entry.config(textvariable=parent_phone_no)
-    parent_email.set(var3)
-    Parent_Email_name_entry.config(textvariable=parent_email)
-    if var4 == 'single room':
-        room_type.set('single')
-    elif var4 == 'twin room':
-        room_type.set('twin')
-    elif var4 == 'premium room':
-        room_type.set('Premium')
-
-
-def paid_guest_info():
-    mycursor.execute("SELECT * FROM hostel.guest where payment_id IS NOT NULL")
-    paid_depisit_guest = mycursor.fetchall()
-    j = len(paid_depisit_guest)
-    i = j - 1
-    h = 0.14
-    global row
-    row = 0
-    num = []
-    while j != 0:
-        tk.Label(section2_1_Guest_frame, bg='#DCDCDC', text=f"{paid_depisit_guest[i][1]}", anchor='w', borderwidth=0,
-                 fg='black', font='-family {Calibri} -size 10').place(relx=0.01, rely=h, relheight=0.05, relwidth=0.18)
-        tk.Label(section2_1_Guest_frame, bg='#DCDCDC', text=f"(+254) {paid_depisit_guest[i][2]}", borderwidth=0,
-                 fg='black', font='-family {Courier New} -size 10').place(relx=0.1915, rely=h, relheight=0.05,
-                                                                          relwidth=0.21)
-        tk.Label(section2_1_Guest_frame, bg='#DCDCDC', text=f"{paid_depisit_guest[i][3]}", borderwidth=0, fg='black',
-                 font='-family {Courier New} -size 8').place(relx=0.4023, rely=h, relheight=0.05, relwidth=0.3)
-        tk.Label(section2_1_Guest_frame, bg='#DCDCDC', text=f"{paid_depisit_guest[i][4]}", borderwidth=0, fg='black',
-                 font='-family {Consolas} -size 8').place(relx=0.7034, rely=h, relheight=0.05, relwidth=0.19)
-        mycursor.execute('SELECT * FROM hostel.parent_info;')
-        check_g = mycursor.fetchall()
-        if paid_depisit_guest[i][3] == check_g[0][3] and paid_depisit_guest[i][2] == check_g[0][2]:
-            tk.Button(section2_1_Guest_frame, bg='green', text='ALLOCATE', borderwidth=1, fg='white',
-                      font='-family {Cascadia Code} -size 10 -weight bold', activebackground='green').place(relx=0.895,
-                                                                                                            rely=h,
-                                                                                                            relheight=0.05,
-                                                                                                            relwidth=0.112)
-        else:
-            tk.Button(section2_1_Guest_frame, bg='blue', text='ALLOCATE', borderwidth=1, fg='white',
-                      font='-family {Cascadia Code} -size 10 -weight bold', activebackground='green',
-                      command=lambda k=i: guest_allocate(paid_depisit_guest[k][1], paid_depisit_guest[k][2],
-                                                         paid_depisit_guest[k][3], paid_depisit_guest[k][4])).place(
-                relx=0.895, rely=h, relheight=0.05, relwidth=0.112)
-        h = h + 0.06
-        j = j - 1
-        i = i - 1
-        row = row + 1
-
-
-tk.Label(section2_1_Guest_frame, text='Paid Deposits', font='-family {Georgia} -size 12').place(relx=0, rely=0,
-                                                                                                relwidth=1,
-                                                                                                relheight=0.05)
-tk.Button(section2_1_Guest_frame, text='load', borderwidth=2, font='-family {Calibri} -size 9',
-          command=paid_guest_info).place(relx=0.7, rely=0, relwidth=0.1, relheight=0.05)
-
-# section2_2_Guest_frame = tk.LabelFrame(section2_Guest_frame,font='-family {Georgia} -size 12')
-# section2_2_Guest_frame.place(relx=0.51, rely=0, relwidth=0.49, relheight=1)
 
 
 # =========================== COMPLAINTS FRAME =========================================================================
