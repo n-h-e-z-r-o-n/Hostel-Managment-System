@@ -67,6 +67,15 @@ def frame_changer(frame):
 def Exit_program():
     mycursor.execute("UPDATE hostel.log_rept SET logout_time = CURTIME() WHERE Log_id = %s;", [log_id])
     mydb.commit()
+
+
+    cmd = 'python Home_Module.py'
+    p = subprocess.Popen(cmd, shell=True)
+    out, err = p.communicate()
+    print(err)
+    print(out)
+
+    threading.Thread(target=Home_page_call).start()
     root.destroy()
 
 def changeOnHover(button, colorOnHover, colorOnLeave):
@@ -83,14 +92,14 @@ def show_frame_OnHover(frame, colorOnHover, colorOnLeave):
     # background color on leving widget
     frame.bind("<Leave>", func=lambda e: frame.config(background=colorOnLeave))
 
- def Admin_page_call():
-        cmd = 'python Admin_Module.py'
+ def Home_page_call():
+        cmd = 'python Home_Module.py'
         p = subprocess.Popen(cmd, shell=True)
         out, err = p.communicate()
         print(err)
         print(out)
 
-        threading.Thread(target=Admin_page_call).start()
+        threading.Thread(target=Home_page_call).start()
         root.destroy()
 
 # ================================== Side Bar Frame ====================================================================
