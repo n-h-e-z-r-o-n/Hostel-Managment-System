@@ -894,9 +894,9 @@ def reserve_room(f_name, s_name, l_name, d_birth, s_gender, s_phone, s_email, ye
 
     mycursor.execute( "SELECT * FROM hostel.student where  first_name = %s and second_name =  %s and last_name = %s and gender = %s and phone_no = %s and email_id = %s;", (f_name, s_name, l_name, s_gender, s_phone, s_email))
     check_inf = mycursor.fetchall()
-    print(check_inf)
-    if check_inf == []:
-        
+    print("Existing data", check_inf)
+    if len(check_inf) == 0:
+
         mycursor.execute("SELECT * FROM hostel.room where room_type = %s and room_status='not occupied' and room_condition = 'good'", [room_ty])
         r_output = mycursor.fetchall()
         if r_output != []:
