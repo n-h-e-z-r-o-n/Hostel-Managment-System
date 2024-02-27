@@ -353,10 +353,10 @@ def clear_p_entry():
 
 tk.Label(update_Profile_frame, text='Change Profile :', anchor='w', fg=sections_fg_colors, bg=sections_bg_colors, borderwidth=0,
          font='-family {Georgia} -size 10 -weight bold').place(relx=0.01, rely=0.64, relwidth=0.4, relheight=0.13)
-t16 = tk.Button(update_Profile_frame, text="Change Your Profile", bg='white', borderwidth=1,
+t16 = tk.Button(update_Profile_frame, text="Change Your Profile", fg=sections_fg_colors, bg=sections_bg_colors, borderwidth=1,
                 font='-family {Georgia} -size 12 -slant italic', command=profile_update_photo)
 t16.place(relx=0.41, rely=0.64, relwidth=0.54, relheight=0.13)
-changeOnHover(t16, '#7F7053', 'white')
+changeOnHover(t16, '#7F7053', sections_bg_colors)
 
 cancel_profile = tk.Button(update_Profile_frame, text="CANCEL", borderwidth=0, bg='light gray', activebackground='Red',
                            command=lambda: clear_p_entry())
