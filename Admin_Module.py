@@ -1140,7 +1140,7 @@ search_entry = tk.Entry(Rooms_frame, textvariable=room_search, font='-family {Ti
 search_entry.place(relx=0.16, rely=0.085, relheight=0.026, relwidth=0.15)
 changeOnHover(search_entry, '#D0F0C0', '#E9D7AB')
 tk.Button(Rooms_frame, text='⌕ SEARCH', borderwidth=2, command=lambda: search(room_search.get())).place(relx=0.32,
-                                                                                                        rely=0.084,
+                                                                                                     rely=0.084,
                                                                                                         relheight=0.027,
                                                                                                         relwidth=0.0741)
 
@@ -1187,7 +1187,7 @@ room_description_lable2.place(relx=0.15, rely=0.48)
 
 
 # --------------------------- REPORTS FRAME ----------------------------------------------------------------------------
-Reports_frame = tk.Frame(root, bg='white')
+Reports_frame = tk.Frame(root, bg = sections_bg_colors,)
 Reports_frame.place(relx=0.173, rely=0, relwidth=0.83, relheight=1)
 
 def log_report_gen():
@@ -1244,7 +1244,7 @@ def log_report_gen():
             pdf.output(pdf_file_name)
             webbrowser.get('windows-default').open(pdf_file_name)
 
-log_bt_repot = tk.Button(Reports_frame, text='LOG REPORT', borderwidth=0, bg=side_bar_frame_bg_button_color, command=log_report_gen)
+log_bt_repot = tk.Button(Reports_frame, text='LOG REPORT', borderwidth=0, fg = sections_fg_colors,  bg=side_bar_frame_bg_button_color, command=log_report_gen)
 log_bt_repot.place(relx=0.1, rely=0.3, relheight=0.05, relwidth=0.15)
 changeOnHover(log_bt_repot, '#8A9A5B', side_bar_frame_bg_button_color)
 
@@ -1305,7 +1305,7 @@ def room_report_gen():
                 pdf.output(pdf_file_name)
                 webbrowser.get('windows-default').open(pdf_file_name)
 
-room_bt_repot = tk.Button(Reports_frame, text='ROOM REPORT', borderwidth=0, bg=side_bar_frame_bg_button_color, command=room_report_gen)
+room_bt_repot = tk.Button(Reports_frame, text='ROOM REPORT', borderwidth=0, fg = sections_fg_colors,  bg=side_bar_frame_bg_button_color, command=room_report_gen)
 room_bt_repot.place(relx=0.1, rely=0.37, relheight=0.05, relwidth=0.15)
 changeOnHover(room_bt_repot, '#8A9A5B', side_bar_frame_bg_button_color)
 
@@ -1315,7 +1315,7 @@ changeOnHover(room_bt_repot, '#8A9A5B', side_bar_frame_bg_button_color)
 
 
 # =========================== COMPLAINTS FRAME =========================================================================
-Complaints_frame = tk.Frame(root)
+Complaints_frame = tk.Frame(root, f bg = sections_bg_colors,)
 Complaints_frame.place(relx=0.173, rely=0, relwidth=0.83, relheight=1)
 
 section1 = tk.LabelFrame(Complaints_frame, text="Complants list", font='-family {Georgia} -size 12')
