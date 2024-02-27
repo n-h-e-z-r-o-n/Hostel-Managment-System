@@ -597,7 +597,7 @@ blank1_lable2 = tk.Label(blank1_frame, fg='blue', text="1000", anchor='center', 
 blank1_lable2.place(relx=0.6, relwidth=0.4, relheight=1)
 
 # ----------------------------RESERVE FRAME-----------------------------------------------------------------------------
-Reserve_Room_frame = tk.Frame(root)
+Reserve_Room_frame = tk.Frame(root,  bg=sections_bg_colors,)
 Reserve_Room_frame.place(relx=0.173, rely=0, relwidth=0.83, relheight=1)
 
 student_first_name = tk.StringVar()
@@ -743,11 +743,11 @@ title_lable3.place(relx=0.45, rely=0.36, relwidth=0.31, relheight=0.04)
 Room_Type_lable = tk.Label(Reserve_Room_frame, text="ROOM TYPE", anchor='w', borderwidth=0, fg=sections_fg_colors, bg=sections_bg_colors,
                            font='-family {Georgia} -size 10 -weight bold')
 Room_Type_lable.place(relx=0.45, rely=0.41, relwidth=0.1, relheight=0.04)
-tk.Radiobutton(Reserve_Room_frame, text='Twin Room', width=25, value='Twin Room', variable=room_type, anchor='w').place(
+tk.Radiobutton(Reserve_Room_frame, text='Twin Room', width=25, value='Twin Room', fg=sections_fg_colors, bg=sections_bg_colors, variable=room_type, anchor='w').place(
     relx=0.56, rely=0.41, relwidth=0.09, relheight=0.04)
-tk.Radiobutton(Reserve_Room_frame, text='Single Room', width=25, value='Single Room', variable=room_type, anchor='w').place(
+tk.Radiobutton(Reserve_Room_frame, text='Single Room', width=25, value='Single Room', fg=sections_fg_colors, bg=sections_bg_colors, variable=room_type, anchor='w').place(
     relx=0.645, rely=0.41, relwidth=0.09, relheight=0.04)
-tk.Radiobutton(Reserve_Room_frame, text='Premium Room', width=25, value='Premium Room', variable=room_type,
+tk.Radiobutton(Reserve_Room_frame, text='Premium Room', width=25, value='Premium Room', fg=sections_fg_colors, bg=sections_bg_colors, variable=room_type,
                anchor='w').place(relx=0.73, rely=0.41, relwidth=0.1, relheight=0.04)
 changeOnHover(first_name_entry, '#D0F0C0', "#F0EAD2")
 
