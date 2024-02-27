@@ -203,7 +203,7 @@ tk.Label(basic_info_frame, text=f'{db_full_Name}', anchor='w', borderwidth=0, fg
 
 tk.Label(basic_info_frame, text='Email Address:', anchor='w', borderwidth=0, fg=sections_fg_colors, bg=sections_bg_colors,
          font='-family {Georgia} -size 10 -weight bold').place(relx=0.0, rely=0.2, relwidth=0.37, relheight=0.17)
-tk.Label(basic_info_frame, anchor='w', borderwidth=0, text=db_email, bg='white', fg=sections_fg_colors, bg=sections_bg_colors,
+tk.Label(basic_info_frame, anchor='w', borderwidth=0, text=db_email,  fg=sections_fg_colors, bg=sections_bg_colors,
          font='-family {Georgia} -size 10 -weight bold').place(relx=0.41, rely=0.2, relwidth=0.57, relheight=0.17)
 
 tk.Label(basic_info_frame, text='Admin ID:', anchor='w', borderwidth=0, bg=sections_bg_colors, fg=sections_fg_colors,
