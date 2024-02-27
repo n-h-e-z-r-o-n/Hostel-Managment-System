@@ -849,32 +849,32 @@ def reserve_room(f_name, s_name, l_name, d_birth, s_gender, s_phone, s_email, ye
         return
 
     if year_study <= 0 or year_study >= 7:
-        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Invalid Year Of Study', bg='#BA0021', fg='white',  font='-family {Georgia}  -size 10 -slant italic')
-        stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
-        stut1.after(3100, lambda: stut1.place_forget())
+        year_study_error = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Invalid Year Of Study', bg='#BA0021', fg='white',  font='-family {Georgia}  -size 10 -slant italic')
+        year_study_error.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
+        year_study_error.after(3100, lambda: year_study_error.place_forget())
         return
 
     if s_institution == '':
-        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Please Fill Student Institution Name', bg='#BA0021',   fg='white', font='-family {Georgia}  -size 10 -slant italic')
-        stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
-        stut1.after(3100, lambda: stut1.place_forget())
+        s_institution_error = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Please Fill Student Institution Name', bg='#BA0021',   fg='white', font='-family {Georgia}  -size 10 -slant italic')
+        s_institution_error.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
+        s_institution_error.after(3100, lambda: s_institution_error.place_forget())
         return
 
     if s_national_is == 0:
-        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n National ID field is empty', bg='#BA0021', fg='white', font='-family {Georgia}  -size 10 -slant italic')
-        stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
-        stut1.after(3100, lambda: stut1.place_forget())
+        s_national_is_error = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n National ID field is empty', bg='#BA0021', fg='white', font='-family {Georgia}  -size 10 -slant italic')
+        s_national_is_error.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
+        s_national_is_error.after(3100, lambda: s_national_is_error.place_forget())
         return
 
     if p_first_name == '':
-        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Parent First Name Field is Empty', bg='#BA0021', fg='white', font='-family {Georgia}  -size 10 -slant italic')
-        stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
-        stut1.after(3100, lambda: stut1.place_forget())
+        p_first_name_error = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Parent First Name Field is Empty', bg='#BA0021', fg='white', font='-family {Georgia}  -size 10 -slant italic')
+        p_first_name_error.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
+        p_first_name_error.after(3100, lambda: p_first_name_error.place_forget())
         return
     if p_second_name == '':
-        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Parent Second Name Field is Empty', bg='#BA0021', fg='white', font='-family {Georgia}  -size 10 -slant italic')
-        stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
-        stut1.after(3100, lambda: stut1.place_forget())
+        p_second_name_error = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Parent Second Name Field is Empty', bg='#BA0021', fg='white', font='-family {Georgia}  -size 10 -slant italic')
+        p_second_name_error.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
+        p_second_name_error.after(3100, lambda: p_second_name_error.place_forget())
         return
 
     if p_email != '':
