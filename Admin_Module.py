@@ -1006,7 +1006,7 @@ def reserve_room(f_name, s_name, l_name, d_birth, s_gender, s_phone, s_email, ye
 
 Deallocate_frame = tk.Frame(root, bg=sections_bg_colors,)
 Deallocate_frame.place(relx=0.173, rely=0, relwidth=0.83, relheight=1)
-section_1_deall = tk.LabelFrame(Deallocate_frame, fg=sections_fg_colors, bg=sections_bg_colors,)
+section_1_deall = tk.Frame(Deallocate_frame, bg=sections_bg_colors,)
 section_1_deall.place(relx=0.001, rely=0.001, relwidth=0.998, relheight=0.1)
 def Search_del_student(room_num, student_name):
 
