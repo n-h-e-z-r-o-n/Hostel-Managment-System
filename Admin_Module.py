@@ -562,7 +562,7 @@ female_room_reservation_lable2.place(relx=0.6, relwidth=0.4, relheight=1)
 
 total_staff_frame = tk.Frame(Hostel_Status_frame,  bg=sections_bg_colors,)
 total_staff_frame.place(relx=0.77, rely=0.1, relwidth=0.21, relheight=0.06)
-total_staff_lable1 = tk.Label(total_staff_frame, text="TOTAL STAFF\n(number of staff employed)", anchor='center',
+total_staff_lable1 = tk.Label(total_staff_frame, text="TOTAL STAFF\n(number of staff employed)", anchor='center', fg=sections_fg_colors, bg=sections_bg_colors,
                               font='-family {Times New Roman} -size 8 -weight bold')
 total_staff_lable1.place(relwidth=0.6, relheight=1)
 total_staff_lable2 = tk.Label(total_staff_frame, text=f"total_staff", anchor='center', fg='#704214', bg=sections_bg_colors,
@@ -617,19 +617,20 @@ parent_email = tk.StringVar()
 
 room_type = tk.StringVar()
 
-title_lable1 = tk.Label(Reserve_Room_frame, text="Student Personal Information *", anchor='w', borderwidth=0,
+title_lable1 = tk.Label(Reserve_Room_frame, text="Student Personal Information *", anchor='w', borderwidth=0, fg=sections_fg_colors, bg=sections_bg_colors,
                         font='-family {Georgia} -size 14 -weight bold')
 title_lable1.place(relx=0.05, rely=0.1, relwidth=0.31, relheight=0.04)
 
-first_name_lable = tk.Label(Reserve_Room_frame, text="First Name", anchor='w', borderwidth=0,
+first_name_lable = tk.Label(Reserve_Room_frame, text="First Name", anchor='w', borderwidth=0, fg=sections_fg_colors, bg=sections_bg_colors,
                             font='-family {Georgia} -size 12 -weight bold')
 first_name_lable.place(relx=0.05, rely=0.15, relwidth=0.1, relheight=0.04)
+
 first_name_entry = tk.Entry(Reserve_Room_frame, textvariable=student_first_name, font='-family {Consolas} -size 12 ',
                             bg='#F0EAD2', fg='blue')
 first_name_entry.place(relx=0.16, rely=0.15, relwidth=0.2, relheight=0.04)
 changeOnHover(first_name_entry, '#D0F0C0', "#F0EAD2")
 
-Second_name_lable = tk.Label(Reserve_Room_frame, text="Second Name", anchor='w', borderwidth=0,
+Second_name_lable = tk.Label(Reserve_Room_frame, text="Second Name", anchor='w', borderwidth=0, fg=sections_fg_colors, bg=sections_bg_colors,
                              font='-family {Georgia} -size 10 -weight bold')
 Second_name_lable.place(relx=0.05, rely=0.2, relwidth=0.1, relheight=0.04)
 Second_name_entry = tk.Entry(Reserve_Room_frame, textvariable=student_second_name, font='-family {Consolas} -size 12 ',
@@ -637,7 +638,7 @@ Second_name_entry = tk.Entry(Reserve_Room_frame, textvariable=student_second_nam
 Second_name_entry.place(relx=0.16, rely=0.2, relwidth=0.2, relheight=0.04)
 changeOnHover(Second_name_entry, '#D0F0C0', "#F0EAD2")
 
-Last_name_lable = tk.Label(Reserve_Room_frame, text="Last Name", anchor='w', borderwidth=0,
+Last_name_lable = tk.Label(Reserve_Room_frame, text="Last Name", anchor='w', borderwidth=0, fg=sections_fg_colors, bg=sections_bg_colors,
                            font='-family {Georgia} -size 10 -weight bold')
 Last_name_lable.place(relx=0.05, rely=0.25, relwidth=0.1, relheight=0.04)
 Last_name_entry = tk.Entry(Reserve_Room_frame, textvariable=student_last_name, font='-family {Consolas} -size 12 ',
@@ -645,14 +646,14 @@ Last_name_entry = tk.Entry(Reserve_Room_frame, textvariable=student_last_name, f
 Last_name_entry.place(relx=0.16, rely=0.25, relwidth=0.2, relheight=0.04)
 changeOnHover(Last_name_entry, '#D0F0C0', "#F0EAD2")
 
-Date_of_birth_lable = tk.Label(Reserve_Room_frame, text="Date Of Birth", anchor='w', borderwidth=0,
+Date_of_birth_lable = tk.Label(Reserve_Room_frame, text="Date Of Birth", anchor='w', borderwidth=0, fg=sections_fg_colors, bg=sections_bg_colors,
                                font='-family {Georgia} -size 10 -weight bold')
 Date_of_birth_lable.place(relx=0.05, rely=0.3, relwidth=0.1, relheight=0.04)
 cal_date_of_birth = DateEntry(Reserve_Room_frame, bg='#004953')
 cal_date_of_birth.place(relx=0.16, rely=0.3, relwidth=0.2, relheight=0.04)
 changeOnHover(cal_date_of_birth, '#4B5320', "#004953")
 
-Gender_lable = tk.Label(Reserve_Room_frame, text="Gender", anchor='w', borderwidth=0,
+Gender_lable = tk.Label(Reserve_Room_frame, text="Gender", anchor='w', borderwidth=0, fg=sections_fg_colors, bg=sections_bg_colors,
                         font='-family {Georgia} -size 10 -weight bold')
 Gender_lable.place(relx=0.05, rely=0.35, relwidth=0.1, relheight=0.04)
 Gender_entry = tk.Entry(Reserve_Room_frame, textvariable=student_gender, font='-family {Consolas} -size 12 ',
@@ -660,7 +661,7 @@ Gender_entry = tk.Entry(Reserve_Room_frame, textvariable=student_gender, font='-
 Gender_entry.place(relx=0.16, rely=0.35, relwidth=0.2, relheight=0.04)
 changeOnHover(Gender_entry, '#D0F0C0', "#F0EAD2")
 
-Phone_no_lable = tk.Label(Reserve_Room_frame, text="Phone NO ", anchor='w', borderwidth=0,
+Phone_no_lable = tk.Label(Reserve_Room_frame, text="Phone NO ", anchor='w', borderwidth=0, fg=sections_fg_colors, bg=sections_bg_colors,
                           font='-family {Georgia} -size 10 -weight bold')
 Phone_no_lable.place(relx=0.05, rely=0.4, relwidth=0.1, relheight=0.04)
 Phone_no_entry = tk.Entry(Reserve_Room_frame, textvariable=student_phone_number, font='-family {Consolas} -size 12',
