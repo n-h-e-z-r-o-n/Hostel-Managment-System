@@ -314,7 +314,7 @@ Home_Page.place(relheight=1, relwidth=1, rely=0, relx=0)
 
 background_img_frame = tk.Label(Home_Page,  border=0, justify='center')
 background_img_frame.place(x=0, y=0, relheight=1, relwidth=1)
-Homepage_Background(background_img_frame)
+threading.Thread(target=Homepage_Background, args=(background_img_frame,)).start()
 
 # ======================== Login page frame code =======================================================================
 
