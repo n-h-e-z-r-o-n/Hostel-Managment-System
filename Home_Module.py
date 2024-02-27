@@ -335,7 +335,6 @@ def Login_function(username, password):
         mycursor.execute("select * from hostel.users where user_name=%s and user_passwd=%s", (username, password))
 
         myresult = mycursor.fetchall()
-        print(myresult)
         if len(myresult) == 0:
             stut1 = tk.Label(Home_Page, text='✗ LOGIN ERROR:\n\n Invalid Username or Password', bg='#FF0000', fg='black', font='-family {Georgia}  -size 10 -weight bold')
             stut1.place(relx=0.6, rely=0.05, relwidth=0.25, relheight=0.09)
@@ -358,7 +357,6 @@ def Login_function(username, password):
 
                 dic = {'session_id': user_id, 'log_id': curent_log_id}
                 json_object = json.dumps(dic, indent=4)
-                print(json_object)
                 with open("SessionInfo.json", "w") as outfile:
                     outfile.write(json_object)
 
@@ -369,8 +367,8 @@ def Login_function(username, password):
                     print(err)
                     print(out)
 
-                threading.Thread(target=student_page_call)
-                
+                threading.Thread(target=student_page_call).start()
+
             if myresult[0][3] == 'admin':
                 mycursor.execute("SELECT * FROM hostel.admins WHERE user_id = %s;", [user_id])
                 fetg = mycursor.fetchall()
@@ -395,7 +393,7 @@ def Login_function(username, password):
                     print(err)
                     print(out)
 
-                threading.Thread(target=Admin_page_call)
+                threading.Thread(target=Admin_page_call).start()
 
 username = tk.StringVar()
 password = tk.StringVar()
