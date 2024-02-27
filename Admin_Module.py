@@ -65,6 +65,7 @@ except:
     print(err)
     print(out)
     root.destroy()
+    exit()
 
 mycursor.execute("select * from users where user_id = %s", [session_user_id])
 
@@ -87,6 +88,7 @@ except:
     print(err)
     print(out)
     root.destroy()
+    exit()
 
 db_phone_number = admin_out[0][2]
 db_email = admin_out[0][3]
