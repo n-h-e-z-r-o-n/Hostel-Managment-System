@@ -1395,13 +1395,13 @@ section2 = tk.LabelFrame(Complaints_frame, fg = sections_fg_colors, bg = section
 section2.place(relx=0.03, rely=0.36, relwidth=0.94, relheight=0.06)
 tk.Label(section2, text='Search',fg = sections_fg_colors, bg = sections_bg_colors, font='-family {Times New Roman} -size 12 -weight bold').place(relx=0.1, rely=0.1)
 complaint_search = tk.IntVar()
-tk.Entry(section2, textvariable=complaint_search, font='-family {Times New Roman} -size 12 -weight bold').place(
+tk.Entry(section2, textvariable=complaint_search, fg = sections_fg_colors, bg = sections_bg_colors, font='-family {Times New Roman} -size 12 -weight bold').place(
     relx=0.16, rely=0.11, relwidth=0.17)
-tk.Button(section2, text="Search", font='-family {Times New Roman} -size 10',
+tk.Button(section2, text="Search",  fg = sections_fg_colors, bg = sections_bg_colors, font='-family {Times New Roman} -size 10',
           command=lambda: search_c(complaint_search.get())).place(relx=0.35, rely=0.11, relwidth=0.05)
-tk.Button(section2, text="Clear", font='-family {Times New Roman} -size 10', command=clear).place(relx=0.42, rely=0.11,
+tk.Button(section2, text="Clear", fg = sections_fg_colors, bg = sections_bg_colors, font='-family {Times New Roman} -size 10', command=clear).place(relx=0.42, rely=0.11,
                                                                                                   relwidth=0.05)
-tk.Button(section2, text="Show", font='-family {Times New Roman} -size 10', command=refresh_c).place(relx=0.52,
+tk.Button(section2, text="Show",  fg = sections_fg_colors, bg = sections_bg_colors,font='-family {Times New Roman} -size 10', command=refresh_c).place(relx=0.52,
                                                                                                      rely=0.11,
                                                                                                      relwidth=0.08)
 
@@ -1456,7 +1456,7 @@ def delete():
     text_box_preview.config(state='disabled')
 
 
-tk.Button(Notice_Board_frame, text='PREVIEW', command=pre_view, activeforeground='white',
+tk.Button(Notice_Board_frame, text='PREVIEW',  fg = sections_fg_colors, bg = sections_bg_colors, command=pre_view, activeforeground='white',
           activebackground='light green', borderwidth=4, font='-family {Consolas} -size 9 -weight bold').place(relx=0.4,
                                                                                                                relwidth=0.07,
                                                                                                                rely=0.452)
