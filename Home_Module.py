@@ -234,6 +234,18 @@ except mysql.connector.Error as err:
 
             mydb.close()
             print(f"Database '{database_name}' has been created...Please restart the application")
+
+
+            def open_Home_instance():
+                cmd = 'python Home_Module.py'
+                p = subprocess.Popen(cmd, shell=True)
+                out, err = p.communicate()
+                print(err)
+                print(out)
+
+
+            threading.Thread(target=open_Home_instance).start()
+
             exit()
 
 
