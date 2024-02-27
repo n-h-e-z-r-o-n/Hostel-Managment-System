@@ -1525,7 +1525,7 @@ tk.Button(section_n5, text='Clear all', command=clear_all_notice).place(relx=0.6
                                                                         relwidth=0.05)
 
 # =========================== VISITOR LOG FRAME ========================================================================
-Visitor_log_frame = tk.Frame(root, bg='white')
+Visitor_log_frame = tk.Frame(root, bg = sections_bg_colors,)
 Visitor_log_frame.place(relx=0.173, rely=0, relwidth=0.83, relheight=1)
 
 section_v1 = tk.LabelFrame(Visitor_log_frame, fg = sections_fg_colors, bg = sections_bg_colors, text='VISITOR LOG',
@@ -1685,7 +1685,7 @@ def student_trans(num):
 serch_var = tk.IntVar()
 tk.Label(section_T2, text='STUDENT ID', fg = sections_fg_colors, bg = sections_bg_colors, anchor='w', font='-family {Consolas} -size 10 -weight bold').place(relx=0.01, rely=0.02, relheight=0.05,relwidth=0.1)
 tk.Entry(section_T2, bg='gray', textvariable=serch_var).place(relx=0.115, rely=0.02, relheight=0.05, relwidth=0.12)
-tk.Button(section_T2, text='search',  borderwidth=0, command=lambda :student_trans(serch_var.get())).place(relx=0.24, rely=0.02, relheight=0.05, relwidth=0.06)
+tk.Button(section_T2, text='search',  fg = sections_fg_colors, bg = sections_bg_colors,  borderwidth=0, command=lambda :student_trans(serch_var.get())).place(relx=0.24, rely=0.02, relheight=0.05, relwidth=0.06)
 
 
 
