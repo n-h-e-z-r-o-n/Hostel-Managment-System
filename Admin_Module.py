@@ -1512,7 +1512,7 @@ def clear_all_notice():
     mydb.commit()
 
 
-section_n5 = tk.LabelFrame(Notice_Board_frame)
+section_n5 = tk.LabelFrame(Notice_Board_frame, fg = sections_fg_colors, bg = sections_bg_colors,)
 section_n5.place(relx=0.031, relwidth=0.944, relheight=0.1, rely=0.88)
 tk.Label(section_n5, text='Notice Id', font='-family {Consolas} -size 10 -weight bold').place(rely=0.3, relheight=0.35,
                                                                                               relwidth=0.1)
@@ -1528,7 +1528,7 @@ tk.Button(section_n5, text='Clear all', command=clear_all_notice).place(relx=0.6
 Visitor_log_frame = tk.Frame(root, bg='white')
 Visitor_log_frame.place(relx=0.173, rely=0, relwidth=0.83, relheight=1)
 
-section_v1 = tk.LabelFrame(Visitor_log_frame, text='VISITOR LOG', bg='white',
+section_v1 = tk.LabelFrame(Visitor_log_frame, fg = sections_fg_colors, bg = sections_bg_colors, text='VISITOR LOG',
                            font='-family {Consolas} -size 10 -weight bold')
 section_v1.place(relwidth=0.86, relheight=0.51, relx=0.07, rely=0.041)
 
@@ -1557,10 +1557,10 @@ visitor()
 
 # =========================== TRANSACTION FRAME ========================================================================
 
-Transaction_frame = tk.Frame(root, bg='white')
+Transaction_frame = tk.Frame(root, bg='white', bg = sections_bg_colors,)
 Transaction_frame.place(relx=0.173, rely=0, relwidth=0.83, relheight=1)
 
-section_T1 = tk.LabelFrame(Transaction_frame, text='STUDENT TRANSACTION LOG', bg='white')
+section_T1 = tk.LabelFrame(Transaction_frame, fg = sections_fg_colors, bg = sections_bg_colors, text='STUDENT TRANSACTION LOG', bg='white')
 section_T1.place(relx=0.025, rely=0.02, relheight=0.3, relwidth=0.95)
 
 Tr_log_tree = ttk.Treeview(section_T1, columns=("c1", "c2", "c3", "c4", "c5", 'c6', 'c7'), show='headings')
@@ -1590,7 +1590,7 @@ def Trs_log():
 
 Trs_log()
 
-section_T2 = tk.Frame(Transaction_frame)
+section_T2 = tk.Frame(Transaction_frame,  bg = sections_bg_colors,)
 section_T2.place(relx=0.025, rely=0.325, relheight=0.65, relwidth=0.95)
 
 
@@ -1599,14 +1599,14 @@ def student_trans(num):
                 def confirm_tans():
                     mycursor.execute("UPDATE  hostel.payment set Payment_status ='complete' WHERE Payment_id = %s ;", [pay_id])
                     mydb.commit()
-                    ky = tk.Label(yu,text='transaction confirmed successfully', bg='#FFE4C4', fg='#2E8B57', font='-family {Forte} -size 17')
+                    ky = tk.Label(yu, fg = sections_fg_colors, bg = sections_bg_colors, text='transaction confirmed successfully', bg='#FFE4C4', fg='#2E8B57', font='-family {Forte} -size 17')
                     ky.place(relx=0.5, rely=0.5, relwidth=0.5,relheight=0.18)
                     ky.after(4000, lambda : ky.place_forget())
 
                 def reject_tans():
                     mycursor.execute("UPDATE  hostel.payment set Payment_status ='rejected' WHERE Payment_id = %s ;", [pay_id])
                     mydb.commit()
-                    ky = tk.Label(yu, text='transaction rejected successfully', bg='#FFE4C4', fg='red',font='-family {Forte} -size 17')
+                    ky = tk.Label(yu,  fg = sections_fg_colors, bg = sections_bg_colors, text='transaction rejected successfully', bg='#FFE4C4', fg='red',font='-family {Forte} -size 17')
                     ky.place(relx=0.5, rely=0.5, relwidth=0.5, relheight=0.18)
                     ky.after(4000, lambda: ky.place_forget())
                 def close_f():
@@ -1685,7 +1685,7 @@ def student_trans(num):
 serch_var = tk.IntVar()
 tk.Label(section_T2, text='STUDENT ID', anchor='w', font='-family {Consolas} -size 10 -weight bold').place(relx=0.01, rely=0.02, relheight=0.05,relwidth=0.1)
 tk.Entry(section_T2, bg='gray', textvariable=serch_var).place(relx=0.115, rely=0.02, relheight=0.05, relwidth=0.12)
-tk.Button(section_T2, text='search', borderwidth=0, command=lambda :student_trans(serch_var.get())).place(relx=0.24, rely=0.02, relheight=0.05, relwidth=0.06)
+tk.Button(section_T2, text='search',  borderwidth=0, command=lambda :student_trans(serch_var.get())).place(relx=0.24, rely=0.02, relheight=0.05, relwidth=0.06)
 
 
 
