@@ -7,7 +7,7 @@ import io
 import json
 import smtplib
 import subprocess
-
+import threading
 # --------------------------------------- UI color settings --------------------------------------------------------
 
 side_bar_frame_bg_color = '#654321' # sidebar background color
@@ -83,6 +83,15 @@ def show_frame_OnHover(frame, colorOnHover, colorOnLeave):
     # background color on leving widget
     frame.bind("<Leave>", func=lambda e: frame.config(background=colorOnLeave))
 
+ def Admin_page_call():
+        cmd = 'python Admin_Module.py'
+        p = subprocess.Popen(cmd, shell=True)
+        out, err = p.communicate()
+        print(err)
+        print(out)
+
+        threading.Thread(target=Admin_page_call).start()
+        root.destroy()
 
 # ================================== Side Bar Frame ====================================================================
 

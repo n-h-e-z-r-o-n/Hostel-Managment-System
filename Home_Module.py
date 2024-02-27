@@ -394,6 +394,7 @@ def Login_function(username, password):
                     print(out)
 
                 threading.Thread(target=Admin_page_call).start()
+                root.destroy()
 
 username = tk.StringVar()
 password = tk.StringVar()
