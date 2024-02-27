@@ -1484,7 +1484,7 @@ def search_notice():
         tree2.insert("", tk.END, values=row)
 
 
-cal_date = DateEntry(section_n3)
+cal_date = DateEntry(section_n3, fg = sections_fg_colors, bg = sections_bg_colors,)
 cal_date.place(relx=0.36, relwidth=0.25, relheight=0.7, rely=0)
 tk.Button(section_n3, text='search',  fg = sections_fg_colors, bg = sections_bg_colors, borderwidth=-4, activebackground='green', foreground='Green',
           font='-family {Consolas} -size 12 -weight bold', command=search_notice).place(relx=0.62, relwidth=0.06,
@@ -1514,10 +1514,10 @@ def clear_all_notice():
 
 section_n5 = tk.LabelFrame(Notice_Board_frame, fg = sections_fg_colors, bg = sections_bg_colors,)
 section_n5.place(relx=0.031, relwidth=0.944, relheight=0.1, rely=0.88)
-tk.Label(section_n5, text='Notice Id', font='-family {Consolas} -size 10 -weight bold').place(rely=0.3, relheight=0.35,
+tk.Label(section_n5, fg = sections_fg_colors, bg = sections_bg_colors, text='Notice Id', font='-family {Consolas} -size 10 -weight bold').place(rely=0.3, relheight=0.35,
                                                                                               relwidth=0.1)
 del_id = tk.IntVar()
-tk.Entry(section_n5, fg = sections_fg_colors, bg = sections_bg_colors fg='red', textvariable=del_id, font='-family {Courier New} -size 10 ').place(relx=0.11, rely=0.3,
+tk.Entry(section_n5, fg = sections_fg_colors, bg = sections_bg_colors,  textvariable=del_id, font='-family {Courier New} -size 10 ').place(relx=0.11, rely=0.3,
                                                                                                   relheight=0.35,
                                                                                                   relwidth=0.1)
 tk.Button(section_n5, fg = sections_fg_colors, bg = sections_bg_colors,   text='Del', command=delete_notice).place(relx=0.22, rely=0.3, relheight=0.35, relwidth=0.05)

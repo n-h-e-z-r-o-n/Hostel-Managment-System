@@ -384,7 +384,7 @@ def Login_function(username, password):
                 with open("SessionInfo.json", "w") as outfile:
                     outfile.write(json_object)
 
-                import subprocess
+
                 cmd = 'python Admin_Module.py'
                 p = subprocess.Popen(cmd, shell=True)
                 out, err = p.communicate()
