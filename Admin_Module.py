@@ -1004,9 +1004,9 @@ def reserve_room(f_name, s_name, l_name, d_birth, s_gender, s_phone, s_email, ye
 
 # ====================================  Deallocate FRAME ======================================================================
 
-Deallocate_frame = tk.Frame(root)
+Deallocate_frame = tk.Frame(root, bg=sections_bg_colors,)
 Deallocate_frame.place(relx=0.173, rely=0, relwidth=0.83, relheight=1)
-section_1_deall = tk.LabelFrame(Deallocate_frame)
+section_1_deall = tk.LabelFrame(Deallocate_frame, fg=sections_fg_colors, bg=sections_bg_colors,)
 section_1_deall.place(relx=0.001, rely=0.001, relwidth=0.998, relheight=0.1)
 def Search_del_student(room_num, student_name):
 
@@ -1024,8 +1024,8 @@ def Search_del_student(room_num, student_name):
         deloc_par = mycursor.fetchall()
         if room_num == deloc_r[0][2]:
 
-                    tk.Label(section_2_deall, fg='red', text=f'{deloc_s[0][1]} {deloc_s[0][2]} {deloc_s[0][3]}', anchor='w', font='-family {Courier New}  -size 11 -weight bold').place(rely=0.01, relx=0.17, relwidth=0.27, relheight=0.065)
-                    tk.Label(section_2_deall, fg='red', text=f'{deloc_s[0][5]}', anchor='w', font='-family {Courier New}  -size 11 -weight bold').place(rely=0.077, relx=0.17, relwidth=0.27, relheight=0.065)
+                    tk.Label(section_2_deall, fg='red',  bg=sections_bg_colors, text=f'{deloc_s[0][1]} {deloc_s[0][2]} {deloc_s[0][3]}', anchor='w', font='-family {Courier New}  -size 11 -weight bold').place(rely=0.01, relx=0.17, relwidth=0.27, relheight=0.065)
+                    tk.Label(section_2_deall, fg='red',  text=f'{deloc_s[0][5]}', anchor='w', font='-family {Courier New}  -size 11 -weight bold').place(rely=0.077, relx=0.17, relwidth=0.27, relheight=0.065)
                     tk.Label(section_2_deall, fg='red',text=f'{deloc_s[0][4]}', anchor='w', font='-family {Courier New}  -size 11 -weight bold').place(rely=0.144, relx=0.17, relwidth=0.27, relheight=0.065)
                     tk.Label(section_2_deall, fg='red',text=f'{deloc_s[0][6]}', anchor='w', font='-family {Courier New}  -size 11 -weight bold').place(rely=0.211, relx=0.17, relwidth=0.27, relheight=0.065)
                     tk.Label(section_2_deall, fg='red',text=f'{deloc_s[0][7]}', anchor='w', font='-family {Courier New}  -size 11 -weight bold').place(rely=0.278, relx=0.17, relwidth=0.27, relheight=0.065)
