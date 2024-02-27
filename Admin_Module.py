@@ -1318,7 +1318,7 @@ changeOnHover(room_bt_repot, '#8A9A5B', side_bar_frame_bg_button_color)
 Complaints_frame = tk.Frame(root, f bg = sections_bg_colors,)
 Complaints_frame.place(relx=0.173, rely=0, relwidth=0.83, relheight=1)
 
-section1 = tk.LabelFrame(Complaints_frame, text="Complants list", font='-family {Georgia} -size 12')
+section1 = tk.LabelFrame(Complaints_frame, fg = sections_fg_colors, bg = sections_bg_colors, text="Complants list", font='-family {Georgia} -size 12')
 section1.place(relx=0.03, rely=0.04, relwidth=0.94, relheight=0.3)
 
 
@@ -1332,7 +1332,7 @@ def utdate(rows):
 from tkinter import ttk
 
 tree = ttk.Treeview(section1, columns=("c1", "c2", "c3"), show='headings')
-tree.column("#1", anchor=tk.CENTER, width=90, minwidth=50)
+tree.column("#1",  anchor=tk.CENTER, width=90, minwidth=50)
 tree.heading("#1", text="COMPLAINT ID")
 tree.column("#2", anchor=tk.CENTER, width=90, minwidth=50)
 tree.heading("#2", text="STUDENT ID")
@@ -1370,11 +1370,11 @@ def search_c(num):
             while j > -1:
                 mycursor.execute("SELECT * FROM hostel.student where student_id = %s ;", [C_rows[j][1]])
                 S_row = mycursor.fetchall()
-                yui = tk.Label(section3, text=f'C_ID: {C_rows[j][0]}', anchor='w', bg='blue')
+                yui = tk.Label(section3,fg = sections_fg_colors, bg = sections_bg_colors, text=f'C_ID: {C_rows[j][0]}', anchor='w', bg='blue')
                 yui.place(relx=0.01, rely=y, relwidth=0.15, relheight=0.06)
-                yuw = tk.Label(section3, text=f'ROOM: {C_rows[j][1]}', anchor='w', bg='blue')
+                yuw = tk.Label(section3, fg = sections_fg_colors, bg = sections_bg_colors,text=f'ROOM: {C_rows[j][1]}', anchor='w', bg='blue')
                 yuw.place(relx=0.161, rely=y, relwidth=0.15, relheight=0.06)
-                yur = tk.Label(section3, text=f'S_Name:{S_row[0][1]} {S_row[0][2]} {S_row[0][3]}', anchor='w',
+                yur = tk.Label(section3, fg = sections_fg_colors, text=f'S_Name:{S_row[0][1]} {S_row[0][2]} {S_row[0][3]}', anchor='w',
                                bg='blue')
                 yur.place(relx=0.312, rely=y, relwidth=0.3, relheight=0.06)
                 if C_rows[j][3] == 'pending':
@@ -1391,9 +1391,9 @@ def solve_c(num):
     pass
 
 
-section2 = tk.LabelFrame(Complaints_frame, text="SEARCH", font='-family {Georgia} -size 12')
+section2 = tk.LabelFrame(Complaints_frame, fg = sections_fg_colors, bg = sections_bg_colors, text="SEARCH", font='-family {Georgia} -size 12')
 section2.place(relx=0.03, rely=0.36, relwidth=0.94, relheight=0.06)
-tk.Label(section2, text='Search', font='-family {Times New Roman} -size 12 -weight bold').place(relx=0.1, rely=0.1)
+tk.Label(section2, text='Search',fg = sections_fg_colors, bg = sections_bg_colors, font='-family {Times New Roman} -size 12 -weight bold').place(relx=0.1, rely=0.1)
 complaint_search = tk.IntVar()
 tk.Entry(section2, textvariable=complaint_search, font='-family {Times New Roman} -size 12 -weight bold').place(
     relx=0.16, rely=0.11, relwidth=0.17)
@@ -1405,24 +1405,24 @@ tk.Button(section2, text="Show", font='-family {Times New Roman} -size 10', comm
                                                                                                      rely=0.11,
                                                                                                      relwidth=0.08)
 
-section3 = tk.LabelFrame(Complaints_frame, text="", font='-family {Georgia} -size 12')
+section3 = tk.LabelFrame(Complaints_frame, fg = sections_fg_colors, bg = sections_bg_colors, text="", font='-family {Georgia} -size 12')
 section3.place(relx=0.03, rely=0.44, relwidth=0.94, relheight=0.55)
 
 # =========================== NOTICE_BOARD FRAME =======================================================================
 
-Notice_Board_frame = tk.Frame(root)
+Notice_Board_frame = tk.Frame(root, bg = sections_bg_colors,)
 Notice_Board_frame.place(relx=0.173, rely=0, relwidth=0.83, relheight=1)
 
-section_n1 = tk.LabelFrame(Notice_Board_frame, text="Message", font='-family {Georgia} -size 11')
+section_n1 = tk.LabelFrame(Notice_Board_frame, fg = sections_fg_colors, bg = sections_bg_colors, text="Message", font='-family {Georgia} -size 11')
 section_n1.place(relwidth=0.47, relheight=0.4, relx=0.031, rely=0.041)
 
-section_n2 = tk.LabelFrame(Notice_Board_frame, text="Preview", font='-family {Georgia} -size 11')
+section_n2 = tk.LabelFrame(Notice_Board_frame, fg = sections_fg_colors, bg = sections_bg_colors, text="Preview", font='-family {Georgia} -size 11')
 section_n2.place(relwidth=0.47, relheight=0.4, relx=0.51, rely=0.041)
 
-text_box_message = tk.Text(section_n1, height=12, width=40, wrap='word')
+text_box_message = tk.Text(section_n1, height=12, fg = sections_fg_colors, bg = sections_bg_colors, width=40, wrap='word')
 text_box_message.place(relwidth=1, relheight=1)
 
-text_box_preview = tk.Text(section_n2, height=12, width=40, wrap='word', state='disabled', bg='light blue')
+text_box_preview = tk.Text(section_n2, height=12,  width=40, fg = sections_fg_colors, bg = sections_bg_colors, wrap='word', state='disabled', bg='light blue')
 text_box_preview.place(relwidth=1, relheight=1)
 
 
@@ -1490,7 +1490,7 @@ tk.Button(section_n3, text='search', borderwidth=-4, activebackground='green', f
           font='-family {Consolas} -size 12 -weight bold', command=search_notice).place(relx=0.62, relwidth=0.06,
                                                                                         relheight=0.7, rely=0)
 
-section_n4 = tk.LabelFrame(Notice_Board_frame)
+section_n4 = tk.LabelFrame(Notice_Board_frame, fg = sections_fg_colors, bg = sections_bg_colors,)
 section_n4.place(relx=0.031, relwidth=0.944, relheight=0.3, rely=0.562)
 tree2 = ttk.Treeview(section_n4, columns=("c1", "c2", "c3"), show='headings')
 tree2.column("#1", anchor=tk.CENTER, width=90, minwidth=50)
