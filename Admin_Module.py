@@ -511,61 +511,61 @@ available_rooms_frame.place(relx=0.02, rely=0.3, relwidth=0.21, relheight=0.06)
 available_rooms_lable1 = tk.Label(available_rooms_frame, text="AVAILABLE ROOMS\n(number of rooms unoccupied)", fg=sections_fg_colors, bg=sections_bg_colors,
                                   anchor='center', font='-family {Times New Roman} -size 8 -weight bold')
 available_rooms_lable1.place(relwidth=0.6, relheight=1)
-available_rooms_lable2 = tk.Label(available_rooms_frame, text=f"{total_number_of_available_rooms}", anchor='center',
+available_rooms_lable2 = tk.Label(available_rooms_frame, text=f"{total_number_of_available_rooms}", anchor='center',  bg=sections_bg_colors,
                                   fg='#704214', font='-family {Courier New} -size 15 -weight bold -slant italic')
 available_rooms_lable2.place(relx=0.6, relwidth=0.4, relheight=1)
 
-male_Resident_frame = tk.Frame(Hostel_Status_frame)
+male_Resident_frame = tk.Frame(Hostel_Status_frame, bg=sections_bg_colors,)
 male_Resident_frame.place(relx=0.27, rely=0.3, relwidth=0.21, relheight=0.06)
-male_Resident_lable1 = tk.Label(male_Resident_frame, text="MALE AVAILABLE ROOMS\n(total available male rooms)",
+male_Resident_lable1 = tk.Label(male_Resident_frame, text="MALE AVAILABLE ROOMS\n(total available male rooms)", fg=sections_fg_colors, bg=sections_bg_colors,
                                 anchor='center', font='-family {Times New Roman} -size 8 -weight bold')
 male_Resident_lable1.place(relwidth=0.6, relheight=1)
-male_Resident_lable2 = tk.Label(male_Resident_frame, text=f"{total_number_of_male_available_rooms}", anchor='center',
+male_Resident_lable2 = tk.Label(male_Resident_frame, text=f"{total_number_of_male_available_rooms}", anchor='center',  bg=sections_bg_colors,
                                 fg='#704214', font='-family {Courier New} -size 15 -weight bold -slant italic')
 male_Resident_lable2.place(relx=0.6, relwidth=0.4, relheight=1)
 
-female_Resident_frame = tk.Frame(Hostel_Status_frame)
+female_Resident_frame = tk.Frame(Hostel_Status_frame,  bg=sections_bg_colors,)
 female_Resident_frame.place(relx=0.52, rely=0.3, relwidth=0.21, relheight=0.06)
-female_Resident_lable1 = tk.Label(female_Resident_frame, text="FEMALE AVAILABLE ROOMS\n(total available female rooms)",
+female_Resident_lable1 = tk.Label(female_Resident_frame, text="FEMALE AVAILABLE ROOMS\n(total available female rooms)", fg=sections_fg_colors, bg=sections_bg_colors,
                                   anchor='center', font='-family {Times New Roman} -size 8 -weight bold')
 female_Resident_lable1.place(relwidth=0.6, relheight=1)
-female_Resident_lable2 = tk.Label(female_Resident_frame, text=f"{total_number_of_female_available_rooms}",
+female_Resident_lable2 = tk.Label(female_Resident_frame, text=f"{total_number_of_female_available_rooms}",  bg=sections_bg_colors,
                                   anchor='center', fg='#704214',
                                   font='-family {Courier New} -size 15 -weight bold -slant italic')
 female_Resident_lable2.place(relx=0.6, relwidth=0.4, relheight=1)
 
-total_reservation_frame = tk.Frame(Hostel_Status_frame)
+total_reservation_frame = tk.Frame(Hostel_Status_frame , bg=sections_bg_colors,)
 total_reservation_frame.place(relx=0.02, rely=0.4, relwidth=0.21, relheight=0.06)
-total_reservation_lable1 = tk.Label(total_reservation_frame, text="TOTAL RESERVATION\n(total number of reservation)",
+total_reservation_lable1 = tk.Label(total_reservation_frame, text="TOTAL RESERVATION\n(total number of reservation)", fg=sections_fg_colors, bg=sections_bg_colors,
                                     anchor='center', font='-family {Times New Roman} -size 8 -weight bold')
 total_reservation_lable1.place(relwidth=0.6, relheight=1)
 
 
-male_room_reservation_frame = tk.Frame(Hostel_Status_frame)
+male_room_reservation_frame = tk.Frame(Hostel_Status_frame, bg=sections_bg_colors,)
 male_room_reservation_frame.place(relx=0.27, rely=0.4, relwidth=0.21, relheight=0.06)
-male_room_reservation_lable1 = tk.Label(male_room_reservation_frame, text="MALE RESERVATION\n(male rooms reserved)",
+male_room_reservation_lable1 = tk.Label(male_room_reservation_frame, text="MALE RESERVATION\n(male rooms reserved)", fg=sections_fg_colors, bg=sections_bg_colors,
                                         anchor='center', font='-family {Times New Roman} -size 8 -weight bold')
 male_room_reservation_lable1.place(relwidth=0.6, relheight=1)
 
 
-female_room_reservation_frame = tk.Frame(Hostel_Status_frame)
+female_room_reservation_frame = tk.Frame(Hostel_Status_frame,  bg=sections_bg_colors,)
 female_room_reservation_frame.place(relx=0.52, rely=0.4, relwidth=0.21, relheight=0.06)
 female_room_reservation_lable1 = tk.Label(female_room_reservation_frame,
-                                          text="FEMALE RESERVATION\n(female rooms reserved)", fg='#410200',
+                                          text="FEMALE RESERVATION\n(female rooms reserved)", fg='#410200',  bg=sections_bg_colors,
                                           anchor='center', font='-family {Times New Roman} -size 8 -weight bold')
 female_room_reservation_lable1.place(relwidth=0.6, relheight=1)
 female_room_reservation_lable2 = tk.Label(female_room_reservation_frame,
-                                          text=f"total_number_of_female__rooms_reserved", anchor='center',
+                                          text=f"total_number_of_female__rooms_reserved", anchor='center',  bg=sections_bg_colors,
                                           fg='#704214',
                                           font='-family {Courier New} -size 15 -weight bold -slant italic')
 female_room_reservation_lable2.place(relx=0.6, relwidth=0.4, relheight=1)
 
-total_staff_frame = tk.Frame(Hostel_Status_frame)
+total_staff_frame = tk.Frame(Hostel_Status_frame,  bg=sections_bg_colors,)
 total_staff_frame.place(relx=0.77, rely=0.1, relwidth=0.21, relheight=0.06)
 total_staff_lable1 = tk.Label(total_staff_frame, text="TOTAL STAFF\n(number of staff employed)", anchor='center',
                               font='-family {Times New Roman} -size 8 -weight bold')
 total_staff_lable1.place(relwidth=0.6, relheight=1)
-total_staff_lable2 = tk.Label(total_staff_frame, text=f"total_staff", anchor='center', fg='#704214',
+total_staff_lable2 = tk.Label(total_staff_frame, text=f"total_staff", anchor='center', fg='#704214', fg=sections_fg_colors, bg=sections_bg_colors,
                               font='-family {Courier New} -size 15 -weight bold -slant italic')
 total_staff_lable2.place(relx=0.6, relwidth=0.4, relheight=1)
 
