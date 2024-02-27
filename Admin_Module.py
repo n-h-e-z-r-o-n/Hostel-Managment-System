@@ -807,23 +807,24 @@ def reserve_room(f_name, s_name, l_name, d_birth, s_gender, s_phone, s_email, ye
 
         elif (s_gender != 'female') or (s_gender != 'Female') or (s_gender != 'male') or (s_gender != 'Male'):
             messagebox.showwarning("ERROR", "Gender Specification either male or female")
-            stut1 = tk.Label(Reserve_Room_frame, text='✗ ERROR:\n\n Student Gender !', bg='#BA0021', fg='white',  font='-family {Georgia}  -size 10 -slant italic')
-            stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
-            stut1.after(3100, lambda: stut1.place_forget())
+            gender_error = tk.Label(Reserve_Room_frame, text='✗ ERROR:\n\n Student Gender !', bg='#BA0021', fg='white',  font='-family {Georgia}  -size 10 -slant italic')
+            gender_error.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
+            gender_error.after(3100, lambda: gender_error.place_forget())
+            return
 
     if s_phone == 0:
-        stut1 = tk.Label(Reserve_Room_frame, text='✗ ERROR:\n\n Student Phone Number', bg='#BA0021', fg='white',  font='-family {Georgia}  -size 10 -slant italic')
-        stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
-        stut1.after(3100, lambda: stut1.place_forget())
+        s_phone_error = tk.Label(Reserve_Room_frame, text='✗ ERROR:\n\n Student Phone Number', bg='#BA0021', fg='white',  font='-family {Georgia}  -size 10 -slant italic')
+        s_phone_error.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
+        s_phone_error.after(3100, lambda: s_phone_error.place_forget())
         return
 
     if s_email != '':
             print('valid s email')
     else:
         messagebox.showwarning("ERROR", "No Email Provided")
-        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n No Student Email Provided', bg='#BA0021', fg='white', font='-family {Georgia}  -size 10 -slant italic')
-        stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
-        stut1.after(3100, lambda: stut1.place_forget())
+        s_email_error = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n No Student Email Provided', bg='#BA0021', fg='white', font='-family {Georgia}  -size 10 -slant italic')
+        s_email_error.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
+        s_email_error.after(3100, lambda: s_email_error.place_forget())
         return
 
     sssdtoday = ty.today()
@@ -831,15 +832,15 @@ def reserve_room(f_name, s_name, l_name, d_birth, s_gender, s_phone, s_email, ye
     age = db / 365
     if d_birth != sssdtoday:
         if d_birth > sssdtoday:
-            stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Date of Birth Erro', bg='#BA0021', fg='white',  font='-family {Georgia}  -size 10 -slant italic')
-            stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
-            stut1.after(3100, lambda: stut1.place_forget())
+            d_birth_error = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Date of Birth Erro', bg='#BA0021', fg='white',  font='-family {Georgia}  -size 10 -slant italic')
+            d_birth_error.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
+            d_birth_error.after(3100, lambda: d_birth_error.place_forget())
             return
         if age < 17:
             print(age)
-            stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Age is Less Than 17', bg='#BA0021', fg='white', font='-family {Georgia}  -size 10 -slant italic')
-            stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
-            stut1.after(3100, lambda: stut1.place_forget())
+            age_error = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Age is Less Than 17', bg='#BA0021', fg='white', font='-family {Georgia}  -size 10 -slant italic')
+            age_error.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
+            age_error.after(3100, lambda: age_error.place_forget())
             return
     else:
         stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Select Age', bg='#BA0021', fg='white', font='-family {Georgia}  -size 10 -slant italic')

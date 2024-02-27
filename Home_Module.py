@@ -83,7 +83,7 @@ except mysql.connector.Error as err:
                                     student_id INT AUTO_INCREMENT PRIMARY KEY,
                                     first_name VARCHAR(255),
                                     second_name VARCHAR(255),
-                                    lasrt_name VARCHAR(255),
+                                    last_name VARCHAR(255),
                                     date_of_birth DATE,
                                     gender VARCHAR(255),
                                     phone_no VARCHAR(255),
