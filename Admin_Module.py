@@ -899,7 +899,7 @@ def reserve_room(f_name, s_name, l_name, d_birth, s_gender, s_phone, s_email, ye
         print("accepted")
         mycursor.execute("SELECT * FROM hostel.room where room_type = %s and room_status='not occupied' and room_condition = 'good'", [room_ty])
         r_output = mycursor.fetchall()
-        print(r_output)
+        print("rooms", r_output)
         if r_output != []:
             room_number = r_output[0][2]
             room_id = r_output[0][0]
@@ -964,6 +964,10 @@ def reserve_room(f_name, s_name, l_name, d_birth, s_gender, s_phone, s_email, ye
                     stut34 = tk.Label(Reserve_Room_frame, text=' Email Not sent', bg='green', fg='#6B4423', font='-family {Georgia}  -size 14 -slant italic')
                     stut34.place(relx=0.7, rely=0.08, relwidth=0.25, relheight=0.07)
                     stut34.after(4100, lambda: stut34.place_forget())
+        else:
+            stut1 = tk.Label(Reserve_Room_frame, text=' ERROR \nNo avaliable roomes, all roomes are ocupied ', bg='red', fg='#6B4423', font='-family {Georgia}  -size 8 -slant italic')
+            stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.07)
+            stut1.after(3000, lambda: stut1.place_forget())
     else:
         stut1 = tk.Label(Reserve_Room_frame, text=' ERROR \n Student already in the database', bg='red', fg='#6B4423', font='-family {Georgia}  -size 8 -slant italic')
         stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.07)
