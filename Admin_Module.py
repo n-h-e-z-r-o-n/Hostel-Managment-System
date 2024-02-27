@@ -1144,44 +1144,44 @@ tk.Button(Rooms_frame, text='⌕ SEARCH', borderwidth=2, command=lambda: search(
                                                                                                         relheight=0.027,
                                                                                                         relwidth=0.0741)
 
-room_number_lable1 = tk.Label(Rooms_frame, text='Room number', font='-family {Times New Roman} -size 12 ',      fg = sections_fg_colors, bg = sections_bg_colors,)
+room_number_lable1 = tk.Label(Rooms_frame, text='Room number', font='-family {Times New Roman} -size 12 ',      fg = sections_fg_colors, bg = sections_bg_colors)
 room_number_lable1.place(relx=0.03, rely=0.13, relheight=0.03)
-room_number_lable2 = tk.Label(Rooms_frame, text='', fg='green', font='-family {Courier New} -size 11 -weight bold', bg = sections_bg_colors,)
+room_number_lable2 = tk.Label(Rooms_frame, text='', fg='green', font='-family {Courier New} -size 11 -weight bold', bg = sections_bg_colors)
 room_number_lable2.place(relx=0.15, rely=0.13, relheight=0.03)
 
-room_id_lable1 = tk.Label(Rooms_frame, text='Room id ', font='-family {Times New Roman} -size 12 ')
+room_id_lable1 = tk.Label(Rooms_frame, text='Room id ', font='-family {Times New Roman} -size 12 ',    fg = sections_fg_colors, bg = sections_bg_colors)
 room_id_lable1.place(relx=0.03, rely=0.18, relheight=0.03)
-room_id_lable2 = tk.Label(Rooms_frame, text='', fg='green', font='-family {Courier New} -size 11 -weight bold')
+room_id_lable2 = tk.Label(Rooms_frame, text='', fg='green', font='-family {Courier New} -size 11 -weight bold',   bg = sections_bg_colors)
 room_id_lable2.place(relx=0.15, rely=0.18, relheight=0.03)
 
-room_type_lable1 = tk.Label(Rooms_frame, text='Room type ', font='-family {Times New Roman} -size 12 ')
+room_type_lable1 = tk.Label(Rooms_frame, text='Room type ', font='-family {Times New Roman} -size 12 ', fg = sections_fg_colors, bg = sections_bg_colors)
 room_type_lable1.place(relx=0.03, rely=0.23, relheight=0.03)
-room_type_lable2 = tk.Label(Rooms_frame, text='', fg='green', font='-family {Courier New} -size 11 -weight bold')
+room_type_lable2 = tk.Label(Rooms_frame, text='', fg='green', bg = sections_bg_colors, font='-family {Courier New} -size 11 -weight bold')
 room_type_lable2.place(relx=0.15, rely=0.23, relheight=0.03)
 
-room_price_lable1 = tk.Label(Rooms_frame, text='Room price ', font='-family {Times New Roman} -size 12 ')
+room_price_lable1 = tk.Label(Rooms_frame, text='Room price ', fg = sections_fg_colors, bg = sections_bg_colors, font='-family {Times New Roman} -size 12 ')
 room_price_lable1.place(relx=0.03, rely=0.28, relheight=0.03)
-room_price_lable2 = tk.Label(Rooms_frame, text='', fg='green', font='-family {Courier New} -size 11 -weight bold')
+room_price_lable2 = tk.Label(Rooms_frame, text='', fg='green', bg = sections_bg_colors, font='-family {Courier New} -size 11 -weight bold')
 room_price_lable2.place(relx=0.15, rely=0.28, relheight=0.03)
 
-room_status_lable1 = tk.Label(Rooms_frame, text='Room status', font='-family {Times New Roman} -size 12 ')
+room_status_lable1 = tk.Label(Rooms_frame, text='Room status', fg = sections_fg_colors, bg = sections_bg_colors,font='-family {Times New Roman} -size 12 ')
 room_status_lable1.place(relx=0.03, rely=0.33, relheight=0.03)
-room_status_lable2 = tk.Label(Rooms_frame, text='', fg='green', font='-family {Courier New} -size 11 -weight bold')
+room_status_lable2 = tk.Label(Rooms_frame, text='', fg='green', bg = sections_bg_colors, font='-family {Courier New} -size 11 -weight bold')
 room_status_lable2.place(relx=0.15, rely=0.33, relheight=0.03)
 
-room_condition_lable1 = tk.Label(Rooms_frame, text='Room condition ', font='-family {Times New Roman} -size 12 ')
+room_condition_lable1 = tk.Label(Rooms_frame, text='Room condition ', fg = sections_fg_colors, bg = sections_bg_colors, font='-family {Times New Roman} -size 12 ')
 room_condition_lable1.place(relx=0.03, rely=0.38, relheight=0.03)
-room_condition_lable2 = tk.Label(Rooms_frame, text='', fg='green', font='-family {Courier New} -size 11 -weight bold')
+room_condition_lable2 = tk.Label(Rooms_frame, text='', fg='green',  bg = sections_bg_colors,font='-family {Courier New} -size 11 -weight bold')
 room_condition_lable2.place(relx=0.15, rely=0.38, relheight=0.03)
 
-room_total_beds_lable1 = tk.Label(Rooms_frame, text='total beds', font='-family {Times New Roman} -size 12 ')
+room_total_beds_lable1 = tk.Label(Rooms_frame, text='total beds', fg = sections_fg_colors, bg = sections_bg_colors,font='-family {Times New Roman} -size 12 ')
 room_total_beds_lable1.place(relx=0.03, rely=0.43, relheight=0.03)
-room_total_beds_lable2 = tk.Label(Rooms_frame, text='', fg='green', font='-family {Courier New} -size 11 -weight bold')
+room_total_beds_lable2 = tk.Label(Rooms_frame, text='', fg='green',  bg = sections_bg_colors, font='-family {Courier New} -size 11 -weight bold')
 room_total_beds_lable2.place(relx=0.15, rely=0.43, relheight=0.03)
 
-room_description_lable1 = tk.Label(Rooms_frame, text='room_description', font='-family {Times New Roman} -size 12 ')
+room_description_lable1 = tk.Label(Rooms_frame, text='room_description', fg = sections_fg_colors, bg = sections_bg_colors, font='-family {Times New Roman} -size 12 ')
 room_description_lable1.place(relx=0.03, rely=0.48, relheight=0.03)
-room_description_lable2 = tk.Label(Rooms_frame, text='', fg='green', font='-family {Courier New} -size 11 -weight bold')
+room_description_lable2 = tk.Label(Rooms_frame, text='', fg='green',  bg = sections_bg_colors, font='-family {Courier New} -size 11 -weight bold')
 room_description_lable2.place(relx=0.15, rely=0.48)
 
 
