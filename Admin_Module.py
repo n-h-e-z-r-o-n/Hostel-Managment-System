@@ -965,7 +965,7 @@ def reserve_room(f_name, s_name, l_name, d_birth, s_gender, s_phone, s_email, ye
                     stut34.place(relx=0.7, rely=0.08, relwidth=0.25, relheight=0.07)
                     stut34.after(4100, lambda: stut34.place_forget())
         else:
-            stut1 = tk.Label(Reserve_Room_frame, text=' ERROR \nNo avaliable roomes, all roomes are ocupied ', bg='red', fg='#6B4423', font='-family {Georgia}  -size 8 -slant italic')
+            stut1 = tk.Label(Reserve_Room_frame, text=' ERROR \n No avaliable rooms, all rooms are occupied ', bg='red', fg='#6B4423', font='-family {Georgia}  -size 8 -slant italic')
             stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.07)
             stut1.after(3000, lambda: stut1.place_forget())
     else:
