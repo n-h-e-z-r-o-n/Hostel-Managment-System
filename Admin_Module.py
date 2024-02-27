@@ -565,34 +565,34 @@ total_staff_frame.place(relx=0.77, rely=0.1, relwidth=0.21, relheight=0.06)
 total_staff_lable1 = tk.Label(total_staff_frame, text="TOTAL STAFF\n(number of staff employed)", anchor='center',
                               font='-family {Times New Roman} -size 8 -weight bold')
 total_staff_lable1.place(relwidth=0.6, relheight=1)
-total_staff_lable2 = tk.Label(total_staff_frame, text=f"total_staff", anchor='center', fg='#704214', fg=sections_fg_colors, bg=sections_bg_colors,
+total_staff_lable2 = tk.Label(total_staff_frame, text=f"total_staff", anchor='center', fg='#704214', bg=sections_bg_colors,
                               font='-family {Courier New} -size 15 -weight bold -slant italic')
 total_staff_lable2.place(relx=0.6, relwidth=0.4, relheight=1)
 
-blank_frame = tk.Frame(Hostel_Status_frame)
+blank_frame = tk.Frame(Hostel_Status_frame,  bg=sections_bg_colors,)
 blank_frame.place(relx=0.77, rely=0.2, relwidth=0.21, relheight=0.06)
-blank_lable1 = tk.Label(blank_frame, text="blank\n()", anchor='center',
+blank_lable1 = tk.Label(blank_frame, text="blank\n()", anchor='center', fg=sections_fg_colors, bg=sections_bg_colors,
                         font='-family {Times New Roman} -size 8 -weight bold')
 blank_lable1.place(relwidth=0.6, relheight=1)
-blank_lable2 = tk.Label(blank_frame, fg='blue', text="1000", anchor='center',
+blank_lable2 = tk.Label(blank_frame, fg='blue', text="1000", anchor='center', bg=sections_bg_colors,
                         font='-family {Courier New} -size 10 -weight bold')
 blank_lable2.place(relx=0.6, relwidth=0.4, relheight=1)
 
-blank1_frame = tk.Frame(Hostel_Status_frame)
+blank1_frame = tk.Frame(Hostel_Status_frame,  bg=sections_bg_colors,)
 blank1_frame.place(relx=0.77, rely=0.3, relwidth=0.21, relheight=0.06)
-blank1_lable1 = tk.Label(blank1_frame, text="blank\n()", anchor='center',
+blank1_lable1 = tk.Label(blank1_frame, text="blank\n()", anchor='center', fg=sections_fg_colors, bg=sections_bg_colors,
                          font='-family {Times New Roman} -size 8 -weight bold')
 blank1_lable1.place(relwidth=0.6, relheight=1)
-blank1_lable2 = tk.Label(blank1_frame, text="1000", anchor='center', fg='#704214',
+blank1_lable2 = tk.Label(blank1_frame, text="1000", anchor='center', fg='#704214',  bg=sections_bg_colors,
                          font='-family {Courier New} -size 15 -weight bold -slant italic')
 blank1_lable2.place(relx=0.6, relwidth=0.4, relheight=1)
 
-blank1_frame = tk.Frame(Hostel_Status_frame)
+blank1_frame = tk.Frame(Hostel_Status_frame,  bg=sections_bg_colors,)
 blank1_frame.place(relx=0.77, rely=0.4, relwidth=0.21, relheight=0.06)
-blank1_lable1 = tk.Label(blank1_frame, text="blank\n()", anchor='center',
+blank1_lable1 = tk.Label(blank1_frame, text="blank\n()", anchor='center', fg=sections_fg_colors, bg=sections_bg_colors,
                          font='-family {Times New Roman} -size 8 -weight bold')
 blank1_lable1.place(relwidth=0.6, relheight=1)
-blank1_lable2 = tk.Label(blank1_frame, fg='blue', text="1000", anchor='center',
+blank1_lable2 = tk.Label(blank1_frame, fg='blue', text="1000", anchor='center', bg=sections_bg_colors,
                          font='-family {Courier New} -size 10 -weight bold')
 blank1_lable2.place(relx=0.6, relwidth=0.4, relheight=1)
 
