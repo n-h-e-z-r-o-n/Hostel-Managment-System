@@ -186,11 +186,11 @@ except:
 
 tk.Label(profile_frame, text=f'{db_full_Name}', fg=sections_fg_colors, borderwidth=0, bg=sections_bg_colors,
          font='-family {Georgia} -size 11 -weight bold').place(relx=0.244, rely=0.05)
-tk.Label(profile_frame, text=f' {db_email}  -  Administrator',fg=sections_fg_colors, borderwidth=0, bg='white',
+tk.Label(profile_frame, text=f' {db_email}  -  Administrator',fg=sections_fg_colors, bg=sections_bg_colors, borderwidth=0, bg='white',
          font='-family {Georgia} -size 11 -weight bold').place(relx=0.24, rely=0.1)
 
 # -------------
-basic_info = tk.Label(profile_frame, text='Basic Information', anchor='w', fg=sections_fg_colors,bg=sections_bg_colors, borderwidth=10,
+basic_info = tk.Label(profile_frame, text='Basic Information', anchor='w', fg=sections_fg_colors, bg=sections_bg_colors, borderwidth=10,
                       font='-family {Georgia} -size 13 -weight bold')
 basic_info.place(relx=0.04, rely=0.22)
 basic_info_frame = tk.Frame(profile_frame, bg=sections_bg_colors)
@@ -239,28 +239,28 @@ tk.Label(update_Profile_frame, text='Change Username :', anchor='w', borderwidth
 t12 = tk.Entry(update_Profile_frame, textvariable=change_username, borderwidth=1, fg=sections_fg_colors,   bg=sections_bg_colors,
                font='-family {Georgia} -size 12 -slant italic')
 t12.place(relx=0.41, rely=0, relwidth=0.54, relheight=0.13)
-changeOnHover(t12, '#D0F0C0', 'white')
+changeOnHover(t12, '#D0F0C0', sections_bg_colors)
 
 tk.Label(update_Profile_frame, text='Change Password :', anchor='w', fg=sections_fg_colors, bg=sections_bg_colors, borderwidth=0,
          font='-family {Georgia} -size 10 -weight bold').place(relx=0.01, rely=0.16, relwidth=0.4, relheight=0.13)
 t13 = tk.Entry(update_Profile_frame, show="*", textvariable=change_password, fg=sections_fg_colors,  bg=sections_bg_colors, borderwidth=1,
                font='-family {Georgia} -size 12 -slant italic')
 t13.place(relx=0.41, rely=0.16, relwidth=0.54, relheight=0.13)
-changeOnHover(t13, '#D0F0C0', 'white')
+changeOnHover(t13, '#D0F0C0', sections_bg_colors)
 
 tk.Label(update_Profile_frame, text='Change Phone NO :', anchor='w', fg=sections_fg_colors, bg=sections_bg_colors, borderwidth=0,
          font='-family {Georgia} -size 10 -weight bold').place(relx=0.01, rely=0.32, relwidth=0.4, relheight=0.13)
 t14 = tk.Entry(update_Profile_frame, textvariable=change_Phone_no, fg=sections_fg_colors, bg=sections_bg_colors, borderwidth=1,
                font='-family {Georgia} -size 12 -slant italic')
 t14.place(relx=0.41, rely=0.32, relwidth=0.54, relheight=0.13)
-changeOnHover(t14, '#D0F0C0', 'white')
+changeOnHover(t14, '#D0F0C0', sections_bg_colors)
 
 tk.Label(update_Profile_frame, text='Change Email :', anchor='w', fg=sections_fg_colors,  bg=sections_bg_colors, borderwidth=0,
          font='-family {Georgia} -size 10 -weight bold').place(relx=0.01, rely=0.48, relwidth=0.4, relheight=0.13)
 t15 = tk.Entry(update_Profile_frame, textvariable=change_Email, fg=sections_fg_colors, bg=sections_bg_colors, borderwidth=1,
                font='-family {Georgia} -size 12 -slant italic')
 t15.place(relx=0.41, rely=0.48, relwidth=0.54, relheight=0.13)
-changeOnHover(t15, '#D0F0C0', 'white')
+changeOnHover(t15, '#D0F0C0', sections_bg_colors)
 
 global filepath
 filepath = None
