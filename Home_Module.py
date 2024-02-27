@@ -5,6 +5,8 @@ from tkinter import messagebox
 from PIL import Image, ImageTk  # for image processing
 import json
 import threading
+import subprocess
+
 # ---------------------- creating a connection to the database.---------------------------------------------------------
 import mysql.connector
 
@@ -360,13 +362,15 @@ def Login_function(username, password):
                 with open("SessionInfo.json", "w") as outfile:
                     outfile.write(json_object)
 
-                import subprocess
-                cmd = 'python StudentPage.py'
-                p = subprocess.Popen(cmd, shell=True)
-                out, err = p.communicate()
-                print(err)
-                print(out)
+                def student_page_call():
+                    cmd = 'python StudentPage.py'
+                    p = subprocess.Popen(cmd, shell=True)
+                    out, err = p.communicate()
+                    print(err)
+                    print(out)
 
+                threading.Thread(target=student_page_call)
+                
             if myresult[0][3] == 'admin':
                 mycursor.execute("SELECT * FROM hostel.admins WHERE user_id = %s;", [user_id])
                 fetg = mycursor.fetchall()
@@ -384,13 +388,14 @@ def Login_function(username, password):
                 with open("SessionInfo.json", "w") as outfile:
                     outfile.write(json_object)
 
+                def Admin_page_call():
+                    cmd = 'python Admin_Module.py'
+                    p = subprocess.Popen(cmd, shell=True)
+                    out, err = p.communicate()
+                    print(err)
+                    print(out)
 
-                cmd = 'python Admin_Module.py'
-                p = subprocess.Popen(cmd, shell=True)
-                out, err = p.communicate()
-                print(err)
-                print(out)
-
+                threading.Thread(target=Admin_page_call)
 
 username = tk.StringVar()
 password = tk.StringVar()
