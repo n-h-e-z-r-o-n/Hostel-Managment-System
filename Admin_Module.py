@@ -1315,7 +1315,7 @@ changeOnHover(room_bt_repot, '#8A9A5B', side_bar_frame_bg_button_color)
 
 
 # =========================== COMPLAINTS FRAME =========================================================================
-Complaints_frame = tk.Frame(root, f bg = sections_bg_colors,)
+Complaints_frame = tk.Frame(root, bg = sections_bg_colors,)
 Complaints_frame.place(relx=0.173, rely=0, relwidth=0.83, relheight=1)
 
 section1 = tk.LabelFrame(Complaints_frame, fg = sections_fg_colors, bg = sections_bg_colors, text="Complants list", font='-family {Georgia} -size 12')
@@ -1370,9 +1370,9 @@ def search_c(num):
             while j > -1:
                 mycursor.execute("SELECT * FROM hostel.student where student_id = %s ;", [C_rows[j][1]])
                 S_row = mycursor.fetchall()
-                yui = tk.Label(section3,fg = sections_fg_colors, bg = sections_bg_colors, text=f'C_ID: {C_rows[j][0]}', anchor='w', bg='blue')
+                yui = tk.Label(section3,fg = sections_fg_colors,  text=f'C_ID: {C_rows[j][0]}', anchor='w', bg='blue')
                 yui.place(relx=0.01, rely=y, relwidth=0.15, relheight=0.06)
-                yuw = tk.Label(section3, fg = sections_fg_colors, bg = sections_bg_colors,text=f'ROOM: {C_rows[j][1]}', anchor='w', bg='blue')
+                yuw = tk.Label(section3, fg = sections_fg_colors,text=f'ROOM: {C_rows[j][1]}', anchor='w', bg='blue')
                 yuw.place(relx=0.161, rely=y, relwidth=0.15, relheight=0.06)
                 yur = tk.Label(section3, fg = sections_fg_colors, text=f'S_Name:{S_row[0][1]} {S_row[0][2]} {S_row[0][3]}', anchor='w',
                                bg='blue')
@@ -1422,7 +1422,7 @@ section_n2.place(relwidth=0.47, relheight=0.4, relx=0.51, rely=0.041)
 text_box_message = tk.Text(section_n1, height=12, fg = sections_fg_colors, bg = sections_bg_colors, width=40, wrap='word')
 text_box_message.place(relwidth=1, relheight=1)
 
-text_box_preview = tk.Text(section_n2, height=12,  width=40, fg = sections_fg_colors, bg = sections_bg_colors, wrap='word', state='disabled', bg='light blue')
+text_box_preview = tk.Text(section_n2, height=12,  width=40, fg = sections_fg_colors,  wrap='word', state='disabled', bg='light blue')
 text_box_preview.place(relwidth=1, relheight=1)
 
 
@@ -1557,10 +1557,10 @@ visitor()
 
 # =========================== TRANSACTION FRAME ========================================================================
 
-Transaction_frame = tk.Frame(root, bg='white', bg = sections_bg_colors,)
+Transaction_frame = tk.Frame(root,  bg = sections_bg_colors,)
 Transaction_frame.place(relx=0.173, rely=0, relwidth=0.83, relheight=1)
 
-section_T1 = tk.LabelFrame(Transaction_frame, fg = sections_fg_colors, bg = sections_bg_colors, text='STUDENT TRANSACTION LOG', bg='white')
+section_T1 = tk.LabelFrame(Transaction_frame, fg = sections_fg_colors, bg = sections_bg_colors, text='STUDENT TRANSACTION LOG')
 section_T1.place(relx=0.025, rely=0.02, relheight=0.3, relwidth=0.95)
 
 Tr_log_tree = ttk.Treeview(section_T1, columns=("c1", "c2", "c3", "c4", "c5", 'c6', 'c7'), show='headings')
@@ -1599,14 +1599,14 @@ def student_trans(num):
                 def confirm_tans():
                     mycursor.execute("UPDATE  hostel.payment set Payment_status ='complete' WHERE Payment_id = %s ;", [pay_id])
                     mydb.commit()
-                    ky = tk.Label(yu, fg = sections_fg_colors, bg = sections_bg_colors, text='transaction confirmed successfully', bg='#FFE4C4', fg='#2E8B57', font='-family {Forte} -size 17')
+                    ky = tk.Label(yu,  text='transaction confirmed successfully', bg='#FFE4C4', fg='#2E8B57', font='-family {Forte} -size 17')
                     ky.place(relx=0.5, rely=0.5, relwidth=0.5,relheight=0.18)
                     ky.after(4000, lambda : ky.place_forget())
 
                 def reject_tans():
                     mycursor.execute("UPDATE  hostel.payment set Payment_status ='rejected' WHERE Payment_id = %s ;", [pay_id])
                     mydb.commit()
-                    ky = tk.Label(yu,  fg = sections_fg_colors, bg = sections_bg_colors, text='transaction rejected successfully', bg='#FFE4C4', fg='red',font='-family {Forte} -size 17')
+                    ky = tk.Label(yu,  text='transaction rejected successfully', bg='#FFE4C4', fg='red',font='-family {Forte} -size 17')
                     ky.place(relx=0.5, rely=0.5, relwidth=0.5, relheight=0.18)
                     ky.after(4000, lambda: ky.place_forget())
                 def close_f():
@@ -1683,7 +1683,7 @@ def student_trans(num):
         i = i - 1
 
 serch_var = tk.IntVar()
-tk.Label(section_T2, text='STUDENT ID', anchor='w', font='-family {Consolas} -size 10 -weight bold').place(relx=0.01, rely=0.02, relheight=0.05,relwidth=0.1)
+tk.Label(section_T2, text='STUDENT ID', fg = sections_fg_colors, bg = sections_bg_colors, anchor='w', font='-family {Consolas} -size 10 -weight bold').place(relx=0.01, rely=0.02, relheight=0.05,relwidth=0.1)
 tk.Entry(section_T2, bg='gray', textvariable=serch_var).place(relx=0.115, rely=0.02, relheight=0.05, relwidth=0.12)
 tk.Button(section_T2, text='search',  borderwidth=0, command=lambda :student_trans(serch_var.get())).place(relx=0.24, rely=0.02, relheight=0.05, relwidth=0.06)
 
