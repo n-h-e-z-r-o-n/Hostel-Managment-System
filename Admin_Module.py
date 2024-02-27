@@ -6,6 +6,17 @@ import base64
 import io
 import json
 import smtplib
+import subprocess
+
+# --------------------------------------- UI color settings --------------------------------------------------------
+
+side_bar_frame_bg_color = '#654321' # sidebar background color
+side_bar_frame_fg_color = 'white'   # sidebar text color
+side_bar_bt_hover_color = '#C2B280'
+
+sections_bg_colors = 'white'
+sections_fg_colors = "black"
+# --------------------------------------------------------------------------------------------------------------------
 # Create an instance of tkinter frame
 root = tk.Tk()
 root.state('zoomed')
@@ -74,8 +85,7 @@ def show_frame_OnHover(frame, colorOnHover, colorOnLeave):
 
 
 # ================================== Side Bar Frame ====================================================================
-side_bar_frame_bg_color = '#654321'
-side_bar_frame_fg_color = 'white'
+
 side_bar_frame = tk.Frame(root, bg=side_bar_frame_bg_color)
 side_bar_frame.place(relwidth=0.17, relheight=1)
 
@@ -98,48 +108,48 @@ profile_BT = tk.Button(side_bar_frame, bg=side_bar_frame_bg_button_color, foregr
                        text='⍜ Profile', anchor='w', borderwidth=0, font='-family {Consolas} -size 11',
                        command=lambda: frame_changer(profile_frame))
 profile_BT.place(rely=0.1, relx=0, relwidth=1, relheight=0.03)
-changeOnHover(profile_BT, '#C2B280', side_bar_frame_bg_button_color)
+changeOnHover(profile_BT, side_bar_bt_hover_color, side_bar_frame_bg_button_color)
 
 Hostel_Status_BT = tk.Button(side_bar_frame, bg=side_bar_frame_bg_button_color,foreground=side_bar_frame_fg_button_color, text='⌘ Hostel Status', anchor='w',borderwidth=0, font='-family {Consolas} -size 11',command=lambda: frame_changer(Hostel_Status_frame))
 Hostel_Status_BT.place(rely=0.135, relx=0, relwidth=1, relheight=0.03)
-changeOnHover(Hostel_Status_BT, '#C2B280', side_bar_frame_bg_button_color)
+changeOnHover(Hostel_Status_BT, side_bar_bt_hover_color, side_bar_frame_bg_button_color)
 
 Reserve_Room_BT = tk.Button(side_bar_frame, bg=side_bar_frame_bg_button_color, foreground=side_bar_frame_fg_button_color, text='⍗ Reserve', anchor='w', borderwidth=0,font='-family {Consolas} -size 11', command=lambda: frame_changer(Reserve_Room_frame))
 Reserve_Room_BT.place(relx=0, rely=0.17, relwidth=1, relheight=0.03)
-changeOnHover(Reserve_Room_BT, '#C2B280', side_bar_frame_bg_button_color)
+changeOnHover(Reserve_Room_BT, side_bar_bt_hover_color, side_bar_frame_bg_button_color)
 
 Deallocate_BT = tk.Button(side_bar_frame, bg=side_bar_frame_bg_button_color, foreground=side_bar_frame_fg_button_color, text='Ω Deallocate Room', anchor='w', borderwidth=0, font='-family {Consolas} -size 11', command=lambda: frame_changer(Deallocate_frame))
 Deallocate_BT.place(relx=0, rely=0.205, relwidth=1, relheight=0.03)
-changeOnHover(Deallocate_BT, '#C2B280', side_bar_frame_bg_button_color)
+changeOnHover(Deallocate_BT, side_bar_bt_hover_color, side_bar_frame_bg_button_color)
 
 Rooms_BT = tk.Button(side_bar_frame, bg=side_bar_frame_bg_button_color, foreground=side_bar_frame_fg_button_color, text='∷ Rooms', anchor='w', borderwidth=0, font='-family {Consolas} -size 11', command=lambda: frame_changer(Rooms_frame))
 Rooms_BT.place(relx=0, rely=0.24, relwidth=1, relheight=0.03)
-changeOnHover(Rooms_BT, '#C2B280', side_bar_frame_bg_button_color)
+changeOnHover(Rooms_BT, side_bar_bt_hover_color, side_bar_frame_bg_button_color)
 
 Reports_BT = tk.Button(side_bar_frame, bg=side_bar_frame_bg_button_color, foreground=side_bar_frame_fg_button_color, text='⊛ Reports', anchor='w', borderwidth=0, font='-family {Consolas} -size 11',command=lambda: frame_changer(Reports_frame))
 Reports_BT.place(relx=0, rely=0.275, relwidth=1, relheight=0.03)
-changeOnHover(Reports_BT, '#C2B280', side_bar_frame_bg_button_color)
+changeOnHover(Reports_BT, side_bar_bt_hover_color, side_bar_frame_bg_button_color)
 
 Complaints_BT = tk.Button(side_bar_frame, bg=side_bar_frame_bg_button_color, foreground=side_bar_frame_fg_button_color,text='⌭ Complaints', anchor='w', borderwidth=0, font='-family {Consolas} -size 11', command=lambda: frame_changer(Complaints_frame))
 Complaints_BT.place(relx=0, rely=0.31, relwidth=1, relheight=0.03)
-changeOnHover(Complaints_BT, '#C2B280', side_bar_frame_bg_button_color)
+changeOnHover(Complaints_BT, side_bar_bt_hover_color, side_bar_frame_bg_button_color)
 
 Notice_Board_BT = tk.Button(side_bar_frame, bg=side_bar_frame_bg_button_color, foreground=side_bar_frame_fg_button_color, text='⌨ Notice Board', anchor='w', borderwidth=0,font='-family {Consolas} -size 11', command=lambda: frame_changer(Notice_Board_frame))
 Notice_Board_BT.place(relx=0, rely=0.345, relwidth=1, relheight=0.03)
-changeOnHover(Notice_Board_BT, '#C2B280', side_bar_frame_bg_button_color)
+changeOnHover(Notice_Board_BT, side_bar_bt_hover_color, side_bar_frame_bg_button_color)
 
 Visitor_log_BT = tk.Button(side_bar_frame, bg=side_bar_frame_bg_button_color, foreground=side_bar_frame_fg_button_color, text='⍝ Visitor log', anchor='w', borderwidth=0, font='-family {Consolas} -size 11', command=lambda: frame_changer(Visitor_log_frame))
 Visitor_log_BT.place(relx=0, rely=0.38, relwidth=1, relheight=0.03)
-changeOnHover(Visitor_log_BT, '#C2B280', side_bar_frame_bg_button_color)
+changeOnHover(Visitor_log_BT, side_bar_bt_hover_color, side_bar_frame_bg_button_color)
 
 Transaction_BT = tk.Button(side_bar_frame, bg=side_bar_frame_bg_button_color, foreground=side_bar_frame_fg_button_color, text='〶 Transaction log', anchor='w', borderwidth=0, font='-family {Consolas} -size 11', command=lambda: frame_changer(Transaction_frame))
 Transaction_BT. place(relx=0, rely=0.415, relwidth=1, relheight=0.03)
-changeOnHover(Transaction_BT, '#C2B280', side_bar_frame_bg_button_color)
+changeOnHover(Transaction_BT, side_bar_bt_hover_color, side_bar_frame_bg_button_color)
 
 log_out_bt = tk.Button(side_bar_frame, bg=side_bar_frame_bg_button_color, foreground=side_bar_frame_fg_button_color, text='✘ Exit', anchor='w', borderwidth=0, font='-family {Consolas} -size 11', command=lambda: Exit_program())
 log_out_bt.place(relx=0, rely=0.585, relwidth=1, relheight=0.03)
-changeOnHover(log_out_bt, '#C04000', side_bar_frame_bg_button_color)
-import subprocess
+changeOnHover(log_out_bt, side_bar_bt_hover_color, side_bar_frame_bg_button_color)
+
 
 
 def restart_g():
@@ -155,66 +165,67 @@ def restart_g():
 restart_bt = tk.Button(side_bar_frame, fg='white', bg=side_bar_frame_bg_button_color, text="⟳ Restart", borderwidth=0,
                        anchor='w', font='-family {Cambria} -size 13', command=restart_g)
 restart_bt.place(rely=0.63, relwidth=1, relheight=0.03)
-changeOnHover(restart_bt, '#1C352D', side_bar_frame_bg_button_color)
+changeOnHover(restart_bt, side_bar_bt_hover_color, side_bar_frame_bg_button_color)
 
 # ================================ Frame ===============================================================================
-# ------------------------------- PROFILE FRAME ------------------------------------------------------------------
-profile_frame = tk.Frame(root, bg='white')
+# ------------------------------- PROFILE FRAME ------------------------------------------------------------------------
+profile_frame = tk.Frame(root, bg=sections_bg_colors)
 profile_frame.place(relx=0.173, rely=0, relwidth=0.83, relheight=1)
 
-profil_photo_frame = tk.Frame(profile_frame, bg='black')
+profil_photo_frame = tk.Frame(profile_frame, bg=sections_bg_colors)
 profil_photo_frame.place(relx=0.04, rely=0.05, relwidth=0.16, relheight=0.16)
 try:
     binary_data = base64.b64decode(db_image)  # Decode the string
     profile_image = Image.open(io.BytesIO(binary_data))  # Convert the bytes into a PIL image
     Resized_image = profile_image.resize((204, 160), Image.ANTIALIAS)
     new_image = ImageTk.PhotoImage(Resized_image)
-    tk.Label(profil_photo_frame, image=new_image, bg='black', border=0, justify='center').place(relx=0, rely=0, relwidth=1, relheight=1)
+    tk.Label(profil_photo_frame, image=new_image, bg=sections_bg_colors, border=0, justify='center').place(relx=0, rely=0, relwidth=1, relheight=1)
 except:
-    tk.Label(profil_photo_frame, bg='black', border=0, justify='center').place(relx=0, rely=0, relwidth=1, relheight=1)
+    tk.Label(profil_photo_frame, bg=sections_bg_colors, border=0, justify='center').place(relx=0, rely=0, relwidth=1, relheight=1)
 
 
-tk.Label(profile_frame, text=f'{db_full_Name}', borderwidth=0, bg='white',
+tk.Label(profile_frame, text=f'{db_full_Name}', fg=sections_fg_colors, borderwidth=0, bg=sections_bg_colors,
          font='-family {Georgia} -size 11 -weight bold').place(relx=0.244, rely=0.05)
-tk.Label(profile_frame, text=f' {db_email}  -  Administrator', borderwidth=0, bg='white',
+tk.Label(profile_frame, text=f' {db_email}  -  Administrator',fg=sections_fg_colors, borderwidth=0, bg='white',
          font='-family {Georgia} -size 11 -weight bold').place(relx=0.24, rely=0.1)
 
 # -------------
-basic_info = tk.Label(profile_frame, text='Basic Information', anchor='w', bg='white', borderwidth=10,
+basic_info = tk.Label(profile_frame, text='Basic Information', anchor='w', fg=sections_fg_colors,bg=sections_bg_colors, borderwidth=10,
                       font='-family {Georgia} -size 13 -weight bold')
 basic_info.place(relx=0.04, rely=0.22)
-basic_info_frame = tk.Frame(profile_frame, bg='white')
+basic_info_frame = tk.Frame(profile_frame, bg=sections_bg_colors)
 basic_info_frame.place(relx=0.07, rely=0.26, relwidth=0.4, relheight=0.2)
 
-tk.Label(basic_info_frame, text='Full Name:', anchor='w', borderwidth=0, bg='white',
+tk.Label(basic_info_frame, text='Full Name:', anchor='w', borderwidth=0,fg=sections_fg_colors, bg=sections_bg_colors,
          font='-family {Georgia} -size 10 -weight bold').place(relx=0.0, rely=0, relwidth=0.37, relheight=0.17)
-tk.Label(basic_info_frame, text=f'{db_full_Name}', anchor='w', borderwidth=0, bg='white',
+tk.Label(basic_info_frame, text=f'{db_full_Name}', anchor='w', borderwidth=0, fg=sections_fg_colors, bg=sections_bg_colors,
          font='-family {Georgia} -size 10 -weight bold').place(relx=0.41, rely=0, relwidth=0.57, relheight=0.17)
 
-tk.Label(basic_info_frame, text='Email Address:', anchor='w', borderwidth=0, bg='white',
+tk.Label(basic_info_frame, text='Email Address:', anchor='w', borderwidth=0, fg=sections_fg_colors, bg=sections_bg_colors,
          font='-family {Georgia} -size 10 -weight bold').place(relx=0.0, rely=0.2, relwidth=0.37, relheight=0.17)
-tk.Label(basic_info_frame, anchor='w', borderwidth=0, text=db_email, bg='white',
+tk.Label(basic_info_frame, anchor='w', borderwidth=0, text=db_email, bg='white', fg=sections_fg_colors, bg=sections_bg_colors,
          font='-family {Georgia} -size 10 -weight bold').place(relx=0.41, rely=0.2, relwidth=0.57, relheight=0.17)
 
-tk.Label(basic_info_frame, text='Admin ID:', anchor='w', borderwidth=0, bg='white',
+tk.Label(basic_info_frame, text='Admin ID:', anchor='w', borderwidth=0, bg=sections_bg_colors, fg=sections_fg_colors,
          font='-family {Georgia} -size 10 -weight bold').place(relx=0.0, rely=0.4, relwidth=0.37, relheight=0.17)
-tk.Label(basic_info_frame, anchor='w', borderwidth=0, text=db_userid, bg='white',
+tk.Label(basic_info_frame, anchor='w', borderwidth=0, text=db_userid, bg=sections_bg_colors, fg=sections_fg_colors,
          font='-family {Georgia} -size 10 -weight bold').place(relx=0.41, rely=0.4, relwidth=0.57, relheight=0.17)
 
-tk.Label(basic_info_frame, text='Username:', anchor='w', borderwidth=0, bg='white',
+tk.Label(basic_info_frame, text='Username:', anchor='w', borderwidth=0, bg=sections_bg_colors, fg=sections_fg_colors,
          font='-family {Georgia} -size 10 -weight bold').place(relx=0.0, rely=0.6, relwidth=0.37, relheight=0.17)
-tk.Label(basic_info_frame, anchor='w', borderwidth=0, text=db_username, bg='white',
+tk.Label(basic_info_frame, anchor='w', borderwidth=0, text=db_username, bg=sections_bg_colors, fg=sections_fg_colors,
          font='-family {Georgia} -size 10 -weight bold').place(relx=0.41, rely=0.6, relwidth=0.57, relheight=0.17)
 
-tk.Label(basic_info_frame, text='Current Password:', anchor='w', borderwidth=0, bg='white',
+tk.Label(basic_info_frame, text='Current Password:', anchor='w', borderwidth=0, bg=sections_bg_colors, fg=sections_fg_colors,
          font='-family {Georgia} -size 10 -weight bold').place(relx=0.0, rely=0.8, relwidth=0.37, relheight=0.17)
-tk.Label(basic_info_frame, anchor='w', borderwidth=0, text=db_userpassword, bg='white',
+tk.Label(basic_info_frame, anchor='w', borderwidth=0, text=db_userpassword, bg=sections_bg_colors, fg=sections_fg_colors,
          font='-family {Georgia} -size 10 -weight bold').place(relx=0.41, rely=0.8, relwidth=0.57, relheight=0.17)
 
 # ----------------------
-tk.Label(profile_frame, text='Update Profile', anchor='w', bg='white', borderwidth=10,
+tk.Label(profile_frame, text='Update Profile', anchor='w', bg=sections_bg_colors, borderwidth=10, fg=sections_fg_colors,
          font='-family {Georgia} -size 13 -weight bold').place(relx=0.04, rely=0.5)
-update_Profile_frame = tk.Frame(profile_frame, bg='white')
+
+update_Profile_frame = tk.Frame(profile_frame, bg=sections_bg_colors)
 update_Profile_frame.place(relx=0.07, rely=0.54, relwidth=0.4, relheight=0.25)
 
 # store username  and password variables
@@ -223,30 +234,30 @@ change_password = tk.StringVar()
 change_Phone_no = tk.StringVar()
 change_Email = tk.StringVar()
 
-tk.Label(update_Profile_frame, text='Change Username :', anchor='w', borderwidth=0, bg='white',
+tk.Label(update_Profile_frame, text='Change Username :', anchor='w', borderwidth=0, bg=sections_bg_colors, fg=sections_fg_colors,
          font='-family {Georgia} -size 10 -weight bold').place(relx=0.01, rely=0, relwidth=0.4, relheight=0.13)
-t12 = tk.Entry(update_Profile_frame, textvariable=change_username, borderwidth=1,
+t12 = tk.Entry(update_Profile_frame, textvariable=change_username, borderwidth=1, fg=sections_fg_colors,   bg=sections_bg_colors,
                font='-family {Georgia} -size 12 -slant italic')
 t12.place(relx=0.41, rely=0, relwidth=0.54, relheight=0.13)
 changeOnHover(t12, '#D0F0C0', 'white')
 
-tk.Label(update_Profile_frame, text='Change Password :', anchor='w', bg='white', borderwidth=0,
+tk.Label(update_Profile_frame, text='Change Password :', anchor='w', fg=sections_fg_colors, bg=sections_bg_colors, borderwidth=0,
          font='-family {Georgia} -size 10 -weight bold').place(relx=0.01, rely=0.16, relwidth=0.4, relheight=0.13)
-t13 = tk.Entry(update_Profile_frame, show="*", textvariable=change_password, bg='white', borderwidth=1,
+t13 = tk.Entry(update_Profile_frame, show="*", textvariable=change_password, fg=sections_fg_colors,  bg=sections_bg_colors, borderwidth=1,
                font='-family {Georgia} -size 12 -slant italic')
 t13.place(relx=0.41, rely=0.16, relwidth=0.54, relheight=0.13)
 changeOnHover(t13, '#D0F0C0', 'white')
 
-tk.Label(update_Profile_frame, text='Change Phone NO :', anchor='w', bg='white', borderwidth=0,
+tk.Label(update_Profile_frame, text='Change Phone NO :', anchor='w', fg=sections_fg_colors, bg=sections_bg_colors, borderwidth=0,
          font='-family {Georgia} -size 10 -weight bold').place(relx=0.01, rely=0.32, relwidth=0.4, relheight=0.13)
-t14 = tk.Entry(update_Profile_frame, textvariable=change_Phone_no, bg='white', borderwidth=1,
+t14 = tk.Entry(update_Profile_frame, textvariable=change_Phone_no, fg=sections_fg_colors, bg=sections_bg_colors, borderwidth=1,
                font='-family {Georgia} -size 12 -slant italic')
 t14.place(relx=0.41, rely=0.32, relwidth=0.54, relheight=0.13)
 changeOnHover(t14, '#D0F0C0', 'white')
 
-tk.Label(update_Profile_frame, text='Change Email :', anchor='w', bg='white', borderwidth=0,
+tk.Label(update_Profile_frame, text='Change Email :', anchor='w', fg=sections_fg_colors,  bg=sections_bg_colors, borderwidth=0,
          font='-family {Georgia} -size 10 -weight bold').place(relx=0.01, rely=0.48, relwidth=0.4, relheight=0.13)
-t15 = tk.Entry(update_Profile_frame, textvariable=change_Email, bg='white', borderwidth=1,
+t15 = tk.Entry(update_Profile_frame, textvariable=change_Email, bg=sections_bg_colors, borderwidth=1,
                font='-family {Georgia} -size 12 -slant italic')
 t15.place(relx=0.41, rely=0.48, relwidth=0.54, relheight=0.13)
 changeOnHover(t15, '#D0F0C0', 'white')
@@ -268,11 +279,11 @@ def update_p_d(username, password, Phone, Email):
     if username != '':
         mycursor.execute("UPDATE hostel.users SET user_name=%s WHERE (user_id=%s);", (username, db_userid))
         mydb.commit()
-        tk.Label(log, text=f'log: username changed to: {username}', anchor='w', bg='white', fg='#004830',
+        tk.Label(log, text=f'log: username changed to: {username}', anchor='w', bg=sections_bg_colors, fg='#004830',
                  font='-family {Georgia} -size 10 -slant italic').place(relx=0, rely=y, relheight=0.11, relwidth=1)
     else:
         print('user blank')
-        tk.Label(log, text='log: no change username', anchor='w', bg='white', fg='red',
+        tk.Label(log, text='log: no change username', anchor='w', bg=sections_bg_colors, fg='red',
                  font='-family {Georgia} -size 10 -slant italic').place(relx=0, rely=y, relheight=0.11, relwidth=1)
 
     y = y + 0.12
@@ -283,30 +294,30 @@ def update_p_d(username, password, Phone, Email):
                  font='-family {Georgia} -size 10 -slant italic').place(relx=0, rely=y, relheight=0.11, relwidth=1)
     else:
         print('pass blank')
-        tk.Label(log, text='log: no change in password', anchor='w', bg='white', fg='red',
+        tk.Label(log, text='log: no change in password', anchor='w', bg=sections_bg_colors, fg='red',
                  font='-family {Georgia} -size 10 -slant italic').place(relx=0, rely=y, relheight=0.11, relwidth=1)
 
     y = y + 0.12
     if Phone != '':
         mycursor.execute("UPDATE hostel.admins SET phone_no=%s WHERE (admin_Id=%s);", (Phone, db_userid))
         mydb.commit()
-        tk.Label(log, text=f'log: Phone Number changed to: {Phone}', anchor='w', bg='white', fg='#004830',
+        tk.Label(log, text=f'log: Phone Number changed to: {Phone}', anchor='w', bg=sections_bg_colors, fg='#004830',
                  font='-family {Georgia} -size 10 -slant italic').place(relx=0, rely=y, relheight=0.11, relwidth=1)
 
     else:
         print('phone blank')
-        tk.Label(log, text='log: no change in phone number', anchor='w', bg='white', fg='red',
+        tk.Label(log, text='log: no change in phone number', anchor='w', bg=sections_bg_colors, fg='red',
                  font='-family {Georgia} -size 10 -slant italic').place(relx=0, rely=y, relheight=0.11, relwidth=1)
 
     y = y + 0.12
     if Email != '':
         mycursor.execute("UPDATE hostel.admins SET Email=%s WHERE (admin_Id=%s);", (Email, db_userid))
         mydb.commit()
-        tk.Label(log, text=f'log: Email changed to: {Email}', anchor='w', bg='white', fg='#004830',
+        tk.Label(log, text=f'log: Email changed to: {Email}', anchor='w', bg=sections_bg_colors, fg='#004830',
                  font='-family {Georgia} -size 10 -slant italic').place(relx=0, rely=y, relheight=0.11, relwidth=1)
     else:
         print('email blank')
-        tk.Label(log, text='log: no change in email', anchor='w', bg='white', fg='red',
+        tk.Label(log, text='log: no change in email', anchor='w', bg=sections_bg_colors, fg='red',
                  font='-family {Georgia} -size 10 -slant italic').place(relx=0, rely=y, relheight=0.11, relwidth=1)
 
     y = y + 0.12
@@ -320,14 +331,14 @@ def update_p_d(username, password, Phone, Email):
             # Execute the query and commit the database.
             mycursor.execute('UPDATE hostel.users SET user_image = %s WHERE user_id = %s', [file, db_userid])
             mydb.commit()
-            tk.Label(log, text=f'log: Email changed to: {filepath}', anchor='w', bg='white', fg='#004830',
+            tk.Label(log, text=f'log: Photo changed changed to: {filepath}', anchor='w', bg=sections_bg_colors, fg='#004830',
                      font='-family {Georgia} -size 10 -slant italic').place(relx=0, rely=y, relheight=0.11, relwidth=1)
         except:
-            tk.Label(log, text=f'log: wrong profile photo file path', anchor='w', bg='white', fg='#A67B50',
+            tk.Label(log, text=f'log: wrong profile photo file path', anchor='w', bg=sections_bg_colors, fg='#A67B50',
                      font='-family {Georgia} -size 10 -slant italic').place(relx=0, rely=y, relheight=0.11, relwidth=1)
 
     else:
-        tk.Label(log, text='log: no change in profile photo', anchor='w', bg='white', fg='red',
+        tk.Label(log, text='log: no change in profile photo', anchor='w', bg=sections_bg_colors, fg='red',
                  font='-family {Georgia} -size 10 -slant italic').place(relx=0, rely=y, relheight=0.11, relwidth=1)
 
 
@@ -339,7 +350,7 @@ def clear_p_entry():
     log.place_forget()
 
 
-tk.Label(update_Profile_frame, text='Change Profile :', anchor='w', bg='white', borderwidth=0,
+tk.Label(update_Profile_frame, text='Change Profile :', anchor='w', bg=sections_bg_colors, borderwidth=0,
          font='-family {Georgia} -size 10 -weight bold').place(relx=0.01, rely=0.64, relwidth=0.4, relheight=0.13)
 t16 = tk.Button(update_Profile_frame, text="Change Your Profile", bg='white', borderwidth=1,
                 font='-family {Georgia} -size 12 -slant italic', command=profile_update_photo)
@@ -357,7 +368,7 @@ update_profile = tk.Button(update_Profile_frame, text="UPDATE", borderwidth=0, b
 update_profile.place(relx=0.5, rely=0.8, relwidth=0.3, relheight=0.17)
 changeOnHover(update_profile, '#D1BEA8', 'light gray')
 
-log = tk.Frame(profile_frame, bg='white')
+log = tk.Frame(profile_frame, bg=sections_bg_colors)
 
 # ------------------------HOSTEL STATUS FRAME --------------------------------------------------------------------------
 
@@ -726,11 +737,11 @@ title_lable3.place(relx=0.45, rely=0.36, relwidth=0.31, relheight=0.04)
 Room_Type_lable = tk.Label(Reserve_Room_frame, text="ROOM TYPE", anchor='w', borderwidth=0,
                            font='-family {Georgia} -size 10 -weight bold')
 Room_Type_lable.place(relx=0.45, rely=0.41, relwidth=0.1, relheight=0.04)
-tk.Radiobutton(Reserve_Room_frame, text='Twin Room', width=25, value='twin', variable=room_type, anchor='w').place(
+tk.Radiobutton(Reserve_Room_frame, text='Twin Room', width=25, value='Twin Room', variable=room_type, anchor='w').place(
     relx=0.56, rely=0.41, relwidth=0.09, relheight=0.04)
-tk.Radiobutton(Reserve_Room_frame, text='Single Room', width=25, value='single', variable=room_type, anchor='w').place(
+tk.Radiobutton(Reserve_Room_frame, text='Single Room', width=25, value='Single Room', variable=room_type, anchor='w').place(
     relx=0.645, rely=0.41, relwidth=0.09, relheight=0.04)
-tk.Radiobutton(Reserve_Room_frame, text='Premium Room', width=25, value='Premium', variable=room_type,
+tk.Radiobutton(Reserve_Room_frame, text='Premium Room', width=25, value='Premium Room', variable=room_type,
                anchor='w').place(relx=0.73, rely=0.41, relwidth=0.1, relheight=0.04)
 changeOnHover(first_name_entry, '#D0F0C0', "#F0EAD2")
 
@@ -755,16 +766,17 @@ def Clear_reservation():
     Parent_second_name_entry.delete(0, tk.END)
     Parent_Phone_no_entry.delete(0, tk.END)
     Parent_Email_name_entry.delete(0, tk.END)
+    Room_no_entry.config(text="number")
 
 
 save_reservation = tk.Button(Reserve_Room_frame, text="SAVE", activebackground="Green", activeforeground="white",
                              bg='#937A62', borderwidth=1, font='-family {Courier New}  -size 10 -weight bold',
                              command=lambda: reserve_room(student_first_name.get(), student_second_name.get(),
                                                           student_last_name.get(), cal_date_of_birth.get_date(),
-                                                          student_gender.get(), student_phone_number.get(),
+                                                          student_gender.get(), int(student_phone_number.get()),
                                                           student_email.get(), year_of_study.get(), institution.get(),
                                                           student_natinal_id.get(), parent_first_name.get(),
-                                                          parent_second_name.get(), parent_phone_no.get(),
+                                                          parent_second_name.get(), int(parent_phone_no.get()),
                                                           parent_email.get(), room_type.get()))
 save_reservation.place(relx=0.5, rely=0.9, relwidth=0.09, relheight=0.037)
 
@@ -899,6 +911,7 @@ def reserve_room(f_name, s_name, l_name, d_birth, s_gender, s_phone, s_email, ye
         print("accepted")
         mycursor.execute("SELECT * FROM hostel.room where room_type = %s and room_status='not occupied' and room_condition = 'good'", [room_ty])
         r_output = mycursor.fetchall()
+        print(room_ty)
         print("rooms", r_output)
         if r_output != []:
             room_number = r_output[0][2]
@@ -926,9 +939,18 @@ def reserve_room(f_name, s_name, l_name, d_birth, s_gender, s_phone, s_email, ye
             mycursor.execute(spr1, var1)
             mydb.commit()
 
-            stut34 = tk.Label(Reserve_Room_frame, text='✔ Successfuly Reserved', bg='green', fg='#6B4423', font='-family {Georgia}  -size 14 -slant italic')
-            stut34.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.07)
-            stut34.after(4100, lambda: stut34.place_forget())
+            Room_no_entry.config(text=f"{room_number}")
+
+            Reserved_success = tk.Label(Reserve_Room_frame, text='✔ Successfuly Reserved', bg='green', fg='#6B4423', font='-family {Georgia}  -size 14 -slant italic')
+            Reserved_success.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.07)
+            Reserved_success.after(4100, lambda: Reserved_success.place_forget())
+
+            show_password = tk.Label(Reserve_Room_frame, text=f"USER DEFAULT USERNAME: {user_name} \nUSER DEFAULT PASSWORD: {pass_word}", fg='green',  anchor='w', borderwidth=0, font='-family {Georgia} -size 10 -weight bold')
+            show_password.place(relx=0.45, rely=0.52, relwidth=0.4, relheight=0.09)
+            show_password.after(70000, lambda: Reserved_success.destroy())
+
+
+
 
             try:
                     sender_add = 'hostelmanagmentq@gmail.com'
@@ -957,21 +979,21 @@ def reserve_room(f_name, s_name, l_name, d_birth, s_gender, s_phone, s_email, ye
                     print('Successfully the mail is sent')
                     smtp_server.quit()
 
-                    stut34 = tk.Label(Reserve_Room_frame, text='✔ ChecK Your Email For Password', bg='green', fg='#6B4423', font='-family {Georgia}  -size 14 -slant italic')
-                    stut34.place(relx=0.7, rely=0.08, relwidth=0.25, relheight=0.07)
-                    stut34.after(4100, lambda: stut34.place_forget())
+                    ChecK_conform = tk.Label(Reserve_Room_frame, text='✔ ChecK Your Email For Password', bg='green', fg='#6B4423', font='-family {Georgia}  -size 14 -slant italic')
+                    ChecK_conform.place(relx=0.7, rely=0.08, relwidth=0.25, relheight=0.07)
+                    ChecK_conform.after(4100, lambda: ChecK_conform.place_forget())
             except:
-                    stut34 = tk.Label(Reserve_Room_frame, text=' Email Not sent', bg='green', fg='#6B4423', font='-family {Georgia}  -size 14 -slant italic')
-                    stut34.place(relx=0.7, rely=0.08, relwidth=0.25, relheight=0.07)
-                    stut34.after(4100, lambda: stut34.place_forget())
+                    Email_error = tk.Label(Reserve_Room_frame, text=' Email Not sent', bg='green', fg='#6B4423', font='-family {Georgia}  -size 14 -slant italic')
+                    Email_error.place(relx=0.7, rely=0.18, relwidth=0.25, relheight=0.07)
+                    Email_error.after(4100, lambda: Email_error.place_forget())
         else:
-            stut1 = tk.Label(Reserve_Room_frame, text=' ERROR \n No avaliable rooms, all rooms are occupied ', bg='red', fg='#6B4423', font='-family {Georgia}  -size 8 -slant italic')
-            stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.07)
-            stut1.after(3000, lambda: stut1.place_forget())
+            No_avaliable_rooms_errors = tk.Label(Reserve_Room_frame, text='No avaliable rooms\nall rooms are occupied ', bg='red', fg='#6B4423', font='-family {Georgia}  -size 8 -slant italic')
+            No_avaliable_rooms_errors.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.07)
+            No_avaliable_rooms_errors.after(3000, lambda: No_avaliable_rooms_errors.place_forget())
     else:
-        stut1 = tk.Label(Reserve_Room_frame, text=' ERROR \n Student already in the database', bg='red', fg='#6B4423', font='-family {Georgia}  -size 8 -slant italic')
-        stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.07)
-        stut1.after(3000, lambda: stut1.place_forget())
+        student_already_error = tk.Label(Reserve_Room_frame, text=' ERROR \n Student already in the database', bg='red', fg='#6B4423', font='-family {Georgia}  -size 8 -slant italic')
+        student_already_error.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.07)
+        student_already_error.after(3000, lambda: student_already_error.place_forget())
 
 
 # ====================================  Deallocate FRAME ======================================================================
