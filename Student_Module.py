@@ -5,11 +5,13 @@ import base64
 import io
 import subprocess
 import json
+import threading
+import mysql.connector
 # Create an instance of tkinter frame
 root = tk.Tk()
 root.state('zoomed')
 root.minsize(1050, 800)
-
+session_user_id = None
 
 # ============================ Functions ==============================================================================
 def frame_changer(frame):
@@ -20,10 +22,33 @@ def changeOnHover(button, colorOnHover, colorOnLeave):
     button.bind("<Leave>", func=lambda e: button.config(background=colorOnLeave))
 
 def restart_g():
+    def restart_instance():
+        try:
+            cmd = 'python Student_Module.py'
+            p = subprocess.Popen(cmd, shell=True)
+            out, err = p.communicate()
+            print(err)
+            print(out)
+        except Exception as e:
+            pass
+
+    threading.Thread(target=restart_instance).start()
     root.destroy()
-    cmd = 'python StudentPage.py'
-    p = subprocess.Popen(cmd, shell=True)
-    out, err = p.communicate()
+
+def Exit_program():
+    mycursor.execute("UPDATE hostel.log_rept SET logout_time = CURTIME() WHERE Log_id = %s;", [log_id])
+    mydb.commit()
+    def open_Home_instance():
+        cmd = 'python Home_Module.py'
+        p = subprocess.Popen(cmd, shell=True)
+        out, err = p.communicate()
+        print(err)
+        print(out)
+
+    threading.Thread(target=open_Home_instance).start()
+    root.destroy()
+
+# =====================================================================================================================================================================
 
 side_bar_color = '#317873'
 side_frame = tk.Frame(root, bg=side_bar_color)
@@ -53,10 +78,6 @@ sb6 = tk.Button(side_frame, fg='white',bg=side_bar_color, text="✆ Make Payment
 sb6.place(rely=0.4, relwidth=1, relheight=0.03)
 changeOnHover(sb6, '#9DC183', side_bar_color)
 
-def Exit_program():
-    mycursor.execute("UPDATE hostel.log_rept SET logout_time = CURTIME() WHERE Log_id = %s;", [log_id])
-    mydb.commit()
-    root.destroy()
 
 sb7 = tk.Button(side_frame, fg='white',bg=side_bar_color, text="⌭ Exit", activeforeground='red',borderwidth=0, anchor='w',font='-family {Cambria} -size 13', command=lambda : Exit_program())
 sb7.place(rely=0.5, relwidth=1, relheight=0.03)
@@ -66,21 +87,36 @@ sb7 = tk.Button(side_frame, fg='white',bg=side_bar_color, text="⟳ Restart", ac
 sb7.place(rely=0.55, relwidth=1, relheight=0.03)
 changeOnHover(sb7, '#1C352D', side_bar_color)
 
-import mysql.connector
 
-mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="12hezron12",
-    database="hostel"
-)
-mycursor = mydb.cursor()
 
-with open('SessionInfo.json', 'r') as openfile:
-    # Reading from json file
-    json_object = json.load(openfile)
-session_user_id = json_object['session_id']
-log_id =  json_object['log_id']
+try:
+    mydb = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="12hezron12",
+        database="hostel"
+    )
+    mycursor = mydb.cursor()
+except:
+    cmd = 'python Home_Module.py'
+    p = subprocess.Popen(cmd, shell=True)
+    out, err = p.communicate()
+    print(err)
+    print(out)
+    root.destroy()
+try:
+    with open('SessionInfo.json', 'r') as openfile:
+        # Reading from json file
+        json_object = json.load(openfile)
+    session_user_id = json_object['session_id']
+    log_id =  json_object['log_id']
+except:
+    cmd = 'python Home_Module.py'
+    p = subprocess.Popen(cmd, shell=True)
+    out, err = p.communicate()
+    print(err)
+    print(out)
+    root.destroy()
 
 mycursor.execute("select * from users where user_id = %s", [session_user_id])
 output = mycursor.fetchall()
@@ -93,8 +129,16 @@ db_image = output[0][4]
 mycursor.execute("SELECT * FROM hostel.student WHERE user_id = %s ;", [db_userid])
 output = mycursor.fetchall()
 
+try:
+    student_id = output[0][0]
+except:
+    cmd = 'python Home_Module.py'
+    p = subprocess.Popen(cmd, shell=True)
+    out, err = p.communicate()
+    print(err)
+    print(out)
+    root.destroy()
 
-student_id = output[0][0]
 first_name = output[0][1]
 second_name = output[0][2]
 last_name = output[0][3]
@@ -612,8 +656,12 @@ def prev():
         notice_date.config(text=notice_output[i][2])
         return
     i = i + 1
-date_n = notice_output[i][2]
-message_n = notice_output[i][1]
+try:
+    date_n = notice_output[i][2]
+    message_n = notice_output[i][1]
+except:
+    date_n = ''
+    message_n = ''
 
 notice_frame_1 = tk.Frame(notice_board_frame, bg='#343434', padx=9, pady=9)
 notice_frame_1.place(relx=0.1, rely=0.05, relheight=0.8, relwidth=0.6)

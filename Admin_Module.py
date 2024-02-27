@@ -28,22 +28,43 @@ root.config(bg='black')
 # root.overrideredirect(True)#Make the window borderless
 root.rowconfigure(0, weight=1)  # make our frame expand along with the window
 root.columnconfigure(0, weight=1)  # make our frame expand along with the window
+session_user_id = None
+
+
 # ---------------------- creating a connection to the database.---------------------------------------------------------
 import mysql.connector
 
-mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="12hezron12",
-    database="hostel"
-)
-mycursor = mydb.cursor()
+try:
+    mydb = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="12hezron12",
+        database="hostel"
+    )
+    mycursor = mydb.cursor()
 
-with open('SessionInfo.json', 'r') as openfile:
-    json_object = json.load(openfile)
-session_user_id = json_object['session_id']
-log_id =  json_object['log_id']
-print("log_id:", log_id)
+except:
+    cmd = 'python Home_Module.py'
+    p = subprocess.Popen(cmd, shell=True)
+    out, err = p.communicate()
+    print(err)
+    print(out)
+    root.destroy()
+
+try:
+    with open('SessionInfo.json', 'r') as openfile:
+        json_object = json.load(openfile)
+    session_user_id = json_object['session_id']
+    log_id =  json_object['log_id']
+    print("log_id:", log_id)
+except:
+    cmd = 'python Home_Module.py'
+    p = subprocess.Popen(cmd, shell=True)
+    out, err = p.communicate()
+    print(err)
+    print(out)
+    root.destroy()
+
 mycursor.execute("select * from users where user_id = %s", [session_user_id])
 
 
@@ -55,7 +76,17 @@ db_userrole = output[0][3]
 db_image = output[0][4]
 mycursor.execute("select * from hostel.admins where user_id=%s", [db_userid])
 admin_out = mycursor.fetchall()
-db_full_Name = admin_out[0][1]
+
+try:
+    db_full_Name = admin_out[0][1]
+except:
+    cmd = 'python Home_Module.py'
+    p = subprocess.Popen(cmd, shell=True)
+    out, err = p.communicate()
+    print(err)
+    print(out)
+    root.destroy()
+
 db_phone_number = admin_out[0][2]
 db_email = admin_out[0][3]
 
@@ -67,36 +98,32 @@ def frame_changer(frame):
 def Exit_program():
     mycursor.execute("UPDATE hostel.log_rept SET logout_time = CURTIME() WHERE Log_id = %s;", [log_id])
     mydb.commit()
-
-
-    cmd = 'python Home_Module.py'
-    p = subprocess.Popen(cmd, shell=True)
-    out, err = p.communicate()
-    print(err)
-    print(out)
-
-    threading.Thread(target=Home_page_call).start()
-    root.destroy()
-
-def restart_g():
-    def open_instance():
+    def open_Home_instance():
         cmd = 'python Home_Module.py'
         p = subprocess.Popen(cmd, shell=True)
         out, err = p.communicate()
         print(err)
         print(out)
 
+    threading.Thread(target=open_Home_instance).start()
+    root.destroy()
 
-    threading.Thread(target=open_instance).start()
+def restart_g():
+    def restart_instance():
+        try:
+            cmd = 'python Admin_Module.py'
+            p = subprocess.Popen(cmd, shell=True)
+            out, err = p.communicate()
+            print(err)
+            print(out)
+        except:
+            pass
 
-    cmd = 'python AdminPage.py'
-    p = subprocess.Popen(cmd, shell=True)
-    out, err = p.communicate()
-    messagebox.showwarning("student portal", 'error while resterting')
-    print(out)
-    print(err)
+    threading.Thread(target=restart_instance).start()
+    root.destroy()
 
-    
+
+
 
 
 def changeOnHover(button, colorOnHover, colorOnLeave):
@@ -113,7 +140,7 @@ def show_frame_OnHover(frame, colorOnHover, colorOnLeave):
     # background color on leving widget
     frame.bind("<Leave>", func=lambda e: frame.config(background=colorOnLeave))
 
- def Home_page_call():
+def Home_page_call():
         cmd = 'python Home_Module.py'
         p = subprocess.Popen(cmd, shell=True)
         out, err = p.communicate()
@@ -209,7 +236,7 @@ profil_photo_frame.place(relx=0.04, rely=0.05, relwidth=0.16, relheight=0.16)
 try:
     binary_data = base64.b64decode(db_image)  # Decode the string
     profile_image = Image.open(io.BytesIO(binary_data))  # Convert the bytes into a PIL image
-    Resized_image = profile_image.resize((204, 160), Image.ANTIALIAS)
+    Resized_image = profile_image.resize((204, 160), Image.LANCZOS)
     new_image = ImageTk.PhotoImage(Resized_image)
     tk.Label(profil_photo_frame, image=new_image, bg=sections_bg_colors, border=0, justify='center').place(relx=0, rely=0, relwidth=1, relheight=1)
 except:

@@ -222,6 +222,16 @@ except mysql.connector.Error as err:
             mydb.commit()
 
 
+
+            mycursor.execute(f"""
+            CREATE TABLE {database_name}.hostel_stay (
+                  student_id INT NULL,
+                  check_in DATE NULL,
+                  check_out DATE NULL
+                  );
+            """)
+            mydb.commit()
+
             mydb.close()
             print(f"Database '{database_name}' has been created...Please restart the application")
             exit()
@@ -361,13 +371,14 @@ def Login_function(username, password):
                     outfile.write(json_object)
 
                 def student_page_call():
-                    cmd = 'python StudentPage.py'
+                    cmd = 'python Student_Module.py'
                     p = subprocess.Popen(cmd, shell=True)
                     out, err = p.communicate()
                     print(err)
                     print(out)
 
                 threading.Thread(target=student_page_call).start()
+                root.destroy()
 
             if myresult[0][3] == 'admin':
                 mycursor.execute("SELECT * FROM hostel.admins WHERE user_id = %s;", [user_id])
