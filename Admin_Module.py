@@ -878,23 +878,25 @@ def reserve_room(f_name, s_name, l_name, d_birth, s_gender, s_phone, s_email, ye
         return
 
     if p_email != '':
-            print('Valid Parent Email')
+            pass
+
     else:
-        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n No Parent Email Provided', bg='#BA0021', fg='white', font='-family {Georgia}  -size 10 -slant italic')
-        stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
-        stut1.after(3100, lambda: stut1.place_forget())
+        p_email_error = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n No Parent Email Provided', bg='#BA0021', fg='white', font='-family {Georgia}  -size 10 -slant italic')
+        p_email_error.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
+        p_email_error.after(3100, lambda: p_email_error.place_forget())
         return
 
     if p_phone_no == 0:
-        stut1 = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Parent Phone Number', bg='#BA0021', fg='white', font='-family {Georgia}  -size 10 -slant italic')
-        stut1.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
-        stut1.after(3100, lambda: stut1.place_forget())
+        p_phone_no_error = tk.Label(Reserve_Room_frame, text='✗ Error:\n\n Parent Phone Number', bg='#BA0021', fg='white', font='-family {Georgia}  -size 10 -slant italic')
+        p_phone_no_error.place(relx=0.7, rely=0.04, relwidth=0.25, relheight=0.09)
+        p_phone_no_error.after(3100, lambda: p_phone_no_error.place_forget())
         return
 
     mycursor.execute( "SELECT * FROM hostel.student where  first_name = %s and second_name =  %s and last_name = %s and gender = %s and phone_no = %s and email_id = %s;", (f_name, s_name, l_name, s_gender, s_phone, s_email))
     check_inf = mycursor.fetchall()
     print(check_inf)
     if check_inf == []:
+        
         mycursor.execute("SELECT * FROM hostel.room where room_type = %s and room_status='not occupied' and room_condition = 'good'", [room_ty])
         r_output = mycursor.fetchall()
         if r_output != []:
