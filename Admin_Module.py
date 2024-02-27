@@ -1456,18 +1456,18 @@ def delete():
     text_box_preview.config(state='disabled')
 
 
-tk.Button(Notice_Board_frame, text='PREVIEW',  fg = sections_fg_colors, bg = sections_bg_colors, command=pre_view, activeforeground='white',
+tk.Button(Notice_Board_frame, text='PREVIEW',  fg = sections_fg_colors, bg = sections_bg_colors, command=pre_view, activeforeground=sections_fg_colors,
           activebackground='light green', borderwidth=4, font='-family {Consolas} -size 9 -weight bold').place(relx=0.4,
                                                                                                                relwidth=0.07,
                                                                                                                rely=0.452)
-tk.Button(Notice_Board_frame, text='POST', command=post, activeforeground='white', activebackground='green',
+tk.Button(Notice_Board_frame, text='POST',  fg = sections_fg_colors, bg = sections_bg_colors, command=post, activeforeground=sections_fg_colors, activebackground='green',
           borderwidth=4, font='-family {Consolas} -size 9 -weight bold').place(relx=0.26, relwidth=0.07, rely=0.452)
-tk.Button(Notice_Board_frame, text='CLEAR', command=delete, activeforeground='white', activebackground='red',
+tk.Button(Notice_Board_frame, text='CLEAR', fg = sections_fg_colors, bg = sections_bg_colors,  command=delete, activeforeground=sections_fg_colors, activebackground='red',
           borderwidth=4, font='-family {Consolas} -size 9 -weight bold').place(relx=0.56, relwidth=0.07, rely=0.452)
 
-section_n3 = tk.LabelFrame(Notice_Board_frame, text="Search")
+section_n3 = tk.LabelFrame(Notice_Board_frame, text="Search",  fg = sections_fg_colors, bg = sections_bg_colors)
 section_n3.place(relx=0.031, relwidth=0.944, relheight=0.06, rely=0.49)
-tk.Label(section_n3, text='DATE', borderwidth=0, font='-family {Georgia} -size 12 -weight bold').place(relx=0.25,
+tk.Label(section_n3, text='DATE',  fg = sections_fg_colors, bg = sections_bg_colors, borderwidth=0, font='-family {Georgia} -size 12 -weight bold').place(relx=0.25,
                                                                                                        relwidth=0.1,
                                                                                                        relheight=0.7,
                                                                                                        rely=0)
@@ -1486,7 +1486,7 @@ def search_notice():
 
 cal_date = DateEntry(section_n3)
 cal_date.place(relx=0.36, relwidth=0.25, relheight=0.7, rely=0)
-tk.Button(section_n3, text='search', borderwidth=-4, activebackground='green', foreground='Green',
+tk.Button(section_n3, text='search',  fg = sections_fg_colors, bg = sections_bg_colors, borderwidth=-4, activebackground='green', foreground='Green',
           font='-family {Consolas} -size 12 -weight bold', command=search_notice).place(relx=0.62, relwidth=0.06,
                                                                                         relheight=0.7, rely=0)
 
