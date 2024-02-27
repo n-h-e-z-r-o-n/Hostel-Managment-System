@@ -174,6 +174,7 @@ profile_frame.place(relx=0.173, rely=0, relwidth=0.83, relheight=1)
 
 profil_photo_frame = tk.Frame(profile_frame, bg=sections_bg_colors)
 profil_photo_frame.place(relx=0.04, rely=0.05, relwidth=0.16, relheight=0.16)
+
 try:
     binary_data = base64.b64decode(db_image)  # Decode the string
     profile_image = Image.open(io.BytesIO(binary_data))  # Convert the bytes into a PIL image
@@ -186,7 +187,7 @@ except:
 
 tk.Label(profile_frame, text=f'{db_full_Name}', fg=sections_fg_colors, borderwidth=0, bg=sections_bg_colors,
          font='-family {Georgia} -size 11 -weight bold').place(relx=0.244, rely=0.05)
-tk.Label(profile_frame, text=f' {db_email}  -  Administrator',fg=sections_fg_colors, bg=sections_bg_colors, borderwidth=0, bg='white',
+tk.Label(profile_frame, text=f' {db_email}  -  Administrator',fg=sections_fg_colors, bg=sections_bg_colors, borderwidth=0,
          font='-family {Georgia} -size 11 -weight bold').place(relx=0.24, rely=0.1)
 
 # -------------
