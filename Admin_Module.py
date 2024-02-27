@@ -373,7 +373,7 @@ log = tk.Frame(profile_frame, bg=sections_bg_colors)
 
 # ------------------------HOSTEL STATUS FRAME --------------------------------------------------------------------------
 
-Hostel_Status_frame = tk.Frame(root, bg='white')
+Hostel_Status_frame = tk.Frame(root, bg=sections_bg_colors)
 Hostel_Status_frame.place(relx=0.173, rely=0, relwidth=0.83, relheight=1)
 
 navbar_hostel_status_frame = tk.Frame(Hostel_Status_frame, bg='gray')
@@ -443,7 +443,7 @@ def show_STATUS_FRAME():
 
 show_STATUS_FRAME()
 
-tk.Button(Hostel_Status_frame, text='⟳ refresh', bg='white', borderwidth=1, command=show_STATUS_FRAME).place(rely=0.03,
+tk.Button(Hostel_Status_frame, text='⟳ refresh', fg=sections_fg_colors, bg=sections_bg_colors, borderwidth=1, command=show_STATUS_FRAME).place(rely=0.03,
                                                                                                              relx=0.88,
                                                                                                              relheight=0.03,
                                                                                                              relwidth=0.1)
@@ -451,7 +451,7 @@ tk.Button(Hostel_Status_frame, text='⟳ refresh', bg='white', borderwidth=1, co
 total_rooms_frame = tk.Frame(Hostel_Status_frame)
 total_rooms_frame.place(relx=0.02, rely=0.1, relwidth=0.21, relheight=0.06)
 total_rooms_lable1 = tk.Label(total_rooms_frame, text="TOTAL ROOMS\n(total number of rooms)", anchor='center',
-                              font='-family {Times New Roman} -size 8 -weight bold')
+                              font='-family {Times New Roman} -size 8 -weight bold', fg=sections_fg_colors, bg=sections_bg_colors)
 total_rooms_lable1.place(relwidth=0.6, relheight=1)
 total_rooms_lable2 = tk.Label(total_rooms_frame, text=f"{total_number_of_rooms}", anchor='center', fg='#704214',
                               font='-family {Courier New} -size 15 -weight bold -slant italic')
