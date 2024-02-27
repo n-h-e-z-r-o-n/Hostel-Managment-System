@@ -14,7 +14,7 @@ side_bar_frame_bg_color = '#654321' # sidebar background color
 side_bar_frame_fg_color = 'white'   # sidebar text color
 side_bar_bt_hover_color = '#C2B280'
 
-sections_bg_colors = 'white'
+sections_bg_colors = 'gray'
 sections_fg_colors = "black"
 # --------------------------------------------------------------------------------------------------------------------
 # Create an instance of tkinter frame
@@ -317,7 +317,7 @@ def update_p_d(username, password, Phone, Email):
                  font='-family {Georgia} -size 10 -slant italic').place(relx=0, rely=y, relheight=0.11, relwidth=1)
     else:
         print('email blank')
-        tk.Label(log, text='log: no change in email', anchor='w', , bg=sections_bg_colors, fg='red',
+        tk.Label(log, text='log: no change in email', anchor='w',  bg=sections_bg_colors, fg='red',
                  font='-family {Georgia} -size 10 -slant italic').place(relx=0, rely=y, relheight=0.11, relwidth=1)
 
     y = y + 0.12
