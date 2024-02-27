@@ -50,6 +50,7 @@ except:
     print(err)
     print(out)
     root.destroy()
+    exit()
 
 try:
     with open('SessionInfo.json', 'r') as openfile:
