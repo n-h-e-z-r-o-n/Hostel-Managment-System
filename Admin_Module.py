@@ -78,6 +78,27 @@ def Exit_program():
     threading.Thread(target=Home_page_call).start()
     root.destroy()
 
+def restart_g():
+    def open_instance():
+        cmd = 'python Home_Module.py'
+        p = subprocess.Popen(cmd, shell=True)
+        out, err = p.communicate()
+        print(err)
+        print(out)
+
+
+    threading.Thread(target=open_instance).start()
+
+    cmd = 'python AdminPage.py'
+    p = subprocess.Popen(cmd, shell=True)
+    out, err = p.communicate()
+    messagebox.showwarning("student portal", 'error while resterting')
+    print(out)
+    print(err)
+
+    
+
+
 def changeOnHover(button, colorOnHover, colorOnLeave):
     # adjusting backgroung of the widget
     # background on entering widget
@@ -170,18 +191,10 @@ changeOnHover(log_out_bt, side_bar_bt_hover_color, side_bar_frame_bg_button_colo
 
 
 
-def restart_g():
-    root.destroy()
-    cmd = 'python AdminPage.py'
-    p = subprocess.Popen(cmd, shell=True)
-    out, err = p.communicate()
-    messagebox.showwarning("student portal", 'error while resterting')
-    print(out)
-    print(err)
 
 
-restart_bt = tk.Button(side_bar_frame, fg='white', bg=side_bar_frame_bg_button_color, text="⟳ Restart", borderwidth=0,
-                       anchor='w', font='-family {Cambria} -size 13', command=restart_g)
+
+restart_bt = tk.Button(side_bar_frame, fg='white', bg=side_bar_frame_bg_button_color, text="⟳ Restart", borderwidth=0,   anchor='w', font='-family {Cambria} -size 13', command=restart_g)
 restart_bt.place(rely=0.63, relwidth=1, relheight=0.03)
 changeOnHover(restart_bt, side_bar_bt_hover_color, side_bar_frame_bg_button_color)
 
