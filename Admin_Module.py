@@ -899,6 +899,7 @@ def reserve_room(f_name, s_name, l_name, d_birth, s_gender, s_phone, s_email, ye
         print("accepted")
         mycursor.execute("SELECT * FROM hostel.room where room_type = %s and room_status='not occupied' and room_condition = 'good'", [room_ty])
         r_output = mycursor.fetchall()
+        print(r_output)
         if r_output != []:
             room_number = r_output[0][2]
             room_id = r_output[0][0]
