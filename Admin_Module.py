@@ -1080,7 +1080,7 @@ tk.Entry(section_1_deall,       fg = sections_fg_colors, bg = sections_bg_colors
 del_ser = tk.Button(section_1_deall, bg="#EFDECD",text='Search', font='-family {Georgia}  -size 9 -weight bold', borderwidth=0, command= lambda: Search_del_student(deallocate_room.get(), deallocate_student.get()))
 del_ser.place(relx=0.3, rely=0.723, relheight=0.27, relwidth=0.1)
 changeOnHover(del_ser,'Green', '#EFDECD')
-section_2_deall = tk.LabelFrame(Deallocate_frame)
+section_2_deall = tk.LabelFrame(Deallocate_frame, fg = sections_fg_colors, bg = sections_bg_colors,)
 section_2_deall.place(relx=0.001, rely=0.123, relwidth=0.998, relheight=0.6)
 tk.Label(section_2_deall,      fg = sections_fg_colors, bg = sections_bg_colors,text='Student Name:', anchor='e', font='-family {Cambria}  -size 11 -weight bold').place(rely=0.01, relx=0.01, relwidth=0.15, relheight=0.065)
 tk.Label(section_2_deall,      fg = sections_fg_colors, bg = sections_bg_colors,text='Gender:', anchor='e', font='-family {Cambria}  -size 11 -weight bold').place(rely=0.077, relx=0.01, relwidth=0.15, relheight=0.065)
@@ -1100,7 +1100,7 @@ tk.Label(section_2_deall,      fg = sections_fg_colors, bg = sections_bg_colors,
 
 # ==================================== ROOM FRAME ======================================================================
 
-Rooms_frame = tk.Frame(root)
+Rooms_frame = tk.Frame(root,   bg = sections_bg_colors,)
 Rooms_frame.place(relx=0.173, rely=0, relwidth=0.83, relheight=1)
 room_search = tk.IntVar()
 
@@ -1132,9 +1132,9 @@ def search(s_number):
         room_description_lable2.config(text=room_description)
 
 
-status = tk.Label(Rooms_frame, font='-family {Consolas} -size 9')
+status = tk.Label(Rooms_frame, font='-family {Consolas} -size 9', fg = sections_fg_colors, bg = sections_bg_colors,)
 status.place(relx=0.15, rely=0.051, relwidth=0.25, relheight=0.03)
-search_label = tk.Label(Rooms_frame, text='ENTER ROOM NO : ', font='-family {Consolas} -size 12')
+search_label = tk.Label(Rooms_frame, text='ENTER ROOM NO : ', font='-family {Consolas} -size 12', fg = sections_fg_colors, bg = sections_bg_colors,)
 search_label.place(relx=0.03, rely=0.08, relheight=0.03)
 search_entry = tk.Entry(Rooms_frame, textvariable=room_search, font='-family {Times New Roman} -size 12', bg='#E9D7AB')
 search_entry.place(relx=0.16, rely=0.085, relheight=0.026, relwidth=0.15)
@@ -1144,9 +1144,9 @@ tk.Button(Rooms_frame, text='⌕ SEARCH', borderwidth=2, command=lambda: search(
                                                                                                         relheight=0.027,
                                                                                                         relwidth=0.0741)
 
-room_number_lable1 = tk.Label(Rooms_frame, text='Room number', font='-family {Times New Roman} -size 12 ')
+room_number_lable1 = tk.Label(Rooms_frame, text='Room number', font='-family {Times New Roman} -size 12 ',      fg = sections_fg_colors, bg = sections_bg_colors,)
 room_number_lable1.place(relx=0.03, rely=0.13, relheight=0.03)
-room_number_lable2 = tk.Label(Rooms_frame, text='', fg='green', font='-family {Courier New} -size 11 -weight bold')
+room_number_lable2 = tk.Label(Rooms_frame, text='', fg='green', font='-family {Courier New} -size 11 -weight bold', bg = sections_bg_colors,)
 room_number_lable2.place(relx=0.15, rely=0.13, relheight=0.03)
 
 room_id_lable1 = tk.Label(Rooms_frame, text='Room id ', font='-family {Times New Roman} -size 12 ')
