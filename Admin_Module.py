@@ -279,11 +279,11 @@ def update_p_d(username, password, Phone, Email):
     if username != '':
         mycursor.execute("UPDATE hostel.users SET user_name=%s WHERE (user_id=%s);", (username, db_userid))
         mydb.commit()
-        tk.Label(log, text=f'log: username changed to: {username}', anchor='w', fg=sections_fg_colors,  bg=sections_bg_colors, fg='#004830',
+        tk.Label(log, text=f'log: username changed to: {username}', anchor='w',   bg=sections_bg_colors, fg='#004830',
                  font='-family {Georgia} -size 10 -slant italic').place(relx=0, rely=y, relheight=0.11, relwidth=1)
     else:
         print('user blank')
-        tk.Label(log, text='log: no change username', anchor='w', fg=sections_fg_colors,  bg=sections_bg_colors, fg='red',
+        tk.Label(log, text='log: no change username', anchor='w',  bg=sections_bg_colors, fg='red',
                  font='-family {Georgia} -size 10 -slant italic').place(relx=0, rely=y, relheight=0.11, relwidth=1)
 
     y = y + 0.12
@@ -294,30 +294,30 @@ def update_p_d(username, password, Phone, Email):
                  font='-family {Georgia} -size 10 -slant italic').place(relx=0, rely=y, relheight=0.11, relwidth=1)
     else:
         print('pass blank')
-        tk.Label(log, text='log: no change in password', anchor='w', fg=sections_fg_colors,  bg=sections_bg_colors, fg='red',
+        tk.Label(log, text='log: no change in password', anchor='w', bg=sections_bg_colors, fg='red',
                  font='-family {Georgia} -size 10 -slant italic').place(relx=0, rely=y, relheight=0.11, relwidth=1)
 
     y = y + 0.12
     if Phone != '':
         mycursor.execute("UPDATE hostel.admins SET phone_no=%s WHERE (admin_Id=%s);", (Phone, db_userid))
         mydb.commit()
-        tk.Label(log, text=f'log: Phone Number changed to: {Phone}', anchor='w', fg=sections_fg_colors,  bg=sections_bg_colors, fg='#004830',
+        tk.Label(log, text=f'log: Phone Number changed to: {Phone}', anchor='w',  bg=sections_bg_colors, fg='#004830',
                  font='-family {Georgia} -size 10 -slant italic').place(relx=0, rely=y, relheight=0.11, relwidth=1)
 
     else:
         print('phone blank')
-        tk.Label(log, text='log: no change in phone number', anchor='w', fg=sections_fg_colors,  bg=sections_bg_colors, fg='red',
+        tk.Label(log, text='log: no change in phone number', anchor='w',   bg=sections_bg_colors, fg='red',
                  font='-family {Georgia} -size 10 -slant italic').place(relx=0, rely=y, relheight=0.11, relwidth=1)
 
     y = y + 0.12
     if Email != '':
         mycursor.execute("UPDATE hostel.admins SET Email=%s WHERE (admin_Id=%s);", (Email, db_userid))
         mydb.commit()
-        tk.Label(log, text=f'log: Email changed to: {Email}', anchor='w',  fg=sections_fg_colors, bg=sections_bg_colors, fg='#004830',
+        tk.Label(log, text=f'log: Email changed to: {Email}', anchor='w',   bg=sections_bg_colors, fg='#004830',
                  font='-family {Georgia} -size 10 -slant italic').place(relx=0, rely=y, relheight=0.11, relwidth=1)
     else:
         print('email blank')
-        tk.Label(log, text='log: no change in email', anchor='w', fg=sections_fg_colors, bg=sections_bg_colors, fg='red',
+        tk.Label(log, text='log: no change in email', anchor='w', , bg=sections_bg_colors, fg='red',
                  font='-family {Georgia} -size 10 -slant italic').place(relx=0, rely=y, relheight=0.11, relwidth=1)
 
     y = y + 0.12
@@ -331,14 +331,14 @@ def update_p_d(username, password, Phone, Email):
             # Execute the query and commit the database.
             mycursor.execute('UPDATE hostel.users SET user_image = %s WHERE user_id = %s', [file, db_userid])
             mydb.commit()
-            tk.Label(log, text=f'log: Photo changed changed to: {filepath}', anchor='w', fg=sections_fg_colors, bg=sections_bg_colors, fg='#004830',
+            tk.Label(log, text=f'log: Photo changed changed to: {filepath}', anchor='w', bg=sections_bg_colors, fg='#004830',
                      font='-family {Georgia} -size 10 -slant italic').place(relx=0, rely=y, relheight=0.11, relwidth=1)
         except:
-            tk.Label(log, text=f'log: wrong profile photo file path', anchor='w', fg=sections_fg_colors, bg=sections_bg_colors, fg='#A67B50',
+            tk.Label(log, text=f'log: wrong profile photo file path', anchor='w',bg=sections_bg_colors, fg='#A67B50',
                      font='-family {Georgia} -size 10 -slant italic').place(relx=0, rely=y, relheight=0.11, relwidth=1)
 
     else:
-        tk.Label(log, text='log: no change in profile photo', anchor='w', fg=sections_fg_colors, bg=sections_bg_colors, fg='red',
+        tk.Label(log, text='log: no change in profile photo', anchor='w', bg=sections_bg_colors, fg='red',
                  font='-family {Georgia} -size 10 -slant italic').place(relx=0, rely=y, relheight=0.11, relwidth=1)
 
 
